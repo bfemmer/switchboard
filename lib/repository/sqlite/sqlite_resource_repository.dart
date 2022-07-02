@@ -1,0 +1,95 @@
+import '../../model/app.dart';
+import '../../model/category.dart';
+import '../../model/hotline.dart';
+import '../../model/resource.dart';
+import '../../model/unit.dart';
+import '../resource_repository.dart';
+import 'database_helper.dart';
+
+class SqliteResourceRepository extends ResourceRepository {
+  final DatabaseHelper dbHelper = DatabaseHelper.instance;
+
+  @override
+  Future<List<Unit>> getUnits() async {
+    var db = await dbHelper.database;
+    var result = await db
+        .rawQuery('SELECT * FROM units ORDER BY name COLLATE NOCASE ASC;');
+    List<Unit> list =
+        result.isNotEmpty ? result.map((c) => Unit.fromJson(c)).toList() : [];
+    return list;
+  }
+
+  @override
+  Future<List<Category>> getCategories() async {
+    var db = await dbHelper.database;
+    var result = await db.query('categories');
+    List<Category> list = result.isNotEmpty
+        ? result.map((c) => Category.fromJson(c)).toList()
+        : [];
+    return list;
+  }
+
+  @override
+  Future<Resource> getResourceById(int id) async {
+    var db = await dbHelper.database;
+    var result = await db.query("resources", where: "id = ?", whereArgs: [id]);
+    return Resource.fromJson(result.first);
+  }
+
+  @override
+  Future<List<Resource>> getResources() async {
+    var db = await dbHelper.database;
+    var result = await db
+        .rawQuery('SELECT * FROM resources ORDER BY name COLLATE NOCASE ASC;');
+    List<Resource> list = result.isNotEmpty
+        ? result.map((c) => Resource.fromJson(c)).toList()
+        : [];
+    return list;
+  }
+
+  @override
+  Future<List<Resource>> getResourcesByCategoryId(int id) async {
+    var db = await dbHelper.database;
+    var query =
+        'select r.id, r.name, r.level, r.type, r.description, r.link, r.icon, r.image  from resources r join categories2resources c2r on r.id = c2r.resource_id join categories c on c2r.category_id = c.id where c.id = $id order by r.name COLLATE NOCASE ASC;';
+
+    var result = await db.rawQuery(query);
+    List<Resource> list = result.isNotEmpty
+        ? result.map((c) => Resource.fromJson(c)).toList()
+        : [];
+    return list;
+  }
+
+  @override
+  Future<List<Resource>> getResourcesByKeyword(String keyword) async {
+    var db = await dbHelper.database;
+    var query = 'SELECT * FROM resources WHERE description LIKE "%$keyword%";';
+
+    var result = await db.rawQuery(query);
+    List<Resource> list = result.isNotEmpty
+        ? result.map((c) => Resource.fromJson(c)).toList()
+        : [];
+    return list;
+  }
+
+  @override
+  Future<List<Hotline>> getHotlines() async {
+    var db = await dbHelper.database;
+    var result = await db
+        .rawQuery('SELECT * FROM hotlines ORDER BY name COLLATE NOCASE ASC;');
+    List<Hotline> list = result.isNotEmpty
+        ? result.map((c) => Hotline.fromJson(c)).toList()
+        : [];
+    return list;
+  }
+
+  @override
+  Future<List<App>> getApps() async {
+    var db = await dbHelper.database;
+    var result = await db
+        .rawQuery('SELECT * FROM apps ORDER BY name COLLATE NOCASE ASC;');
+    List<App> list =
+        result.isNotEmpty ? result.map((c) => App.fromJson(c)).toList() : [];
+    return list;
+  }
+}
