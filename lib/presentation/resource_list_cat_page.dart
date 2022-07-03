@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../model/category.dart';
 import '../model/resource.dart';
@@ -59,14 +60,16 @@ class ResourceListCatPageState extends State<ResourceListCatPage> {
                               ),
                               resource.link != null
                                   ? ButtonBar(
-                                      alignment: MainAxisAlignment.start,
+                                      alignment: MainAxisAlignment.end,
                                       children: [
-                                        TextButton(
+                                        IconButton(
                                           onPressed: () {
                                             UrlHelper.launchBrowser(
                                                 resource.link!);
                                           },
-                                          child: Text(resource.link!),
+                                          icon: const FaIcon(
+                                              FontAwesomeIcons.earthAmericas),
+                                          color: Colors.blue,
                                         ),
                                       ],
                                     )
