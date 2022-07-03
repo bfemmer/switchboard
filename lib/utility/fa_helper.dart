@@ -32,5 +32,8 @@ class FaHelper {
     "faceSadCry": FontAwesomeIcons.faceSadCry,
     "peopleCarryBox": FontAwesomeIcons.peopleCarryBox,
     "circleInfo": FontAwesomeIcons.circleInfo,
+    "ribbon": FontAwesomeIcons.ribbon,
+    "crisis": FontAwesomeIcons.triangleExclamation,
+    "emergency": FontAwesomeIcons.hospital
   };
 }

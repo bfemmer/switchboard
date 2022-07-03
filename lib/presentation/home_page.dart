@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../utility/fa_helper.dart';
 import '../utility/url_helper.dart';
 
 class HomePage extends StatelessWidget {
@@ -11,87 +13,201 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            const SizedBox(
-              height: 20,
-            ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Center(
-                  child: Text(
-                'Quick access emergency phone numbers',
-                style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
-              )),
-            ),
+        child: ListView(
+          children: [
             Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Column(
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          UrlHelper.makePhoneCall('911');
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: const CircleBorder(),
-                          elevation: 8,
-                          padding: const EdgeInsets.all(20),
-                          primary: Colors.red, // <-- Button color
-                          onPrimary: Colors.blue, // <-- Splash color
-                        ),
-                        child: const Icon(Icons.call, color: Colors.white),
-                      ),
-                      const SizedBox(height: 10),
-                      const Text('911'),
-                    ],
+              padding:
+                  const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+              child: Card(
+                elevation: 3.0,
+                child: ListTile(
+                  title: const Text('Sexual Assault Help'),
+                  leading: FaIcon(
+                    FaHelper.getIconFromName('ribbon'),
+                    color: Colors.teal,
                   ),
-                  Column(
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          UrlHelper.makePhoneCall('8779955247');
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: const CircleBorder(),
-                          elevation: 8,
-                          padding: const EdgeInsets.all(20),
-                          primary: Colors.teal, // <-- Button color
-                          onPrimary: Colors.red, // <-- Splash color
-                        ),
-                        child: const Icon(Icons.call, color: Colors.white),
-                      ),
-                      const SizedBox(height: 10),
-                      const Text('Sexual Assault'),
-                    ],
+                  onTap: () {
+                    UrlHelper.makePhoneCall('8779955247');
+                  },
+                  trailing: const Icon(
+                    Icons.phone,
+                    color: Colors.teal,
                   ),
-                  Column(
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          UrlHelper.makePhoneCall('8002738255');
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: const CircleBorder(),
-                          elevation: 8,
-                          padding: const EdgeInsets.all(20),
-                          primary: Colors.purple, // <-- Button color
-                          onPrimary: Colors.red, // <-- Splash color
-                        ),
-                        child: const Icon(Icons.call, color: Colors.white),
-                      ),
-                      const SizedBox(height: 10),
-                      const Text('Crisis Line'),
-                    ],
-                  ),
-                ],
+                ),
               ),
             ),
-            const SizedBox(
-              height: 20,
+            Padding(
+              padding:
+                  const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+              child: Card(
+                elevation: 3.0,
+                child: ListTile(
+                  title: const Text('Military Crisis Line'),
+                  leading: FaIcon(
+                    FaHelper.getIconFromName('crisis'),
+                    color: Colors.red,
+                  ),
+                  trailing: const Icon(
+                    Icons.phone,
+                    color: Colors.red,
+                  ),
+                  onTap: () {
+                    UrlHelper.makePhoneCall('8002738255');
+                  },
+                ),
+              ),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+              child: Card(
+                elevation: 3.0,
+                clipBehavior: Clip.antiAlias,
+                child: Column(
+                  children: [
+                    ListTile(
+                      leading: CircleAvatar(
+                          backgroundColor: Colors.transparent,
+                          radius: 25,
+                          child: Image.asset(
+                            'assets/images/usaf_roundel.png',
+                          )),
+                      title: const Text('Restricted vs Unrestricted'),
+                      subtitle: Text(
+                        'What' 's the difference?',
+                        style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                      ),
+                    ),
+                    Image.asset('assets/images/teal_ribbon.jpeg'),
+                    const SizedBox(
+                      height: 16.0,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+                      child: Text(
+                        'Deciding to report a sexual assault is a very personal decision. Restricted and Unrestricted reporting options allow military members, dependents (18+) and DoD Air Force civilians who experienced sexual assault to exercise control over how and when they engage with resources.',
+                        style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                      ),
+                    ),
+                    ButtonBar(
+                      alignment: MainAxisAlignment.start,
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            UrlHelper.launchBrowser(
+                                'https://www.resilience.af.mil/SAPR/Restricted-or-Unrestricted');
+                            //https://www.resilience.af.mil/SAPR/Restricted-or-Unrestricted/
+                          },
+                          child: const Text(
+                            'Learn more',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+              child: Card(
+                elevation: 3.0,
+                clipBehavior: Clip.antiAlias,
+                child: Column(
+                  children: [
+                    ListTile(
+                      leading: CircleAvatar(
+                          backgroundColor: Colors.transparent,
+                          radius: 25,
+                          child: Image.asset(
+                            'assets/images/usaf_roundel.png',
+                          )),
+                      title: const Text('Suicide Warning Signs'),
+                      subtitle: Text(
+                        'Do you know them?',
+                        style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                      ),
+                    ),
+                    Image.asset('assets/images/suicide_signs.jpeg'),
+                    const SizedBox(
+                      height: 16.0,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+                      child: Text(
+                        'Warning Signs for suicide are different than Risk Factors. They are more observable, and should be responded to immediately. A common theme for Warning Signs is change. This is why friends, relatives, and coworkers are critical in detecting early Warning Signs of distress.',
+                        style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                      ),
+                    ),
+                    ButtonBar(
+                      alignment: MainAxisAlignment.start,
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            UrlHelper.launchBrowser(
+                                'https://www.resilience.af.mil/suicide-prevention-program/');
+                          },
+                          child: const Text(
+                            'Learn more',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+              child: Card(
+                elevation: 3.0,
+                clipBehavior: Clip.antiAlias,
+                child: Column(
+                  children: [
+                    ListTile(
+                      leading: CircleAvatar(
+                          backgroundColor: Colors.transparent,
+                          radius: 25,
+                          child: Image.asset(
+                            'assets/images/usaf_roundel.png',
+                          )),
+                      title: const Text(
+                          'Mental Health Counseling and Security Clearances'),
+                      subtitle: Text(
+                        'Is there any negative impact?',
+                        style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                      ),
+                    ),
+                    Image.asset('assets/images/pentagon.jpeg'),
+                    const SizedBox(
+                      height: 16.0,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+                      child: Text(
+                        'Seeking mental health services does not affect one’s ability to gain or hold clearance eligibility. Adjudicators regard seeking necessary mental health treatment as a positive step in the security clearance process.',
+                        style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                      ),
+                    ),
+                    ButtonBar(
+                      alignment: MainAxisAlignment.start,
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            UrlHelper.launchBrowser(
+                                'https://www.dcsa.mil/Portals/91/Documents/pv/DODCAF/resources/DCSA-FactSheet_Mental-Health.pdf');
+                          },
+                          child: const Text(
+                            'Learn more',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
