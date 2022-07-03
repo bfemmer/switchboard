@@ -27,7 +27,7 @@ class ResourcePageState extends State<ResourcePage> {
                     text: 'Browse A-Z',
                   ),
                   Tab(
-                    text: 'Categories',
+                    text: 'By Category',
                   ),
                   Tab(
                     text: 'Apps',
