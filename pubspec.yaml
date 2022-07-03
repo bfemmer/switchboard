@@ -68,6 +68,7 @@ flutter:
   assets:
     - assets/images/b52.jpeg
     - assets/images/hh60pj.jpeg
+    - assets/images/emergency_call_icon.png
     - assets/images/sense_app_icon.jpeg
     - assets/images/ptsd_coach_app_icon.jpeg
     - assets/images/mindfulness_coach_app_icon.jpeg
@@ -78,6 +79,9 @@ flutter:
     - assets/images/jack.png
     - assets/images/usaf_roundel.png
     - assets/images/network_alpha.png
+    - assets/images/suicide_signs.jpeg
+    - assets/images/teal_ribbon.jpeg
+    - assets/images/pentagon.jpeg
     - assets/databases/switchboard.db
 
   # An image asset can refer to one or more resolution-specific "variants", see
