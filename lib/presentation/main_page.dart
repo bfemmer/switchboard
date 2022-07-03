@@ -33,66 +33,6 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         title: const Text('Switchboard'),
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                //color: Colors.blue,
-                image: DecorationImage(
-                  image: AssetImage('assets/images/b52.jpeg'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: Text('AFRC Connecting the Network'),
-            ),
-            ListTile(
-              title: const Text('Profile'),
-              leading: const Icon(Icons.settings),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('How to use this app'),
-              leading: const Icon(Icons.help),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            const Divider(),
-            ListTile(
-              title: const Text('Helpful Apps'),
-              onTap: () {
-                // close the drawer
-                Navigator.pop(context);
-                // Show apps page
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return const AppListPage();
-                }));
-              },
-            ),
-            ListTile(
-              title: const Text('AFRC Units'),
-              onTap: () {
-                // close the drawer
-                Navigator.pop(context);
-                // Show apps page
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return const UnitListPage();
-                }));
-              },
-            ),
-          ],
-        ),
-      ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.blue[800],
