@@ -16,8 +16,7 @@ class HomePage extends StatelessWidget {
         child: ListView(
           children: [
             Padding(
-              padding:
-                  const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+              padding: const EdgeInsets.all(10.0),
               child: Card(
                 elevation: 3.0,
                 child: ListTile(
