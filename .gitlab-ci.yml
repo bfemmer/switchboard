@@ -4,9 +4,35 @@
 # This specific template is located at:
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Flutter.gitlab-ci.yml
 
+image: "cirrusci/flutter:3.0.3"
+
+stages:
+  - build
+  - test
+
+build:
+  stage: build
+  before_script:
+  - flutter pub get
+  - flutter clean
+  script:
+    - flutter build aot
+  tags:
+    - shared
+  only:
+    - merge_requests
+
+unit_test:
+  stage: test
+  script:
+    - flutter test test/*
+  tags:
+    - shared
+  only:
+    - merge_requests
+
 code_quality:
   stage: test
-  image: "cirrusci/flutter:3.0.3"
   before_script:
     - pub global activate dart_code_metrics
     - export PATH="$PATH:$HOME/.pub-cache/bin"
@@ -15,21 +41,23 @@ code_quality:
   artifacts:
     reports:
       codequality: gl-code-quality-report.json
+  only:
+    - merge_requests
 
-test:
-  stage: test
-  image: "cirrusci/flutter:3.0.3"
-  before_script:
-    - pub global activate junitreport
-    - export PATH="$PATH:$HOME/.pub-cache/bin"
-  script:
-    - flutter test --machine --coverage | tojunit -o report.xml
-    - lcov --summary coverage/lcov.info
-    - genhtml coverage/lcov.info --output=coverage
-  coverage: '/lines\.*: \d+\.\d+\%/'
-  artifacts:
-    name: coverage
-    paths:
-      - $CI_PROJECT_DIR/coverage
-    reports:
-      junit: report.xml
+# test:
+#   stage: test
+#   image: "cirrusci/flutter:3.0.3"
+#   before_script:
+#     - pub global activate junitreport
+#     - export PATH="$PATH:$HOME/.pub-cache/bin"
+#   script:
+#     - flutter test --machine --coverage | tojunit -o report.xml
+#     - lcov --summary coverage/lcov.info
+#     - genhtml coverage/lcov.info --output=coverage
+#   coverage: '/lines\.*: \d+\.\d+\%/'
+#   artifacts:
+#     name: coverage
+#     paths:
+#       - $CI_PROJECT_DIR/coverage
+#     reports:
+#       junit: report.xml
