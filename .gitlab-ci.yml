@@ -34,7 +34,7 @@ unit_test:
 code_quality:
   stage: test
   before_script:
-    - pub global activate dart_code_metrics
+    - flutter pub global activate dart_code_metrics
     - export PATH="$PATH:$HOME/.pub-cache/bin"
   script:
     - metrics lib -r codeclimate  > gl-code-quality-report.json
@@ -44,20 +44,20 @@ code_quality:
   # only:
   #   - merge_requests
 
-# test:
-#   stage: test
-#   image: "cirrusci/flutter:3.0.3"
-#   before_script:
-#     - pub global activate junitreport
-#     - export PATH="$PATH:$HOME/.pub-cache/bin"
-#   script:
-#     - flutter test --machine --coverage | tojunit -o report.xml
-#     - lcov --summary coverage/lcov.info
-#     - genhtml coverage/lcov.info --output=coverage
-#   coverage: '/lines\.*: \d+\.\d+\%/'
-#   artifacts:
-#     name: coverage
-#     paths:
-#       - $CI_PROJECT_DIR/coverage
-#     reports:
-#       junit: report.xml
+test:
+  stage: test
+  image: "cirrusci/flutter:3.0.3"
+  before_script:
+    - flutter pub global activate junitreport
+    - export PATH="$PATH:$HOME/.pub-cache/bin"
+  script:
+    - flutter test --machine --coverage | tojunit -o report.xml
+    - lcov --summary coverage/lcov.info
+    - genhtml coverage/lcov.info --output=coverage
+  coverage: '/lines\.*: \d+\.\d+\%/'
+  artifacts:
+    name: coverage
+    paths:
+      - $CI_PROJECT_DIR/coverage
+    reports:
+      junit: report.xml
