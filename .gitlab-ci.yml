@@ -19,8 +19,8 @@ build:
     - flutter build aot
   tags:
     - shared
-  only:
-    - merge_requests
+  # only:
+  #   - merge_requests
 
 unit_test:
   stage: test
@@ -28,8 +28,8 @@ unit_test:
     - flutter test test/*
   tags:
     - shared
-  only:
-    - merge_requests
+  # only:
+  #   - merge_requests
 
 code_quality:
   stage: test
@@ -41,8 +41,8 @@ code_quality:
   artifacts:
     reports:
       codequality: gl-code-quality-report.json
-  only:
-    - merge_requests
+  # only:
+  #   - merge_requests
 
 # test:
 #   stage: test
