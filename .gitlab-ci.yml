@@ -16,7 +16,7 @@ build:
   - flutter pub get
   - flutter clean
   script:
-    - flutter build aot
+    - flutter build web
   tags:
     - shared
   # only:
