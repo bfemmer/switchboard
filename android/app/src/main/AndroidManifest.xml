@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.switchboard">
    <application
-        android:label="switchboard"
+        android:label="Resiliency Switchboard"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
