@@ -10,20 +10,32 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:switchboard/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  testWidgets('Bottom navigation index increment', (WidgetTester tester) async {
+    // Build app and trigger a frame.
     await tester.pumpWidget(const SwitchboardApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verify index starts at 0.
+    expect(find.text('_selectedIndex'), 0);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    // Tap the 'phone' icon and trigger a frame.
+    await tester.tap(find.byIcon(Icons.phone));
     await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Verify index incremented.
+    expect(find.text('_selectedIndex'), 1);
+
+    // Tap the 'people' icon and trigger a frame.
+    await tester.tap(find.byIcon(Icons.people));
+    await tester.pump();
+
+    // Verify index incremented.
+    expect(find.text('_selectedIndex'), 2);
+
+    // Tap the 'home' icon and trigger a frame.
+    await tester.tap(find.byIcon(Icons.home));
+    await tester.pump();
+
+    // Verify index reset to zero.
+    expect(find.text('_selectedIndex'), 0);
   });
 }
