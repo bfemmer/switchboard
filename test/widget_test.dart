@@ -15,27 +15,27 @@ void main() {
     await tester.pumpWidget(const SwitchboardApp());
 
     // Verify index starts at 0.
-    expect(find.text('_selectedIndex'), 0);
+    expect(find.text('currentIndex'), 0);
 
     // Tap the 'phone' icon and trigger a frame.
     await tester.tap(find.byIcon(Icons.phone));
     await tester.pump();
 
     // Verify index incremented.
-    expect(find.text('_selectedIndex'), 1);
+    expect(find.text('currentIndex'), 1);
 
     // Tap the 'people' icon and trigger a frame.
     await tester.tap(find.byIcon(Icons.people));
     await tester.pump();
 
     // Verify index incremented.
-    expect(find.text('_selectedIndex'), 2);
+    expect(find.text('currentIndex'), 2);
 
     // Tap the 'home' icon and trigger a frame.
     await tester.tap(find.byIcon(Icons.home));
     await tester.pump();
 
     // Verify index reset to zero.
-    expect(find.text('_selectedIndex'), 0);
+    expect(find.text('currentIndex'), 0);
   });
 }
