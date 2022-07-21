@@ -11,31 +11,45 @@ import 'package:switchboard/main.dart';
 
 void main() {
   testWidgets('Bottom navigation index increment', (WidgetTester tester) async {
+    const navBarKey = Key('navBar');
+
     // Build app and trigger a frame.
     await tester.pumpWidget(const SwitchboardApp());
 
-    // Verify index starts at 0.
-    expect(find.text('currentIndex'), 0);
+    // Verify index at zero.
+    expect(
+        (find.byKey(navBarKey).evaluate().single.widget as BottomNavigationBar)
+            .currentIndex,
+        0);
 
     // Tap the 'phone' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.phone));
+    await tester.tap(find.byKey(const Key('hotlines')));
     await tester.pump();
 
     // Verify index incremented.
-    expect(find.text('currentIndex'), 1);
+    expect(
+        (find.byKey(navBarKey).evaluate().single.widget as BottomNavigationBar)
+            .currentIndex,
+        1);
 
     // Tap the 'people' icon and trigger a frame.
     await tester.tap(find.byIcon(Icons.people));
     await tester.pump();
 
     // Verify index incremented.
-    expect(find.text('currentIndex'), 2);
+    expect(
+        (find.byKey(navBarKey).evaluate().single.widget as BottomNavigationBar)
+            .currentIndex,
+        2);
 
     // Tap the 'home' icon and trigger a frame.
     await tester.tap(find.byIcon(Icons.home));
     await tester.pump();
 
     // Verify index reset to zero.
-    expect(find.text('currentIndex'), 0);
+    expect(
+        (find.byKey(navBarKey).evaluate().single.widget as BottomNavigationBar)
+            .currentIndex,
+        0);
   });
 }

@@ -16,10 +16,14 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
-    HomePage(title: 'Switchboard'),
+    HomePage(title: 'Resiliency Switchboard'),
     HotlineListPage(),
     ResourcePage(),
   ];
+
+  int getIndex() {
+    return _selectedIndex;
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -38,13 +42,17 @@ class _MainPageState extends State<MainPage> {
         backgroundColor: Colors.blue[800],
         unselectedItemColor: Colors.white,
         showUnselectedLabels: true,
+        key: const Key('navBar'), // used for testing
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.phone),
+            icon: Icon(
+              Icons.phone,
+              key: Key('hotlines'),
+            ),
             label: 'Hotlines',
           ),
           BottomNavigationBarItem(
