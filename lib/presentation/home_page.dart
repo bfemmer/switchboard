@@ -67,9 +67,8 @@ class HomePage extends StatelessWidget {
                     ListTile(
                       leading: CircleAvatar(
                           backgroundColor: Colors.transparent,
-                          radius: 25,
                           child: Image.asset(
-                            'assets/images/usaf_roundel.png',
+                            'assets/images/resilience.png',
                           )),
                       title: const Text('Restricted vs Unrestricted'),
                       subtitle: Text(
@@ -118,9 +117,8 @@ class HomePage extends StatelessWidget {
                     ListTile(
                       leading: CircleAvatar(
                           backgroundColor: Colors.transparent,
-                          radius: 25,
                           child: Image.asset(
-                            'assets/images/usaf_roundel.png',
+                            'assets/images/resilience.png',
                           )),
                       title: const Text('Suicide Warning Signs'),
                       subtitle: Text(
@@ -168,14 +166,13 @@ class HomePage extends StatelessWidget {
                     ListTile(
                       leading: CircleAvatar(
                           backgroundColor: Colors.transparent,
-                          radius: 25,
                           child: Image.asset(
-                            'assets/images/usaf_roundel.png',
+                            'assets/images/resilience.png',
                           )),
                       title: const Text(
                           'Mental Health Counseling and Security Clearances'),
                       subtitle: Text(
-                        'Is there any negative impact?',
+                        'Is there a negative impact?',
                         style: TextStyle(color: Colors.black.withOpacity(0.6)),
                       ),
                     ),
