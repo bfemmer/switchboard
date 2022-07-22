@@ -19,17 +19,6 @@ build:
     - flutter build web
   tags:
     - shared
-  # only:
-  #   - merge_requests
-
-unit_test:
-  stage: test
-  script:
-    - flutter test test/*
-  tags:
-    - shared
-  # only:
-  #   - merge_requests
 
 code_quality:
   stage: test
@@ -41,8 +30,6 @@ code_quality:
   artifacts:
     reports:
       codequality: gl-code-quality-report.json
-  # only:
-  #   - merge_requests
 
 test:
   stage: test
