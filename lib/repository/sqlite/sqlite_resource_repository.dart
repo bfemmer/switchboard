@@ -50,6 +50,19 @@ class SqliteResourceRepository extends ResourceRepository {
   }
 
   @override
+  Future<Resource?> getResourceByName(String name) async {
+    var db = await dbHelper.database;
+    var result =
+        await db.query("resources", where: "name = ?", whereArgs: [name]);
+
+    if (result.isNotEmpty) {
+      return Resource.fromJson(result.first);
+    }
+
+    return null;
+  }
+
+  @override
   Future<List<Resource>> getResources() async {
     var db = await dbHelper.database;
     var result = await db

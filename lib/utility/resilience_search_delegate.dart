@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../model/category.dart';
+import '../model/resource.dart';
+import '../presentation/resource_detail_page.dart';
 import '../presentation/resource_list_cat_page.dart';
 import '../presentation/unit_list_page.dart';
 import '../repository/resource_repository.dart';
@@ -70,7 +72,7 @@ class ResilienceSearchDelegate extends SearchDelegate {
     "Master Resilience Trainer",
     "Military and Family Life Counseling (MFLC)",
     "Military Child Care",
-    "Military Child Education Coalition (mcec)",
+    "Military Child Education Coalition (MCEC)",
     "Military OneSource",
     "Military Spouse Programs - USO",
     "Mindfulness Coach - VA",
@@ -198,6 +200,7 @@ class ResilienceSearchDelegate extends SearchDelegate {
   _processSearchRequest(BuildContext context, String result) async {
     Category? category = await _getCategoryByName(result);
 
+    // Check if category
     if (category != null) {
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return ResourceListCatPage(
@@ -206,20 +209,35 @@ class ResilienceSearchDelegate extends SearchDelegate {
       }));
     }
 
-    // Check if category
-
     // Check if resource
+    Resource? resource = await _getResourceByName(result);
+    if (resource != null) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return ResourceDetailPage(
+          resource: resource,
+        );
+      }));
+    }
 
+    // Check if AFRC
     if (result == "AFRC Units") {
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return const UnitListPage();
       }));
     }
+
+    // Search DB for descriptions
   }
 
   Future<Category?> _getCategoryByName(String name) async {
     ResourceRepository repository = SqliteResourceRepository();
 
     return await repository.getCategoryByName(name);
+  }
+
+  Future<Resource?> _getResourceByName(String name) async {
+    ResourceRepository repository = SqliteResourceRepository();
+
+    return await repository.getResourceByName(name);
   }
 }
