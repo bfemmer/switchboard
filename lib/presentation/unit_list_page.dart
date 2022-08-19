@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:switchboard/model/unit.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../repository/resource_repository.dart';
 import '../repository/sqlite/sqlite_resource_repository.dart';
