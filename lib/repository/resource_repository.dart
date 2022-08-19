@@ -9,11 +9,15 @@ abstract class ResourceRepository {
 
   Future<List<Category>> getCategories();
 
+  Future<Category?> getCategoryByName(String name);
+
   Future<Resource> getResourceById(int id);
 
   Future<List<Resource>> getResources();
 
   Future<List<Resource>> getResourcesByCategoryId(int id);
+
+  Future<List<Resource>> getResourcesByCategoryName(String name);
 
   Future<List<Resource>> getResourcesByKeyword(String keyword);
 
