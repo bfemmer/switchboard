@@ -98,11 +98,4 @@ class HotlineListPageState extends State<HotlineListPage> {
     hotlines = await repository.getHotlines();
     return hotlines;
   }
-
-  String _formatPhoneNumber(String phone) {
-    String formattedNumber =
-        "(${phone.substring(0, 3)}) ${phone.substring(3, 6)}-${phone.substring(6, phone.length)}";
-
-    return formattedNumber;
-  }
 }
