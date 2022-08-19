@@ -10,20 +10,18 @@ import '../repository/sqlite/sqlite_resource_repository.dart';
 
 class ResilienceSearchDelegate extends SearchDelegate {
   List<String> searchTerms = [
-    "abuse",
-    "afas",
     "AFRC Units",
-    "aids",
     "Air Force Aid Society (AFAS)",
     "Air Force Wounded Warrior (AFW2) Program",
     "Airmen and Family Readiness (A&FR)",
+    "Alcoholics Anonymous",
     "American Legion",
     "American Red Cross",
     "Area Defense Counsel (ADC)",
-    "assault",
     "Blue Star Families",
     "Career OneStop",
     "Carson's Village",
+    "CDC National HIV and AIDS Hotline",
     "Chaplain/Religious Affairs",
     "Childcare",
     "Civilian Health Promotion Services (CHPS)",
@@ -45,6 +43,7 @@ class ResilienceSearchDelegate extends SearchDelegate {
     "Employee Assistance Program (EAP)",
     "Employment",
     "Employer Support of the Guard and Reserve (ESGR)",
+    "Exceptional Family Member Program (EFMP)",
     "Family Deployment Support",
     "Family Advocacy Program",
     "FEMA",
@@ -52,41 +51,43 @@ class ResilienceSearchDelegate extends SearchDelegate {
     "FINRA Foundation",
     "First Sergeant",
     "Fitness and Health Promotion Manager (FHPM)",
-    "Exceptional Family Member Program (EFMP)",
+    "Gamblers Anonymous",
     "Health and Welfare",
     "Hearts Apart",
     "Hiring Our Heroes",
-    "hiv",
-    "hope",
-    "hprc",
+    "Human Performance Resources by Champ (HPRC)",
     "Information Referral",
     "Inspector General (IG)",
     "inTransition",
     "Key Spouse Program",
     "Legal",
-    "Local Community",
-    "lgbt",
+    "LGBT National Hotline",
     "Life Events",
+    "Local Community",
     "Medical",
-    "mental health",
     "Master Resilience Trainer",
     "Military and Family Life Counseling (MFLC)",
     "Military Child Care",
     "Military Child Education Coalition (MCEC)",
     "Military OneSource",
+    "Military Pay Office",
     "Military Spouse Programs - USO",
     "Mindfulness Coach - VA",
     "Morale, Welfare, and Recreation (MWR) Programs",
+    "Narcotics Anonymous",
+    "National Alliance on Mental Illness (NAMI)",
     "National Domestic Violence Hotline",
+    "National Eating Disorders Association (NEDA) Hotline",
     "National Grad Crisis Line",
+    "National Human Trafficking Hotline",
     "National Maternal Mental Health Hotline",
     "National Resource Directory",
+    "National Runaway Safeline",
     "National Sexual Assault Hotline",
     "National Suicide Prevention Lifeline",
     "No Barriers Organization",
     "Office of Special Investigations (OSI)",
     "Operation Homefront",
-    "pay",
     "Patriot Guard Riders",
     "PenFed Foundation",
     "Professional Financial Counselor (PFC)",
@@ -96,7 +97,6 @@ class ResilienceSearchDelegate extends SearchDelegate {
     "Recovery Care Coordinator",
     "Reserve Organization of America",
     "Resilience Training Assistant",
-    "recreation",
     "Relationships",
     "Resiliency Support",
     "Safetalk Suicide Prevention Course",
@@ -104,14 +104,13 @@ class ResilienceSearchDelegate extends SearchDelegate {
     "SARC/Victim Advocate",
     "School/Education",
     "Sexual Assault",
-    "shirt",
-    "sleep hygiene",
+    "Sleep Hygiene",
     "special investigations",
     "Spiritual Support",
     "Spouse Resiliency Toolkit",
+    "Substance Abuse and Mental Health Services Administration National Hotline",
     "Suicide Prevention",
-    "trafficking",
-    "trevor",
+    "The Trevor Project",
     "Tricare",
     "UNITE",
     "Transition Employment Assistance For Military Spouses and Caregivers (TEAMS)",
@@ -130,7 +129,10 @@ class ResilienceSearchDelegate extends SearchDelegate {
     "Yellow Ribbon Program",
   ];
 
-  // first overwrite to clear the search text
+  @override
+  String get searchFieldLabel => 'Search for...';
+
+  // Clear search text
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
@@ -143,7 +145,7 @@ class ResilienceSearchDelegate extends SearchDelegate {
     ];
   }
 
-  // second overwrite to pop out of search menu
+  // Pop out of search menu
   @override
   Widget? buildLeading(BuildContext context) {
     return IconButton(
@@ -154,7 +156,7 @@ class ResilienceSearchDelegate extends SearchDelegate {
     );
   }
 
-  // third overwrite to show query result
+  // Show query result
   @override
   Widget buildResults(BuildContext context) {
     List<String> matchQuery = [];
@@ -174,7 +176,7 @@ class ResilienceSearchDelegate extends SearchDelegate {
     );
   }
 
-  // last overwrite to show the querying process at the runtime
+  // Show querying process at the runtime
   @override
   Widget buildSuggestions(BuildContext context) {
     List<String> matchQuery = [];
