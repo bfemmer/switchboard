@@ -5,6 +5,7 @@ import '../model/resource.dart';
 import '../repository/resource_repository.dart';
 import '../repository/sqlite/sqlite_resource_repository.dart';
 import '../utility/url_helper.dart';
+import 'widgets/resource_card.dart';
 
 // Image attribution requirement ... to be displayed on store page and in source code:
 // <a href="https://www.flaticon.com/free-icons/jack" title="jack icons">Jack icons created by Freepik - Flaticon</a>
@@ -33,44 +34,8 @@ class ResourceListPageState extends State<ResourceListPage> {
               children: snapshot.data!
                   .map((resource) => Padding(
                         padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                        child: Card(
-                          elevation: 3.0,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                          child: ExpansionTile(
-                            title: Text(resource.name!),
-                            subtitle: Text(resource.type!),
-                            leading: CircleAvatar(
-                              backgroundColor: Colors.transparent,
-                              radius: 15,
-                              child: Image.asset(
-                                'assets/images/jack.png',
-                                color: Colors.blue,
-                              ),
-                            ),
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Text(resource.description!),
-                              ),
-                              resource.link != null
-                                  ? ButtonBar(
-                                      alignment: MainAxisAlignment.end,
-                                      children: [
-                                        IconButton(
-                                          onPressed: () {
-                                            UrlHelper.launchBrowser(
-                                                resource.link!);
-                                          },
-                                          icon: const FaIcon(
-                                              FontAwesomeIcons.earthAmericas),
-                                          color: Colors.blue,
-                                        ),
-                                      ],
-                                    )
-                                  : Container(),
-                            ],
-                          ),
+                        child: ResourceCard(
+                          resource: resource,
                         ),
                       ))
                   .toList(),
