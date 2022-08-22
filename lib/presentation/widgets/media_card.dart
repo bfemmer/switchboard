@@ -4,10 +4,10 @@ import '../../utility/url_helper.dart';
 
 class MediaCard extends StatefulWidget {
   final String title;
-  final String subTitle;
+  final String? subTitle;
   final String description;
   final String imageUrl;
-  final String linkUrl;
+  final String? linkUrl;
 
   const MediaCard({
     Key? key,
@@ -38,7 +38,7 @@ class _MediaCardState extends State<MediaCard> {
                 )),
             title: Text(widget.title),
             subtitle: Text(
-              widget.subTitle,
+              widget.subTitle!,
               style: TextStyle(color: Colors.black.withOpacity(0.6)),
             ),
           ),
@@ -53,19 +53,22 @@ class _MediaCardState extends State<MediaCard> {
               style: TextStyle(color: Colors.black.withOpacity(0.6)),
             ),
           ),
-          ButtonBar(
-            alignment: MainAxisAlignment.start,
-            children: [
-              TextButton(
-                onPressed: () {
-                  UrlHelper.launchBrowser(widget.linkUrl);
-                },
-                child: const Text(
-                  'Learn more',
+          if (widget.linkUrl != null)
+            ButtonBar(
+              alignment: MainAxisAlignment.start,
+              children: [
+                TextButton(
+                  onPressed: () {
+                    UrlHelper.launchBrowser(widget.linkUrl!);
+                  },
+                  child: const Text(
+                    'Learn more',
+                  ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            )
+          else
+            Container(),
         ],
       ),
     );
