@@ -5,6 +5,8 @@ class Resource {
   String? level;
   String? description;
   String? link;
+  String? voice;
+  String? sms;
   String? icon;
   String? image;
 
@@ -13,6 +15,8 @@ class Resource {
       this.id,
       this.level,
       this.link,
+      this.voice,
+      this.sms,
       this.name,
       this.type,
       this.icon,
@@ -25,6 +29,8 @@ class Resource {
     level = json['level'];
     description = json['description'];
     link = json['link'];
+    voice = json['voice'];
+    sms = json['sms'];
     icon = json['icon'];
     image = json['image'];
   }
@@ -38,6 +44,8 @@ class Resource {
     data['level'] = level;
     data['description'] = description;
     data['link'] = link;
+    data['voice'] = voice;
+    data['sms'] = sms;
     data['icon'] = icon;
     data['image'] = image;
     return data;

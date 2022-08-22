@@ -70,6 +70,110 @@ class HomePage extends StatelessWidget {
                           child: Image.asset(
                             'assets/images/resilience.png',
                           )),
+                      title: const Text('Welcome to Switchboard!'),
+                      subtitle: Text(
+                        'Your virtual patch panel to ...',
+                        style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          children: [
+                            const Text(
+                              '8',
+                              style: TextStyle(fontSize: 30),
+                            ),
+                            const Text('Apps'),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              '22',
+                              style: TextStyle(fontSize: 30),
+                            ),
+                            Text('Hotlines'),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              '54',
+                              style: TextStyle(fontSize: 30),
+                            ),
+                            Text('Links'),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              '51',
+                              style: TextStyle(fontSize: 30),
+                            ),
+                            Text('Units'),
+                          ],
+                        ),
+                      ],
+                    ),
+                    ButtonBar(
+                      alignment: MainAxisAlignment.start,
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            UrlHelper.launchBrowser(
+                                'https://www.resilience.af.mil/SAPR/Restricted-or-Unrestricted');
+                            //https://www.resilience.af.mil/SAPR/Restricted-or-Unrestricted/
+                          },
+                          child: const Text(
+                            'Learn more',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+              child: Card(
+                elevation: 3.0,
+                clipBehavior: Clip.antiAlias,
+                child: Column(
+                  children: [
+                    ListTile(
+                      leading: CircleAvatar(
+                          backgroundColor: Colors.transparent,
+                          child: Image.asset(
+                            'assets/images/resilience.png',
+                          )),
+                      title: const Text('My Engagement'),
+                      subtitle: Text(
+                        'Racking up resiliency points',
+                        style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+              child: Card(
+                elevation: 3.0,
+                clipBehavior: Clip.antiAlias,
+                child: Column(
+                  children: [
+                    ListTile(
+                      leading: CircleAvatar(
+                          backgroundColor: Colors.transparent,
+                          child: Image.asset(
+                            'assets/images/resilience.png',
+                          )),
                       title: const Text('Restricted vs Unrestricted'),
                       subtitle: Text(
                         'What' 's the difference?',

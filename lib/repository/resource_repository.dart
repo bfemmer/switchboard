@@ -1,6 +1,5 @@
 import '../model/app.dart';
 import '../model/category.dart';
-import '../model/hotline.dart';
 import '../model/resource.dart';
 import '../model/unit.dart';
 
@@ -23,7 +22,7 @@ abstract class ResourceRepository {
 
   Future<List<Resource>> getResourcesByKeyword(String keyword);
 
-  Future<List<Hotline>> getHotlines();
+  Future<List<Resource>> getHotlines();
 
   Future<List<App>> getApps();
 }

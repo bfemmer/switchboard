@@ -11,9 +11,9 @@ import '../repository/sqlite/sqlite_resource_repository.dart';
 class ResilienceSearchDelegate extends SearchDelegate {
   List<String> searchTerms = [
     "AFRC Units",
-    "Air Force Aid Society (AFAS)",
+    "Air Force Aid Society",
     "Air Force Wounded Warrior (AFW2) Program",
-    "Airmen and Family Readiness (A&FR)",
+    "Airman & Family Readiness (A&FR)",
     "Alcoholics Anonymous",
     "American Legion",
     "American Red Cross",
@@ -131,6 +131,15 @@ class ResilienceSearchDelegate extends SearchDelegate {
 
   @override
   String get searchFieldLabel => 'Search for...';
+
+  // @override
+  // ThemeData appBarTheme(BuildContext context) {
+  //   return Theme.of(context).copyWith(
+  //     primaryColor:
+  //         MaterialHelper.getMaterialColorForColor(Colors.blue.shade800),
+  //     accentColor: Colors.white,
+  //   );
+  // }
 
   // Clear search text
   @override

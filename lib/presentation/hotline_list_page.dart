@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../model/hotline.dart';
+import '../model/resource.dart';
 import '../repository/resource_repository.dart';
 import '../repository/sqlite/sqlite_resource_repository.dart';
 import '../utility/url_helper.dart';
@@ -14,12 +14,12 @@ class HotlineListPage extends StatefulWidget {
 }
 
 class HotlineListPageState extends State<HotlineListPage> {
-  late List<Hotline> hotlines;
+  late List<Resource> hotlines;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder<List<Hotline>>(
+      body: FutureBuilder<List<Resource>>(
         future: _getHotlines(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
@@ -53,29 +53,40 @@ class HotlineListPageState extends State<HotlineListPage> {
                                     child: Text(hotline.description!),
                                   ),
                                   ButtonBar(
-                                    alignment: MainAxisAlignment.end,
+                                    alignment: MainAxisAlignment.start,
                                     children: [
-                                      IconButton(
+                                      TextButton(
                                         onPressed: () {
                                           UrlHelper.launchBrowser(
                                               hotline.link!);
                                         },
-                                        icon: const FaIcon(
-                                            FontAwesomeIcons.earthAmericas),
-                                        color: Colors.blue,
+                                        child: const Text("Learn more"),
+                                        // icon: const FaIcon(
+                                        //     FontAwesomeIcons.earthAmericas),
+                                        // color: Colors.blue,
                                       ),
-                                      IconButton(
-                                        onPressed: () {
-                                          hotline.phoneType == 'Voice'
-                                              ? UrlHelper.makePhoneCall(
-                                                  hotline.phone!)
-                                              : UrlHelper.textMessage(
-                                                  hotline.phone!);
-                                        },
-                                        icon: const FaIcon(
-                                            FontAwesomeIcons.phone),
-                                        color: Colors.blue,
-                                      ),
+                                      hotline.voice != null
+                                          ? IconButton(
+                                              onPressed: () {
+                                                UrlHelper.makePhoneCall(
+                                                    hotline.voice!);
+                                              },
+                                              icon: const FaIcon(
+                                                  FontAwesomeIcons.phone),
+                                              color: Colors.blue,
+                                            )
+                                          : Container(),
+                                      hotline.sms != null
+                                          ? IconButton(
+                                              onPressed: () {
+                                                UrlHelper.textMessage(
+                                                    hotline.sms!);
+                                              },
+                                              icon: const FaIcon(
+                                                  FontAwesomeIcons.commentSms),
+                                              color: Colors.blue,
+                                            )
+                                          : Container(),
                                     ],
                                   ),
                                 ],
@@ -92,7 +103,7 @@ class HotlineListPageState extends State<HotlineListPage> {
     );
   }
 
-  Future<List<Hotline>> _getHotlines() async {
+  Future<List<Resource>> _getHotlines() async {
     ResourceRepository repository = SqliteResourceRepository();
 
     hotlines = await repository.getHotlines();

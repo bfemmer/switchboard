@@ -1,6 +1,5 @@
 import '../../model/app.dart';
 import '../../model/category.dart';
-import '../../model/hotline.dart';
 import '../../model/resource.dart';
 import '../../model/unit.dart';
 import '../resource_repository.dart';
@@ -112,12 +111,12 @@ class SqliteResourceRepository extends ResourceRepository {
   }
 
   @override
-  Future<List<Hotline>> getHotlines() async {
+  Future<List<Resource>> getHotlines() async {
     var db = await dbHelper.database;
-    var result = await db
-        .rawQuery('SELECT * FROM hotlines ORDER BY name COLLATE NOCASE ASC;');
-    List<Hotline> list = result.isNotEmpty
-        ? result.map((c) => Hotline.fromJson(c)).toList()
+    var result = await db.rawQuery(
+        'SELECT * FROM resources WHERE voice <> "" ORDER BY name COLLATE NOCASE ASC;');
+    List<Resource> list = result.isNotEmpty
+        ? result.map((c) => Resource.fromJson(c)).toList()
         : [];
     return list;
   }
