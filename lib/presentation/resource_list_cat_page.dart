@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../model/category.dart';
 import '../model/resource.dart';
 import '../repository/resource_repository.dart';
 import '../repository/sqlite/sqlite_resource_repository.dart';
-import '../utility/url_helper.dart';
-import 'widgets/media_card.dart';
 import 'widgets/resource_card.dart';
 
 // Image attribution requirement ... to be displayed on store page and in source code:
