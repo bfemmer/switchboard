@@ -27,7 +27,7 @@ class DatabaseHelper {
     var path = p.join(databasesPath, _databaseName);
 
     // delete existing if any
-    //await deleteDatabase(path);
+    await deleteDatabase(path);
 
     // Only copy if the database doesn't exist
     if (FileSystemEntity.typeSync(path) == FileSystemEntityType.notFound) {
