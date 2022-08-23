@@ -83,7 +83,7 @@ class HomePage extends StatelessWidget {
                         Column(
                           children: [
                             const Text(
-                              '8',
+                              '9',
                               style: TextStyle(fontSize: 30),
                             ),
                             const Text('Apps'),
@@ -92,7 +92,7 @@ class HomePage extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              '22',
+                              '13',
                               style: TextStyle(fontSize: 30),
                             ),
                             Text('Hotlines'),
