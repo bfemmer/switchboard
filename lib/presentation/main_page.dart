@@ -3,7 +3,10 @@ import 'package:switchboard/presentation/home_page.dart';
 import 'package:switchboard/presentation/hotline_list_page.dart';
 
 import '../utility/resilience_search_delegate.dart';
+import 'app_list_page.dart';
+import 'faq_page.dart';
 import 'resource_page.dart';
+import 'unit_list_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -47,6 +50,67 @@ class _MainPageState extends State<MainPage> {
             icon: const Icon(Icons.search),
           )
         ],
+      ),
+      drawer: Drawer(
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the drawer if there isn't enough vertical
+        // space to fit everything.
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                image: DecorationImage(
+                  image: AssetImage('assets/images/operators.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Text(
+                'Switchboard',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            ListTile(
+              title: const Text('Leadership Toolkit'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Frequently Asked Questions'),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const FaqPage();
+                }));
+              },
+            ),
+            ListTile(
+              title: const Text('AFRC Units'),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const UnitListPage();
+                }));
+
+                //Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Apps'),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const AppListPage();
+                }));
+
+                //Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
