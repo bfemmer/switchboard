@@ -84,6 +84,7 @@ flutter:
     - assets/images/suicide_signs.jpeg
     - assets/images/teal_ribbon.jpeg
     - assets/images/pentagon.jpeg
+    - assets/images/operators.png
     - assets/databases/switchboard.db
 
   # An image asset can refer to one or more resolution-specific "variants", see
