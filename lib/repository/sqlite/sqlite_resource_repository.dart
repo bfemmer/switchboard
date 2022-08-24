@@ -1,5 +1,6 @@
 import '../../model/app.dart';
 import '../../model/category.dart';
+import '../../model/faq.dart';
 import '../../model/resource.dart';
 import '../../model/unit.dart';
 import '../resource_repository.dart';
@@ -15,6 +16,15 @@ class SqliteResourceRepository extends ResourceRepository {
         .rawQuery('SELECT * FROM units ORDER BY name COLLATE NOCASE ASC;');
     List<Unit> list =
         result.isNotEmpty ? result.map((c) => Unit.fromJson(c)).toList() : [];
+    return list;
+  }
+
+  @override
+  Future<List<Faq>> getFaqs() async {
+    var db = await dbHelper.database;
+    var result = await db.rawQuery('SELECT * FROM faq ORDER BY id ASC;');
+    List<Faq> list =
+        result.isNotEmpty ? result.map((c) => Faq.fromJson(c)).toList() : [];
     return list;
   }
 

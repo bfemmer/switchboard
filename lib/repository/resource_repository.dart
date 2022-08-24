@@ -1,10 +1,13 @@
 import '../model/app.dart';
 import '../model/category.dart';
+import '../model/faq.dart';
 import '../model/resource.dart';
 import '../model/unit.dart';
 
 abstract class ResourceRepository {
   Future<List<Unit>> getUnits();
+
+  Future<List<Faq>> getFaqs();
 
   Future<List<Category>> getCategories();
 
