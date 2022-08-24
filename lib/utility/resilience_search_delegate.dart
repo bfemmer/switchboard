@@ -209,11 +209,13 @@ class ResilienceSearchDelegate extends SearchDelegate {
   }
 
   _processSearchRequest(BuildContext context, String result) async {
+    final navigator = Navigator.of(context);
+
     Category? category = await _getCategoryByName(result);
 
     // Check if category
     if (category != null) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
+      navigator.push(MaterialPageRoute(builder: (context) {
         return ResourceListCatPage(
           category: category,
         );
@@ -223,7 +225,7 @@ class ResilienceSearchDelegate extends SearchDelegate {
     // Check if resource
     Resource? resource = await _getResourceByName(result);
     if (resource != null) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
+      navigator.push(MaterialPageRoute(builder: (context) {
         return ResourceDetailPage(
           resource: resource,
         );
@@ -232,7 +234,7 @@ class ResilienceSearchDelegate extends SearchDelegate {
 
     // Check if AFRC
     if (result == "AFRC Units") {
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
+      navigator.push(MaterialPageRoute(builder: (context) {
         return const UnitListPage();
       }));
     }
