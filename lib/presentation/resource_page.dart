@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:switchboard/presentation/app_list_page.dart';
 
 import 'category_list_page.dart';
+import 'hotline_list_page.dart';
 import 'resource_list_page.dart';
 
 class ResourcePage extends StatefulWidget {
@@ -24,13 +24,13 @@ class ResourcePageState extends State<ResourcePage> {
               TabBar(
                 tabs: [
                   Tab(
+                    text: 'Categories',
+                  ),
+                  Tab(
+                    text: 'Hotlines',
+                  ),
+                  Tab(
                     text: 'Browse A-Z',
-                  ),
-                  Tab(
-                    text: 'By Category',
-                  ),
-                  Tab(
-                    text: 'Apps',
                   ),
                 ],
               )
@@ -39,9 +39,9 @@ class ResourcePageState extends State<ResourcePage> {
         ),
         body: const TabBarView(
           children: [
-            ResourceListPage(),
             CategoryListPage(),
-            AppListPage(),
+            HotlineListPage(),
+            ResourceListPage(),
           ],
         ),
       ),
