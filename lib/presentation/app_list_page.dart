@@ -18,6 +18,7 @@ class AppListPageState extends State<AppListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('Apps')),
       body: FutureBuilder<List<App>>(
         future: _getApps(),
         builder: (context, snapshot) {
@@ -30,7 +31,6 @@ class AppListPageState extends State<AppListPage> {
                   .map((app) => Padding(
                         padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                         child: Card(
-                          //margin: const EdgeInsets.symmetric(vertical: 4),
                           elevation: 3,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10)),
