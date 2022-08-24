@@ -4,6 +4,7 @@ import 'package:switchboard/presentation/widgets/media_card.dart';
 
 import '../utility/fa_helper.dart';
 import '../utility/url_helper.dart';
+import 'widgets/ace_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
@@ -81,16 +82,16 @@ class HomePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Column(
-                          children: [
-                            const Text(
+                          children: const [
+                            Text(
                               '9',
                               style: TextStyle(fontSize: 30),
                             ),
-                            const Text('Apps'),
+                            Text('Apps'),
                           ],
                         ),
                         Column(
-                          children: [
+                          children: const [
                             Text(
                               '13',
                               style: TextStyle(fontSize: 30),
@@ -99,7 +100,7 @@ class HomePage extends StatelessWidget {
                           ],
                         ),
                         Column(
-                          children: [
+                          children: const [
                             Text(
                               '54',
                               style: TextStyle(fontSize: 30),
@@ -108,7 +109,7 @@ class HomePage extends StatelessWidget {
                           ],
                         ),
                         Column(
-                          children: [
+                          children: const [
                             Text(
                               '51',
                               style: TextStyle(fontSize: 30),
@@ -137,30 +138,30 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding:
-                  const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
-              child: Card(
-                elevation: 3.0,
-                clipBehavior: Clip.antiAlias,
-                child: Column(
-                  children: [
-                    ListTile(
-                      leading: CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          child: Image.asset(
-                            'assets/images/resilience.png',
-                          )),
-                      title: const Text('My Engagement'),
-                      subtitle: Text(
-                        'Racking up resiliency points',
-                        style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding:
+            //       const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+            //   child: Card(
+            //     elevation: 3.0,
+            //     clipBehavior: Clip.antiAlias,
+            //     child: Column(
+            //       children: [
+            //         ListTile(
+            //           leading: CircleAvatar(
+            //               backgroundColor: Colors.transparent,
+            //               child: Image.asset(
+            //                 'assets/images/resilience.png',
+            //               )),
+            //           title: const Text('My Engagement'),
+            //           subtitle: Text(
+            //             'Racking up resiliency points',
+            //             style: TextStyle(color: Colors.black.withOpacity(0.6)),
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
             const Padding(
               padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
               child: MediaCard(
@@ -196,6 +197,10 @@ class HomePage extends StatelessWidget {
                 linkUrl:
                     'https://www.dcsa.mil/Portals/91/Documents/pv/DODCAF/resources/DCSA-FactSheet_Mental-Health.pdf',
               ),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+              child: AceCard(),
             ),
           ],
         ),
