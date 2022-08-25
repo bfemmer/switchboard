@@ -2,6 +2,7 @@ import '../../model/app.dart';
 import '../../model/category.dart';
 import '../../model/faq.dart';
 import '../../model/resource.dart';
+import '../../model/skill.dart';
 import '../../model/unit.dart';
 import '../resource_repository.dart';
 import 'database_helper.dart';
@@ -22,9 +23,18 @@ class SqliteResourceRepository extends ResourceRepository {
   @override
   Future<List<Faq>> getFaqs() async {
     var db = await dbHelper.database;
-    var result = await db.rawQuery('SELECT * FROM faq ORDER BY id ASC;');
+    var result = await db.rawQuery('SELECT * FROM faqs ORDER BY id ASC;');
     List<Faq> list =
         result.isNotEmpty ? result.map((c) => Faq.fromJson(c)).toList() : [];
+    return list;
+  }
+
+  @override
+  Future<List<Skill>> getSkills() async {
+    var db = await dbHelper.database;
+    var result = await db.rawQuery('SELECT * FROM skills ORDER BY id ASC;');
+    List<Skill> list =
+        result.isNotEmpty ? result.map((c) => Skill.fromJson(c)).toList() : [];
     return list;
   }
 
