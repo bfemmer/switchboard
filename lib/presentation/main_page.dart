@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:switchboard/presentation/home_page.dart';
-import 'package:switchboard/presentation/hotline_list_page.dart';
 
 import '../utility/resilience_search_delegate.dart';
 import 'app_list_page.dart';
 import 'faq_page.dart';
 import 'resource_page.dart';
+import 'skill_list_page.dart';
 import 'unit_list_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -19,7 +20,7 @@ class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(title: 'Resiliency Switchboard'),
-    HotlineListPage(),
+    SkillListPage(),
     ResourcePage(),
   ];
 
@@ -115,7 +116,7 @@ class _MainPageState extends State<MainPage> {
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.blue[800],
-        unselectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white60,
         showUnselectedLabels: true,
         key: const Key('navBar'), // used for testing
         items: const <BottomNavigationBarItem>[
@@ -125,18 +126,18 @@ class _MainPageState extends State<MainPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.phone,
-              key: Key('hotlines'),
+              FontAwesomeIcons.toolbox,
+              key: Key('skills'),
             ),
-            label: 'Hotlines',
+            label: 'Skills',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.people),
+            icon: Icon(Icons.cable),
             label: 'Resources',
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amberAccent,
+        selectedItemColor: Colors.white,
         selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
         onTap: _onItemTapped,
       ),
