@@ -1,0 +1,78 @@
+import 'package:flutter/material.dart';
+
+import '../../model/skill.dart';
+
+class SkillCard extends StatefulWidget {
+  final Skill skill;
+
+  const SkillCard({
+    Key? key,
+    required this.skill,
+  }) : super(key: key);
+
+  @override
+  State<SkillCard> createState() => _SkillCardState();
+}
+
+class _SkillCardState extends State<SkillCard> {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 3.0,
+      clipBehavior: Clip.antiAlias,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ListTile(
+            leading: CircleAvatar(
+                backgroundColor: Colors.transparent,
+                child: Image.asset(
+                  'assets/images/resilience.png',
+                )),
+            title: Text(widget.skill.skill!),
+          ),
+          Container(
+            color: Colors.blue.shade50,
+            child: Row(
+              children: [
+                Flexible(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      widget.skill.description!,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Row(
+            children: [
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(
+                        top: 16.0,
+                        left: 16.0,
+                      ),
+                      child: Text(
+                        'How to use this skill',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Flexible(child: Text(widget.skill.usage!)),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
