@@ -3,6 +3,7 @@ import '../model/category.dart';
 import '../model/faq.dart';
 import '../model/resource.dart';
 import '../model/skill.dart';
+import '../model/suggestion.dart';
 import '../model/unit.dart';
 
 abstract class ResourceRepository {
@@ -28,7 +29,7 @@ abstract class ResourceRepository {
 
   Future<List<Resource>> getResourcesByKeyword(String keyword);
 
-  Future<List<String>> getResourceAndCategoryNames();
+  Future<List<Suggestion>> getResourceAndCategoryNames();
 
   Future<List<Resource>> getHotlines();
 

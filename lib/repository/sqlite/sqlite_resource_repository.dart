@@ -1,3 +1,5 @@
+import 'package:switchboard/model/suggestion.dart';
+
 import '../../model/app.dart';
 import '../../model/category.dart';
 import '../../model/faq.dart';
@@ -131,16 +133,16 @@ class SqliteResourceRepository extends ResourceRepository {
   }
 
   @override
-  Future<List<String>> getResourceAndCategoryNames() async {
+  Future<List<Suggestion>> getResourceAndCategoryNames() async {
     var db = await dbHelper.database;
     var result = await db.rawQuery(
         'select name from categories union select name from resources ORDER BY name COLLATE NOCASE ASC;');
-    List<String> list = result.isNotEmpty
-        ? List.generate(result.length, (index) => (result[index]).toString())
+
+    List<Suggestion> list = result.isNotEmpty
+        ? result.map((c) => Suggestion.fromJson(c)).toList()
         : [];
 
     return list;
-    // List.generate(result.length, (index) => (result[index]).toString());
   }
 
   @override
