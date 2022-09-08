@@ -64,7 +64,7 @@ class _SkillCardState extends State<SkillCard> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(16.0),
-                      child: Flexible(child: Text(widget.skill.usage!)),
+                      child: Text(widget.skill.usage!),
                     )
                   ],
                 ),
