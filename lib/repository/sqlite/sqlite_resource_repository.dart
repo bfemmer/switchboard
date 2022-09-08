@@ -131,6 +131,19 @@ class SqliteResourceRepository extends ResourceRepository {
   }
 
   @override
+  Future<List<String>> getResourceAndCategoryNames() async {
+    var db = await dbHelper.database;
+    var result = await db.rawQuery(
+        'select name from categories union select name from resources ORDER BY name COLLATE NOCASE ASC;');
+    List<String> list = result.isNotEmpty
+        ? List.generate(result.length, (index) => (result[index]).toString())
+        : [];
+
+    return list;
+    // List.generate(result.length, (index) => (result[index]).toString());
+  }
+
+  @override
   Future<List<Resource>> getHotlines() async {
     var db = await dbHelper.database;
     var result = await db.rawQuery(

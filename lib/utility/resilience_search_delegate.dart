@@ -9,6 +9,7 @@ import '../repository/resource_repository.dart';
 import '../repository/sqlite/sqlite_resource_repository.dart';
 
 class ResilienceSearchDelegate extends SearchDelegate {
+  late List<String> searchSuggestions;
   List<String> searchTerms = [
     "AFRC Units",
     "Air Force Aid Society",
@@ -169,7 +170,11 @@ class ResilienceSearchDelegate extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     List<String> matchQuery = [];
-    for (var fruit in searchTerms) {
+    _getSearchSuggestions().then((result) {
+      searchSuggestions = result;
+    });
+
+    for (var fruit in searchSuggestions) {
       if (fruit.toLowerCase().contains(query.toLowerCase())) {
         matchQuery.add(fruit);
       }
@@ -252,5 +257,11 @@ class ResilienceSearchDelegate extends SearchDelegate {
     ResourceRepository repository = SqliteResourceRepository();
 
     return await repository.getResourceByName(name);
+  }
+
+  Future<List<String>> _getSearchSuggestions() async {
+    ResourceRepository repository = SqliteResourceRepository();
+
+    return await repository.getResourceAndCategoryNames();
   }
 }

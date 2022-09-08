@@ -28,6 +28,8 @@ abstract class ResourceRepository {
 
   Future<List<Resource>> getResourcesByKeyword(String keyword);
 
+  Future<List<String>> getResourceAndCategoryNames();
+
   Future<List<Resource>> getHotlines();
 
   Future<List<App>> getApps();
