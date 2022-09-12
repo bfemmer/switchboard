@@ -77,6 +77,9 @@ flutter:
     - assets/images/usaf_connect_app_icon.jpeg
     - assets/images/hero_care_app_icon.jpeg
     - assets/images/dod_safe_helpline_app_icon.jpeg
+    - assets/images/fema_app_icon.jpeg
+    - assets/images/culture_app_icon.jpeg
+    - assets/images/afpaas_app_icon.jpeg
     - assets/images/jack.png
     - assets/images/usaf_roundel.png
     - assets/images/resilience.png
