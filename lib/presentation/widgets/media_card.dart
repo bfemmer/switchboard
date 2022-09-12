@@ -15,7 +15,7 @@ class MediaCard extends StatefulWidget {
     required this.subTitle,
     required this.description,
     required this.imageUrl,
-    required this.linkUrl,
+    this.linkUrl,
   }) : super(key: key);
 
   @override
@@ -47,7 +47,10 @@ class _MediaCardState extends State<MediaCard> {
             height: 16.0,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+            padding: const EdgeInsets.only(
+              left: 16.0,
+              right: 16.0,
+            ),
             child: Text(
               widget.description,
               style: TextStyle(color: Colors.black.withOpacity(0.6)),

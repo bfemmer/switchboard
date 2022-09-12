@@ -36,6 +36,7 @@ class AceCard extends StatelessWidget {
                 padding: EdgeInsets.all(16.0),
                 child: CircleAvatar(
                   backgroundColor: Colors.transparent,
+                  foregroundColor: Colors.blue,
                   child: Icon(
                     FontAwesomeIcons.question,
                     // color: Colors.blue,
@@ -65,6 +66,7 @@ class AceCard extends StatelessWidget {
                 padding: EdgeInsets.all(16.0),
                 child: CircleAvatar(
                   backgroundColor: Colors.transparent,
+                  foregroundColor: Colors.red,
                   child: Icon(
                     FontAwesomeIcons.handHoldingHeart,
                     // color: Colors.blue,
@@ -96,6 +98,7 @@ class AceCard extends StatelessWidget {
                   padding: EdgeInsets.all(16.0),
                   child: CircleAvatar(
                     backgroundColor: Colors.transparent,
+                    foregroundColor: Colors.green,
                     child: Icon(
                       FontAwesomeIcons.peoplePulling,
                       // color: Colors.blue,

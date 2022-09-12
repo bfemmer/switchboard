@@ -70,7 +70,7 @@ class _ResourceCardState extends State<ResourceCard> {
                           UrlHelper.makePhoneCall(widget.resource.voice!);
                         },
                         icon: const FaIcon(FontAwesomeIcons.phone),
-                        color: Colors.blue,
+                        color: Colors.blue.shade800,
                       )
                     : Container(),
                 widget.resource.sms != null
