@@ -79,7 +79,7 @@ class _ResourceCardState extends State<ResourceCard> {
                           UrlHelper.textMessage(widget.resource.sms!);
                         },
                         icon: const FaIcon(FontAwesomeIcons.commentSms),
-                        color: Colors.blue,
+                        color: Colors.blue.shade800,
                       )
                     : Container(),
               ],
