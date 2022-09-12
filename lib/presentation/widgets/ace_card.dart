@@ -23,7 +23,7 @@ class AceCard extends StatelessWidget {
                 )),
             title: const Text('Ask - Care - Escort (ACE)'),
             subtitle: Text(
-              'Caring for your wingmen',
+              'Make a difference today',
               style: TextStyle(color: Colors.black.withOpacity(0.6)),
             ),
           ),
@@ -81,7 +81,7 @@ class AceCard extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width - 160,
                     child: const Text(
-                        'Directly ask the individual if they are having thoughts of death, self-harm, or suicide.'),
+                        'Care about their answer. If they hesitate, or seem uncertain, ask follow-up questions to convey that you care about their well-being.'),
                   )
                 ],
               )
@@ -112,7 +112,7 @@ class AceCard extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width - 160,
                       child: const Text(
-                          'Directly ask the individual if they are having thoughts of death, self-harm, or suicide.'),
+                          'If the individual is having thoughts of suicide or needs help, escort them to a qualified professional or leadership.'),
                     )
                   ],
                 )
