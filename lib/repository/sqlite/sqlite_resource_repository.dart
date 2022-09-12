@@ -43,7 +43,8 @@ class SqliteResourceRepository extends ResourceRepository {
   @override
   Future<List<Category>> getCategories() async {
     var db = await dbHelper.database;
-    var result = await db.query('categories');
+    var result = await db
+        .rawQuery('SELECT * FROM categories ORDER BY name COLLATE NOCASE ASC;');
     List<Category> list = result.isNotEmpty
         ? result.map((c) => Category.fromJson(c)).toList()
         : [];

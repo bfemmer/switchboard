@@ -34,6 +34,7 @@ class FaHelper {
     "circleInfo": FontAwesomeIcons.circleInfo,
     "ribbon": FontAwesomeIcons.ribbon,
     "crisis": FontAwesomeIcons.triangleExclamation,
-    "emergency": FontAwesomeIcons.hospital
+    "emergency": FontAwesomeIcons.hospital,
+    "lgbtq": FontAwesomeIcons.transgender
   };
 }
