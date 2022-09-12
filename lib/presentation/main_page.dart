@@ -4,6 +4,7 @@ import 'package:switchboard/presentation/home_page.dart';
 
 import '../utility/resilience_search_delegate.dart';
 import 'app_list_page.dart';
+import 'emergency_page.dart';
 import 'faq_page.dart';
 import 'resource_page.dart';
 import 'skill_list_page.dart';
@@ -72,6 +73,16 @@ class _MainPageState extends State<MainPage> {
                 'Switchboard',
                 style: TextStyle(color: Colors.white),
               ),
+            ),
+            ListTile(
+              title: const Text('Emergency'),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const EmergencyPage();
+                }));
+
+                // Navigator.pop(context);
+              },
             ),
             ListTile(
               title: const Text('Leadership Toolkit'),

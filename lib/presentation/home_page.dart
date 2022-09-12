@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:switchboard/presentation/widgets/media_card.dart';
 
-import '../utility/fa_helper.dart';
 import '../utility/url_helper.dart';
 import 'widgets/ace_card.dart';
 
@@ -17,45 +15,40 @@ class HomePage extends StatelessWidget {
       body: SafeArea(
         child: ListView(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Card(
-                elevation: 3.0,
-                child: ListTile(
-                  title: const Text('Sexual Assault Help'),
-                  leading: FaIcon(
-                    FaHelper.getIconFromName('ribbon'),
-                    color: Colors.teal,
-                  ),
-                  onTap: () {
-                    UrlHelper.makePhoneCall('8779955247');
-                  },
-                  trailing: const Icon(
-                    Icons.phone,
-                    color: Colors.teal,
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
-              child: Card(
-                elevation: 3.0,
-                child: ListTile(
-                  title: const Text('Military Crisis Line'),
-                  leading: FaIcon(
-                    FaHelper.getIconFromName('crisis'),
-                    color: Colors.red,
-                  ),
-                  trailing: const Icon(
-                    Icons.phone,
-                    color: Colors.red,
-                  ),
-                  onTap: () {
-                    UrlHelper.makePhoneCall('8002738255');
-                  },
-                ),
+            // Padding(
+            //   padding:
+            //       const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+            //   child: Card(
+            //     elevation: 3.0,
+            //     clipBehavior: Clip.antiAlias,
+            //     child: Column(
+            //       children: [
+            //         ListTile(
+            //           leading: CircleAvatar(
+            //               backgroundColor: Colors.transparent,
+            //               child: Image.asset(
+            //                 'assets/images/resilience.png',
+            //               )),
+            //           title: const Text('My Engagement'),
+            //           subtitle: Text(
+            //             'Racking up resiliency points',
+            //             style: TextStyle(color: Colors.black.withOpacity(0.6)),
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
+            const Padding(
+              padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+              child: MediaCard(
+                title: 'Welcome to Switchboard!',
+                subTitle: 'Your virtual patch panel to resources',
+                description:
+                    'Resiliency Switchboard is a companion app to the AFRC Connect the Network Guide as well as to the USAF resiliency website and was initially designed for Resiliency Integrators and First Sergeants in AFRC; however, the app is equally useful across the total force and can be used by Airmen up and down the chain of command.',
+                imageUrl: 'assets/images/operators_feed.png',
+                linkUrl:
+                    'https://www.resilience.af.mil/SAPR/Restricted-or-Unrestricted/',
               ),
             ),
             Padding(
@@ -72,9 +65,9 @@ class HomePage extends StatelessWidget {
                           child: Image.asset(
                             'assets/images/resilience.png',
                           )),
-                      title: const Text('Welcome to Switchboard!'),
+                      title: const Text('Switchboard By The Numbers'),
                       subtitle: Text(
-                        'Your virtual patch panel to ...',
+                        'This version provides access to ...',
                         style: TextStyle(color: Colors.black.withOpacity(0.6)),
                       ),
                     ),
@@ -84,7 +77,7 @@ class HomePage extends StatelessWidget {
                         Column(
                           children: const [
                             Text(
-                              '9',
+                              '10',
                               style: TextStyle(fontSize: 30),
                             ),
                             Text('Apps'),
@@ -93,7 +86,7 @@ class HomePage extends StatelessWidget {
                         Column(
                           children: const [
                             Text(
-                              '13',
+                              '14',
                               style: TextStyle(fontSize: 30),
                             ),
                             Text('Hotlines'),
@@ -102,10 +95,10 @@ class HomePage extends StatelessWidget {
                         Column(
                           children: const [
                             Text(
-                              '54',
+                              '100',
                               style: TextStyle(fontSize: 30),
                             ),
-                            Text('Links'),
+                            Text('Resources'),
                           ],
                         ),
                         Column(
@@ -138,30 +131,6 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            // Padding(
-            //   padding:
-            //       const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
-            //   child: Card(
-            //     elevation: 3.0,
-            //     clipBehavior: Clip.antiAlias,
-            //     child: Column(
-            //       children: [
-            //         ListTile(
-            //           leading: CircleAvatar(
-            //               backgroundColor: Colors.transparent,
-            //               child: Image.asset(
-            //                 'assets/images/resilience.png',
-            //               )),
-            //           title: const Text('My Engagement'),
-            //           subtitle: Text(
-            //             'Racking up resiliency points',
-            //             style: TextStyle(color: Colors.black.withOpacity(0.6)),
-            //           ),
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
             const Padding(
               padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
               child: MediaCard(
