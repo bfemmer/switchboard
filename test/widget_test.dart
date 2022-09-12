@@ -22,8 +22,8 @@ void main() {
             .currentIndex,
         0);
 
-    // Tap the 'phone' icon and trigger a frame.
-    await tester.tap(find.byKey(const Key('hotlines')));
+    // Tap the skills tab icon and trigger a frame.
+    await tester.tap(find.byKey(const Key('skills')));
     await tester.pump();
 
     // Verify index incremented.
@@ -32,8 +32,8 @@ void main() {
             .currentIndex,
         1);
 
-    // Tap the 'people' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.people));
+    // Tap the 'resources' tab icon and trigger a frame.
+    await tester.tap(find.byIcon(Icons.cable));
     await tester.pump();
 
     // Verify index incremented.
