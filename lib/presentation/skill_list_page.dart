@@ -18,6 +18,7 @@ class SkillListPageState extends State<SkillListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('Resiliency Skills')),
       body: FutureBuilder<List<Skill>>(
         future: _getSkills(),
         builder: (context, snapshot) {

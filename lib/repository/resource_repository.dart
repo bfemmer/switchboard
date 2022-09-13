@@ -1,6 +1,7 @@
 import '../model/app.dart';
 import '../model/category.dart';
 import '../model/faq.dart';
+import '../model/guide.dart';
 import '../model/resource.dart';
 import '../model/skill.dart';
 import '../model/suggestion.dart';
@@ -12,6 +13,8 @@ abstract class ResourceRepository {
   Future<List<Faq>> getFaqs();
 
   Future<List<Skill>> getSkills();
+
+  Future<List<Guide>> getGuides();
 
   Future<List<Category>> getCategories();
 
