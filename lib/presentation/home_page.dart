@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:switchboard/presentation/widgets/media_card.dart';
 
-import '../utility/url_helper.dart';
 import 'widgets/ace_card.dart';
 
 class HomePage extends StatelessWidget {
@@ -75,57 +74,101 @@ class HomePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Column(
-                          children: const [
+                          children: [
                             Text(
                               '10',
-                              style: TextStyle(fontSize: 30),
+                              style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.blue.shade800,
+                              ),
                             ),
-                            Text('Apps'),
+                            const Text('Apps'),
                           ],
                         ),
                         Column(
-                          children: const [
+                          children: [
+                            Text(
+                              '4',
+                              style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.blue.shade800,
+                              ),
+                            ),
+                            const Text('FAQs'),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              '26',
+                              style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.blue.shade800,
+                              ),
+                            ),
+                            const Text('Guides'),
+                          ],
+                        ),
+                        Column(
+                          children: [
                             Text(
                               '14',
-                              style: TextStyle(fontSize: 30),
+                              style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.blue.shade800,
+                              ),
                             ),
-                            Text('Hotlines'),
-                          ],
-                        ),
-                        Column(
-                          children: const [
-                            Text(
-                              '100',
-                              style: TextStyle(fontSize: 30),
-                            ),
-                            Text('Resources'),
-                          ],
-                        ),
-                        Column(
-                          children: const [
-                            Text(
-                              '51',
-                              style: TextStyle(fontSize: 30),
-                            ),
-                            Text('Units'),
+                            const Text('Hotlines'),
                           ],
                         ),
                       ],
                     ),
-                    ButtonBar(
-                      alignment: MainAxisAlignment.start,
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            UrlHelper.launchBrowser(
-                                'https://www.resilience.af.mil/SAPR/Restricted-or-Unrestricted');
-                            //https://www.resilience.af.mil/SAPR/Restricted-or-Unrestricted/
-                          },
-                          child: const Text(
-                            'Learn more',
+                    const SizedBox(
+                      height: 16.0,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 16.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            children: [
+                              Text(
+                                '8',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.blue.shade800,
+                                ),
+                              ),
+                              const Text('Skills'),
+                            ],
                           ),
-                        ),
-                      ],
+                          Column(
+                            children: [
+                              Text(
+                                '100',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.blue.shade800,
+                                ),
+                              ),
+                              const Text('Resources'),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                '51',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.blue.shade800,
+                                ),
+                              ),
+                              const Text('Units'),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
