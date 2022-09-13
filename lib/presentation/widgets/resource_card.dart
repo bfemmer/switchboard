@@ -25,11 +25,11 @@ class _ResourceCardState extends State<ResourceCard> {
       child: Column(
         children: [
           ListTile(
-            leading: CircleAvatar(
-                backgroundColor: Colors.transparent,
-                child: Image.asset(
-                  'assets/images/resilience.png',
-                )),
+            leading: const CircleAvatar(
+                // backgroundColor: Colors.transparent,
+                child: Icon(
+              Icons.cable,
+            )),
             title: Text(widget.resource.name!),
             subtitle: Text(
               widget.resource.type!,
