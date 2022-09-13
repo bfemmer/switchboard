@@ -6,8 +6,9 @@ import '../utility/resilience_search_delegate.dart';
 import 'app_list_page.dart';
 import 'emergency_page.dart';
 import 'faq_page.dart';
+import 'guides_page.dart';
 import 'resource_page.dart';
-import 'skill_list_page.dart';
+import 'skills_page.dart';
 import 'unit_list_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -21,7 +22,8 @@ class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(title: 'Resiliency Switchboard'),
-    SkillListPage(),
+    SkillsPage(),
+    GuidesPage(),
     ResourcePage(),
   ];
 
@@ -85,15 +87,6 @@ class _MainPageState extends State<MainPage> {
               },
             ),
             ListTile(
-              title: const Text('Leadership Toolkit'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
               title: const Text('Frequently Asked Questions'),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -124,11 +117,12 @@ class _MainPageState extends State<MainPage> {
           ],
         ),
       ),
-      body: _widgetOptions.elementAt(_selectedIndex),
+      body: SafeArea(child: _widgetOptions.elementAt(_selectedIndex)),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.blue[800],
         unselectedItemColor: Colors.white60,
         showUnselectedLabels: true,
+        type: BottomNavigationBarType.fixed,
         key: const Key('navBar'), // used for testing
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -141,6 +135,13 @@ class _MainPageState extends State<MainPage> {
               key: Key('skills'),
             ),
             label: 'Skills',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              FontAwesomeIcons.listCheck,
+              key: Key('guides'),
+            ),
+            label: 'Guides',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.cable),
