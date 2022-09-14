@@ -26,7 +26,6 @@ class _ResourceCardState extends State<ResourceCard> {
         children: [
           ListTile(
             leading: const CircleAvatar(
-                // backgroundColor: Colors.transparent,
                 child: Icon(
               Icons.cable,
             )),

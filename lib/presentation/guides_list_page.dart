@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../model/guide.dart';
 import '../repository/resource_repository.dart';
 import '../repository/sqlite/sqlite_resource_repository.dart';
+import 'guide_detail_page.dart';
 
 class GuidesListPage extends StatefulWidget {
   const GuidesListPage({Key? key}) : super(key: key);
@@ -41,7 +42,14 @@ class _GuidesListPageState extends State<GuidesListPage> {
                                 child: Image.asset(
                                   'assets/images/resilience.png',
                                 )),
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return GuideDetailPage(
+                                  guide: guide,
+                                );
+                              }));
+                            },
                           ),
                         ),
                       ))

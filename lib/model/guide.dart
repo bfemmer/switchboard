@@ -3,9 +3,13 @@ class Guide {
   String? name;
   String? subtitle;
   String? description;
+  String? stress;
   String? signs;
   String? deployment;
+  String? riskFactors;
+  String? vigilance;
   String? action;
+  String? assistance;
   String? considerations;
   String? urlLink;
 
@@ -14,9 +18,13 @@ class Guide {
       this.name,
       this.subtitle,
       this.description,
+      this.stress,
       this.signs,
       this.deployment,
+      this.riskFactors,
+      this.vigilance,
       this.action,
+      this.assistance,
       this.considerations,
       this.urlLink});
 
@@ -25,9 +33,13 @@ class Guide {
     name = json['name'];
     subtitle = json['subtitle'];
     description = json['description'];
+    stress = json['stress_sources'];
     signs = json['signs'];
     deployment = json['deployment'];
+    riskFactors = json['risk_factors'];
+    vigilance = json['vigilance'];
     action = json['action'];
+    assistance = json['assistance'];
     considerations = json['considerations'];
     urlLink = json['urlLink'];
   }
@@ -39,9 +51,13 @@ class Guide {
     data['name'] = name;
     data['subtitle'] = subtitle;
     data['description'] = description;
+    data['stress_sources'] = stress;
     data['signs'] = signs;
     data['deployment'] = deployment;
+    data['risk_factors'] = riskFactors;
+    data['vigilance'] = vigilance;
     data['action'] = action;
+    data['assistance'] = assistance;
     data['considerations'] = considerations;
     data['urlLink'] = urlLink;
 
