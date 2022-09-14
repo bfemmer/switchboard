@@ -32,6 +32,16 @@ void main() {
             .currentIndex,
         1);
 
+    // Tap the guides tab icon and trigger a frame.
+    await tester.tap(find.byKey(const Key('guides')));
+    await tester.pump();
+
+    // Verify index incremented.
+    expect(
+        (find.byKey(navBarKey).evaluate().single.widget as BottomNavigationBar)
+            .currentIndex,
+        2);
+
     // Tap the 'resources' tab icon and trigger a frame.
     await tester.tap(find.byIcon(Icons.cable));
     await tester.pump();
@@ -40,7 +50,7 @@ void main() {
     expect(
         (find.byKey(navBarKey).evaluate().single.widget as BottomNavigationBar)
             .currentIndex,
-        2);
+        3);
 
     // Tap the 'home' icon and trigger a frame.
     await tester.tap(find.byIcon(Icons.home));
