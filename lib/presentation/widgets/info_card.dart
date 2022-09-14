@@ -30,20 +30,17 @@ class _InfoCardState extends State<InfoCard> {
                 )),
             title: Text(widget.title),
           ),
-          Container(
-            // color: Colors.blue.shade50,
-            child: Row(
-              children: [
-                Flexible(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Text(
-                      widget.description,
-                    ),
+          Row(
+            children: [
+              Flexible(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    widget.description,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),
