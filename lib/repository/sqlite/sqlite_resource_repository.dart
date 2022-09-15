@@ -109,7 +109,7 @@ class SqliteResourceRepository extends ResourceRepository {
   Future<List<Resource>> getResourcesByCategoryId(int id) async {
     var db = await dbHelper.database;
     var query =
-        'select r.id, r.name, r.level, r.type, r.description, r.link, r.icon, r.image  from resources r join categories2resources c2r on r.id = c2r.resource_id join categories c on c2r.category_id = c.id where c.id = $id order by r.name COLLATE NOCASE ASC;';
+        'select r.id, r.name, r.level, r.type, r.description, r.link, r.voice, r.sms, r.icon, r.image  from resources r join categories2resources c2r on r.id = c2r.resource_id join categories c on c2r.category_id = c.id where c.id = $id order by r.name COLLATE NOCASE ASC;';
 
     var result = await db.rawQuery(query);
     List<Resource> list = result.isNotEmpty
