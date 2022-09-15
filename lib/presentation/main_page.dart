@@ -55,66 +55,68 @@ class _MainPageState extends State<MainPage> {
           )
         ],
       ),
-      drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                image: DecorationImage(
-                  image: AssetImage('assets/images/operators.png'),
-                  fit: BoxFit.cover,
+      drawer: SafeArea(
+        child: Drawer(
+          // Add a ListView to the drawer. This ensures the user can scroll
+          // through the options in the drawer if there isn't enough vertical
+          // space to fit everything.
+          child: ListView(
+            // Important: Remove any padding from the ListView.
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              const DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/operators.png'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                child: Text(
+                  'Switchboard',
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
-              child: Text(
-                'Switchboard',
-                style: TextStyle(color: Colors.white),
+              ListTile(
+                title: const Text('Emergency'),
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const EmergencyPage();
+                  }));
+
+                  // Navigator.pop(context);
+                },
               ),
-            ),
-            ListTile(
-              title: const Text('Emergency'),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return const EmergencyPage();
-                }));
+              ListTile(
+                title: const Text('Frequently Asked Questions'),
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const FaqPage();
+                  }));
+                },
+              ),
+              ListTile(
+                title: const Text('AFRC Units'),
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const UnitListPage();
+                  }));
 
-                // Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Frequently Asked Questions'),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return const FaqPage();
-                }));
-              },
-            ),
-            ListTile(
-              title: const Text('AFRC Units'),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return const UnitListPage();
-                }));
+                  //Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: const Text('Apps'),
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const AppListPage();
+                  }));
 
-                //Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Apps'),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return const AppListPage();
-                }));
-
-                //Navigator.pop(context);
-              },
-            ),
-          ],
+                  //Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
         ),
       ),
       body: SafeArea(child: _widgetOptions.elementAt(_selectedIndex)),

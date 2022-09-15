@@ -19,14 +19,14 @@ class _GuidesListPageState extends State<GuidesListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Quick Guides')),
-      body: FutureBuilder<List<Guide>>(
-        future: _getGuides(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          return SafeArea(
-            child: ListView(
+      body: SafeArea(
+        child: FutureBuilder<List<Guide>>(
+          future: _getGuides(),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            return ListView(
               children: snapshot.data!
                   .map((guide) => Padding(
                         padding: const EdgeInsets.only(left: 10.0, right: 10.0),
@@ -54,9 +54,9 @@ class _GuidesListPageState extends State<GuidesListPage> {
                         ),
                       ))
                   .toList(),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

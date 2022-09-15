@@ -24,17 +24,15 @@ class HotlineListPageState extends State<HotlineListPage> {
           if (!snapshot.hasData) {
             return const Center(child: CircularProgressIndicator());
           }
-          return SafeArea(
-            child: ListView(
-              children: snapshot.data!
-                  .map((hotline) => Padding(
-                        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                        child: ResourceCard(
-                          resource: hotline,
-                        ),
-                      ))
-                  .toList(),
-            ),
+          return ListView(
+            children: snapshot.data!
+                .map((hotline) => Padding(
+                      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                      child: ResourceCard(
+                        resource: hotline,
+                      ),
+                    ))
+                .toList(),
           );
         },
       ),

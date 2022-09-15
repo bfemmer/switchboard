@@ -24,17 +24,15 @@ class ResourceListPageState extends State<ResourceListPage> {
           if (!snapshot.hasData) {
             return const Center(child: CircularProgressIndicator());
           }
-          return SafeArea(
-            child: ListView(
-              children: snapshot.data!
-                  .map((resource) => Padding(
-                        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                        child: ResourceCard(
-                          resource: resource,
-                        ),
-                      ))
-                  .toList(),
-            ),
+          return ListView(
+            children: snapshot.data!
+                .map((resource) => Padding(
+                      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                      child: ResourceCard(
+                        resource: resource,
+                      ),
+                    ))
+                .toList(),
           );
         },
       ),

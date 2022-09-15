@@ -18,14 +18,14 @@ class FaqPageState extends State<FaqPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Frequently Asked Questions')),
-      body: FutureBuilder<List<Faq>>(
-        future: getQuestions(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          return SafeArea(
-            child: ListView(
+      body: SafeArea(
+        child: FutureBuilder<List<Faq>>(
+          future: getQuestions(),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            return ListView(
               children: snapshot.data!
                   .map((resource) => Padding(
                         padding: const EdgeInsets.only(left: 10.0, right: 10.0),
@@ -45,9 +45,9 @@ class FaqPageState extends State<FaqPage> {
                         ),
                       ))
                   .toList(),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

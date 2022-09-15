@@ -26,34 +26,32 @@ class CategoryListPageState extends State<CategoryListPage> {
           if (!snapshot.hasData) {
             return const Center(child: CircularProgressIndicator());
           }
-          return SafeArea(
-            child: ListView(
-              children: snapshot.data!
-                  .map((category) => Padding(
-                        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                        child: Card(
-                          elevation: 3.0,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                          child: ListTile(
-                            title: Text(category.name!),
-                            leading: FaIcon(
-                              FaHelper.getIconFromName(category.icon!),
-                              color: Colors.blue.shade800,
-                            ),
-                            onTap: () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return ResourceListCatPage(
-                                  category: category,
-                                );
-                              }));
-                            },
+          return ListView(
+            children: snapshot.data!
+                .map((category) => Padding(
+                      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                      child: Card(
+                        elevation: 3.0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        child: ListTile(
+                          title: Text(category.name!),
+                          leading: FaIcon(
+                            FaHelper.getIconFromName(category.icon!),
+                            color: Colors.blue.shade800,
                           ),
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return ResourceListCatPage(
+                                category: category,
+                              );
+                            }));
+                          },
                         ),
-                      ))
-                  .toList(),
-            ),
+                      ),
+                    ))
+                .toList(),
           );
         },
       ),

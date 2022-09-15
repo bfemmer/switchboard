@@ -16,10 +16,10 @@ class ResourceDetailPage extends StatefulWidget {
 class ResourceDetailPageState extends State<ResourceDetailPage> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(title: const Text('Search Result Details')),
-        body: SingleChildScrollView(
+    return Scaffold(
+      appBar: AppBar(title: const Text('Search Result Details')),
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Column(
             children: [
               Padding(

@@ -21,14 +21,14 @@ class UnitListPageState extends State<UnitListPage> {
       appBar: AppBar(
         title: const Text('AFRC Units'),
       ),
-      body: FutureBuilder<List<Unit>>(
-        future: getUnits(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          return SafeArea(
-            child: ListView(
+      body: SafeArea(
+        child: FutureBuilder<List<Unit>>(
+          future: getUnits(),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            return ListView(
               children: snapshot.data!
                   .map((unit) => Padding(
                         padding: const EdgeInsets.only(left: 10.0, right: 10.0),
@@ -50,9 +50,9 @@ class UnitListPageState extends State<UnitListPage> {
                         ),
                       ))
                   .toList(),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

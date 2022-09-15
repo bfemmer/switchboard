@@ -19,14 +19,14 @@ class AppListPageState extends State<AppListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Apps')),
-      body: FutureBuilder<List<App>>(
-        future: _getApps(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          return SafeArea(
-            child: ListView(
+      body: SafeArea(
+        child: FutureBuilder<List<App>>(
+          future: _getApps(),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            return ListView(
               children: snapshot.data!
                   .map((app) => Padding(
                         padding: const EdgeInsets.only(left: 10.0, right: 10.0),
@@ -76,9 +76,9 @@ class AppListPageState extends State<AppListPage> {
                         ),
                       ))
                   .toList(),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

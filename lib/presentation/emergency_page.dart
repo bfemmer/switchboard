@@ -14,10 +14,10 @@ class EmergencyPage extends StatefulWidget {
 class _EmergencyPageState extends State<EmergencyPage> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-          appBar: AppBar(title: const Text('Emergency Numbers')),
-          body: ListView(
+    return Scaffold(
+        appBar: AppBar(title: const Text('Emergency Numbers')),
+        body: SafeArea(
+          child: ListView(
             children: [
               Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -61,7 +61,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
                 ),
               ),
             ],
-          )),
-    );
+          ),
+        ));
   }
 }

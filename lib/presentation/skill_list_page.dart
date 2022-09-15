@@ -19,14 +19,14 @@ class SkillListPageState extends State<SkillListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Resiliency Skills')),
-      body: FutureBuilder<List<Skill>>(
-        future: _getSkills(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          return SafeArea(
-            child: ListView(
+      body: SafeArea(
+        child: FutureBuilder<List<Skill>>(
+          future: _getSkills(),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            return ListView(
               children: snapshot.data!
                   .map((skill) => Padding(
                         padding: const EdgeInsets.only(left: 10.0, right: 10.0),
@@ -35,9 +35,9 @@ class SkillListPageState extends State<SkillListPage> {
                         ),
                       ))
                   .toList(),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
