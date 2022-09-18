@@ -22,9 +22,9 @@ class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(title: 'Resiliency Switchboard'),
+    ResourcePage(),
     SkillsPage(),
     GuidesPage(),
-    ResourcePage(),
   ];
 
   int getIndex() {
@@ -88,11 +88,13 @@ class _MainPageState extends State<MainPage> {
                 },
               ),
               ListTile(
-                title: const Text('Frequently Asked Questions'),
+                title: const Text('Apps'),
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return const FaqPage();
+                    return const AppListPage();
                   }));
+
+                  //Navigator.pop(context);
                 },
               ),
               ListTile(
@@ -106,15 +108,23 @@ class _MainPageState extends State<MainPage> {
                 },
               ),
               ListTile(
-                title: const Text('Apps'),
+                title: const Text('Frequently Asked Questions'),
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return const AppListPage();
+                    return const FaqPage();
                   }));
-
-                  //Navigator.pop(context);
                 },
               ),
+              // ListTile(
+              //   title: const Text('About Switchboard'),
+              //   onTap: () {
+              //     Navigator.push(context, MaterialPageRoute(builder: (context) {
+              //       return const AboutPage();
+              //     }));
+
+              //     //Navigator.pop(context);
+              //   },
+              // ),
             ],
           ),
         ),
@@ -128,8 +138,18 @@ class _MainPageState extends State<MainPage> {
         key: const Key('navBar'), // used for testing
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(
+              Icons.home,
+              key: Key('home'),
+            ),
             label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.cable,
+              key: Key('resources'),
+            ),
+            label: 'Resources',
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -144,10 +164,6 @@ class _MainPageState extends State<MainPage> {
               key: Key('guides'),
             ),
             label: 'Guides',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.cable),
-            label: 'Resources',
           ),
         ],
         currentIndex: _selectedIndex,

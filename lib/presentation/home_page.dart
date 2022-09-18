@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:switchboard/presentation/widgets/media_card.dart';
 
-import 'widgets/ace_card.dart';
-
 class HomePage extends StatelessWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
 
@@ -13,168 +11,43 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: ListView(
-          children: [
-            // Padding(
-            //   padding:
-            //       const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
-            //   child: Card(
-            //     elevation: 3.0,
-            //     clipBehavior: Clip.antiAlias,
-            //     child: Column(
-            //       children: [
-            //         ListTile(
-            //           leading: CircleAvatar(
-            //               backgroundColor: Colors.transparent,
-            //               child: Image.asset(
-            //                 'assets/images/resilience.png',
-            //               )),
-            //           title: const Text('My Engagement'),
-            //           subtitle: Text(
-            //             'Racking up resiliency points',
-            //             style: TextStyle(color: Colors.black.withOpacity(0.6)),
-            //           ),
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
-            const Padding(
+          children: const [
+            Padding(
               padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
               child: MediaCard(
                 title: 'Welcome to Switchboard!',
-                subTitle: 'Your virtual patch panel to resources',
+                subTitle: 'Your resiliency patch panel operator',
                 description:
-                    'Resiliency Switchboard is a companion app to the AFRC Connect the Network Guide as well as to the USAF resiliency website and was initially designed for Resiliency Integrators and First Sergeants in AFRC; however, the app is equally useful across the total force and can be used by Airmen up and down the chain of command.',
+                    'Resiliency Switchboard is a companion app to the AFRC Connect the Network Guide as well as to the USAF resiliency website and was initially designed for Resiliency Integrators and First Sergeants in AFRC; however, the app is equally useful to First Sergeants across the total force and can also be used by all Airmen up and down the ranks across the total force.',
                 imageUrl: 'assets/images/operators_feed.png',
-                linkUrl:
-                    'https://www.resilience.af.mil/SAPR/Restricted-or-Unrestricted/',
+                // linkUrl:
+                //     'https://www.resilience.af.mil/SAPR/Restricted-or-Unrestricted/',
               ),
             ),
             Padding(
-              padding:
-                  const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
-              child: Card(
-                elevation: 3.0,
-                clipBehavior: Clip.antiAlias,
-                child: Column(
-                  children: [
-                    ListTile(
-                      leading: CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          child: Image.asset(
-                            'assets/images/resilience.png',
-                          )),
-                      title: const Text('Switchboard By The Numbers'),
-                      subtitle: Text(
-                        'This version provides access to ...',
-                        style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Column(
-                          children: [
-                            Text(
-                              '10',
-                              style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.blue.shade800,
-                              ),
-                            ),
-                            const Text('Apps'),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              '4',
-                              style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.blue.shade800,
-                              ),
-                            ),
-                            const Text('FAQs'),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              '26',
-                              style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.blue.shade800,
-                              ),
-                            ),
-                            const Text('Guides'),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              '14',
-                              style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.blue.shade800,
-                              ),
-                            ),
-                            const Text('Hotlines'),
-                          ],
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 16.0,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 16.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Column(
-                            children: [
-                              Text(
-                                '8',
-                                style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.blue.shade800,
-                                ),
-                              ),
-                              const Text('Skills'),
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              Text(
-                                '100',
-                                style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.blue.shade800,
-                                ),
-                              ),
-                              const Text('Resources'),
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              Text(
-                                '51',
-                                style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.blue.shade800,
-                                ),
-                              ),
-                              const Text('Units'),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+              padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+              child: MediaCard(
+                title: 'Airmen\'s Time',
+                subTitle: 'Make it a part of our duty day',
+                description:
+                    'Airmen\'s Time is spending time together on a regular basis and talking about things that matter outside of our mission. It\'s increasing connection among military and civilian Airmen. Connection to others is a predictor of how well we move through stress or challenges. Connection is more than knowing each other ... it\'s about building trust and cohesion.',
+                imageUrl: 'assets/images/airmens_time.jpeg',
+                linkUrl: 'https://www.resilience.af.mil/airmens-time/',
               ),
             ),
-            const Padding(
+            Padding(
+              padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+              child: MediaCard(
+                title: 'Self Care',
+                subTitle: 'You can\'t pour from an empty cup',
+                description:
+                    'Continual exposure to stress can cause us to burnout. Though stress may often times be unavoidable, burnout is preventable. At a time when it feels like so much is out of our control, it\'s important to recognize and focus on what you can change/control and utilize self-care resources and techniques to keep your battery charged.',
+                imageUrl: 'assets/images/battery.jpg',
+                linkUrl:
+                    'https://www.militaryonesource.mil/military-life-cycle/friends-extended-family/taking-care-of-yourself-to-overcome-stress-grief/',
+              ),
+            ),
+            Padding(
               padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
               child: MediaCard(
                 title: 'Restricted vs Unrestricted',
@@ -186,7 +59,7 @@ class HomePage extends StatelessWidget {
                     'https://www.resilience.af.mil/SAPR/Restricted-or-Unrestricted/',
               ),
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
               child: MediaCard(
                 title: 'Suicide Warning Signs',
@@ -198,7 +71,7 @@ class HomePage extends StatelessWidget {
                     'https://www.resilience.af.mil/suicide-prevention-program/',
               ),
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
               child: MediaCard(
                 title: 'Mental Health Counseling and Security Clearances',
@@ -209,10 +82,6 @@ class HomePage extends StatelessWidget {
                 linkUrl:
                     'https://www.dcsa.mil/Portals/91/Documents/pv/DODCAF/resources/DCSA-FactSheet_Mental-Health.pdf',
               ),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
-              child: AceCard(),
             ),
           ],
         ),

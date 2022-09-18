@@ -42,7 +42,7 @@ class _SkillsPageState extends State<SkillsPage> {
                           child: Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Text(
-                              'First Sergeants receive RTA training and learn resiliency skills as part of the First Sergeant Academy curriculum. The resiliency skills listed below are provided here as a refresher and quick reference and are not intended to be a substitue for formal training in these areas. \n\nPlease contact your wing\'s MRTs, RTAs, Resiliency Integrators, or First Sergeants for training opportunities and/or getting more information about these skills.',
+                              'First Sergeants receive RTA training and learn resiliency skills as part of the First Sergeant Academy curriculum. The resiliency skills listed below are provided here as a refresher and quick reference and are not intended to be a substitue for formal training in these areas. \n\nIf you are not a First Sergeant, please contact your wing\'s MRTs, RTAs, Resiliency Integrators, or First Sergeants for training opportunities and/or getting more information about these skills.',
                               style: TextStyle(
                                   color: Colors.black.withOpacity(0.6)),
                             ),

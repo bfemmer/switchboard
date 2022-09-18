@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../utility/fa_helper.dart';
 import '../utility/url_helper.dart';
+import 'widgets/ace_card.dart';
 
 class EmergencyPage extends StatefulWidget {
   const EmergencyPage({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Emergency Numbers')),
+        appBar: AppBar(title: const Text('Emergency Information')),
         body: SafeArea(
           child: ListView(
             children: [
@@ -59,6 +60,10 @@ class _EmergencyPageState extends State<EmergencyPage> {
                     },
                   ),
                 ),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+                child: AceCard(),
               ),
             ],
           ),
