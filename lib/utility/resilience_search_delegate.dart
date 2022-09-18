@@ -3,6 +3,7 @@ import 'package:switchboard/model/suggestion.dart';
 
 import '../model/category.dart';
 import '../model/resource.dart';
+import '../presentation/app_list_page.dart';
 import '../presentation/resource_detail_page.dart';
 import '../presentation/resource_list_cat_page.dart';
 import '../presentation/unit_list_page.dart';
@@ -134,7 +135,12 @@ class ResilienceSearchDelegate extends SearchDelegate {
       }));
     }
 
-    // Search DB for descriptions
+    // Check if Mobile Apps
+    if (result == "Mobile Apps") {
+      navigator.push(MaterialPageRoute(builder: (context) {
+        return const AppListPage();
+      }));
+    }
   }
 
   Future<Category?> _getCategoryByName(String name) async {
@@ -160,6 +166,7 @@ class ResilienceSearchDelegate extends SearchDelegate {
     }
 
     suggestions.add("AFRC Units");
+    suggestions.add("Mobile Apps");
 
     return suggestions;
   }
