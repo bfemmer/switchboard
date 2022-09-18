@@ -21,8 +21,7 @@ class AceCard extends StatelessWidget {
                 child: Image.asset(
                   'assets/images/resilience.png',
                 )),
-            title: const Text(
-                'Ask, Care, and Escort (ACE) - Suicide Intervention Tips'),
+            title: const Text('Suicide Intervention Reminder'),
             subtitle: Text(
               'Make a difference today',
               style: TextStyle(color: Colors.black.withOpacity(0.6)),
