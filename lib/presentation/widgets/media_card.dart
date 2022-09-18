@@ -71,7 +71,9 @@ class _MediaCardState extends State<MediaCard> {
               ],
             )
           else
-            Container(),
+            const SizedBox(
+              height: 16.0,
+            )
         ],
       ),
     );
