@@ -20,8 +20,6 @@ class HomePage extends StatelessWidget {
                 description:
                     'Resiliency Switchboard is a companion app to the AFRC Connect the Network Guide as well as to the USAF resiliency website and was initially designed for Resiliency Integrators and First Sergeants in AFRC; however, the app is equally useful to First Sergeants across the total force and can also be used by all Airmen up and down the ranks across the total force.',
                 imageUrl: 'assets/images/operators_feed.png',
-                // linkUrl:
-                //     'https://www.resilience.af.mil/SAPR/Restricted-or-Unrestricted/',
               ),
             ),
             Padding(
@@ -32,7 +30,8 @@ class HomePage extends StatelessWidget {
                 description:
                     'Airmen\'s Time is spending time together on a regular basis and talking about things that matter outside of our mission. It\'s increasing connection among military and civilian Airmen. Connection to others is a predictor of how well we move through stress or challenges. Connection is more than knowing each other ... it\'s about building trust and cohesion.',
                 imageUrl: 'assets/images/airmens_time.jpeg',
-                linkUrl: 'https://www.resilience.af.mil/airmens-time/',
+                linkUrl:
+                    'https://www.resilience.af.mil/Portals/71/Airmen%27s%20Time%20Memo.pdf',
               ),
             ),
             Padding(
@@ -55,8 +54,7 @@ class HomePage extends StatelessWidget {
                 description:
                     'Deciding to report a sexual assault is a very personal decision. Restricted and unrestricted reporting options allow military members, dependents (18+) and DoD Air Force civilians who experience sexual assault to exercise control over how and when they engage with resources.',
                 imageUrl: 'assets/images/teal_ribbon.jpeg',
-                linkUrl:
-                    'https://www.resilience.af.mil/SAPR/Restricted-or-Unrestricted/',
+                linkUrl: 'https://www.sapr.mil/reporting-options',
               ),
             ),
             Padding(
