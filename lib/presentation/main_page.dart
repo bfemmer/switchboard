@@ -131,8 +131,6 @@ class _MainPageState extends State<MainPage> {
       ),
       body: SafeArea(child: _widgetOptions.elementAt(_selectedIndex)),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.blue[800],
-        unselectedItemColor: Colors.white60,
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
         key: const Key('navBar'), // used for testing
@@ -167,7 +165,6 @@ class _MainPageState extends State<MainPage> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.white,
         selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
         onTap: _onItemTapped,
       ),

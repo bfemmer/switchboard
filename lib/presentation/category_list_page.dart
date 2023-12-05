@@ -38,7 +38,7 @@ class CategoryListPageState extends State<CategoryListPage> {
                           title: Text(category.name!),
                           leading: FaIcon(
                             FaHelper.getIconFromName(category.icon!),
-                            color: Colors.blue.shade800,
+                            color: Theme.of(context).primaryColor,
                           ),
                           onTap: () {
                             Navigator.push(context,

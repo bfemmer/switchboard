@@ -36,7 +36,7 @@ class _ResourceCardState extends State<ResourceCard> {
             ),
           ),
           Container(
-            color: Colors.blue.shade50,
+            color: Theme.of(context).secondaryHeaderColor.withOpacity(0.5),
             child: Row(
               children: [
                 Flexible(
@@ -69,7 +69,7 @@ class _ResourceCardState extends State<ResourceCard> {
                           UrlHelper.makePhoneCall(widget.resource.voice!);
                         },
                         icon: const FaIcon(FontAwesomeIcons.phone),
-                        color: Colors.blue.shade800,
+                        color: Theme.of(context).primaryColor,
                       )
                     : Container(),
                 widget.resource.sms != null
@@ -78,7 +78,7 @@ class _ResourceCardState extends State<ResourceCard> {
                           UrlHelper.textMessage(widget.resource.sms!);
                         },
                         icon: const FaIcon(FontAwesomeIcons.commentSms),
-                        color: Colors.blue.shade800,
+                        color: Theme.of(context).primaryColor,
                       )
                     : Container(),
               ],

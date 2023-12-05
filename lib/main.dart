@@ -1,7 +1,7 @@
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 
 import 'presentation/main_page.dart';
-import 'utility/material_helper.dart';
 
 void main() {
   runApp(const SwitchboardApp());
@@ -15,10 +15,10 @@ class SwitchboardApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Switchboard',
-      theme: ThemeData(
-        primarySwatch:
-            MaterialHelper.getMaterialColorForColor(Colors.blue.shade800),
-      ),
+      theme: FlexThemeData.light(scheme: FlexScheme.tealM3),
+      darkTheme: FlexThemeData.dark(scheme: FlexScheme.tealM3),
+      // Use dark or light theme based on system setting.
+      themeMode: ThemeMode.system,
       home: const MainPage(),
     );
   }
