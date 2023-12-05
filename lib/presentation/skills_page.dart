@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'skill_list_page.dart';
 
 class SkillsPage extends StatefulWidget {
-  const SkillsPage({Key? key}) : super(key: key);
+  const SkillsPage({super.key});
 
   @override
   State<SkillsPage> createState() => _SkillsPageState();

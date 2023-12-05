@@ -6,8 +6,7 @@ import '../model/resource.dart';
 class ResourceDetailPage extends StatefulWidget {
   final Resource resource;
 
-  const ResourceDetailPage({Key? key, required this.resource})
-      : super(key: key);
+  const ResourceDetailPage({super.key, required this.resource});
 
   @override
   ResourceDetailPageState createState() => ResourceDetailPageState();

@@ -6,7 +6,7 @@ import '../repository/sqlite/sqlite_resource_repository.dart';
 import '../utility/url_helper.dart';
 
 class UnitListPage extends StatefulWidget {
-  const UnitListPage({Key? key}) : super(key: key);
+  const UnitListPage({super.key});
 
   @override
   UnitListPageState createState() => UnitListPageState();

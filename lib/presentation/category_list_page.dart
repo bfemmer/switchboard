@@ -8,7 +8,7 @@ import '../utility/fa_helper.dart';
 import 'resource_list_cat_page.dart';
 
 class CategoryListPage extends StatefulWidget {
-  const CategoryListPage({Key? key}) : super(key: key);
+  const CategoryListPage({super.key});
 
   @override
   CategoryListPageState createState() => CategoryListPageState();

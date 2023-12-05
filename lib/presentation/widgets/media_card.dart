@@ -10,13 +10,13 @@ class MediaCard extends StatefulWidget {
   final String? linkUrl;
 
   const MediaCard({
-    Key? key,
+    super.key,
     required this.title,
     required this.subTitle,
     required this.description,
     required this.imageUrl,
     this.linkUrl,
-  }) : super(key: key);
+  });
 
   @override
   State<MediaCard> createState() => _MediaCardState();

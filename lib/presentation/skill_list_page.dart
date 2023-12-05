@@ -6,7 +6,7 @@ import '../repository/sqlite/sqlite_resource_repository.dart';
 import 'widgets/skill_card.dart';
 
 class SkillListPage extends StatefulWidget {
-  const SkillListPage({Key? key}) : super(key: key);
+  const SkillListPage({super.key});
 
   @override
   SkillListPageState createState() => SkillListPageState();

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:switchboard/presentation/widgets/media_card.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key, required this.title}) : super(key: key);
+  const HomePage({super.key, required this.title});
 
   final String title;
 

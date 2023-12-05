@@ -4,7 +4,7 @@ import 'package:switchboard/presentation/widgets/info_card.dart';
 import '../model/guide.dart';
 
 class GuideDetailPage extends StatefulWidget {
-  const GuideDetailPage({Key? key, required this.guide}) : super(key: key);
+  const GuideDetailPage({super.key, required this.guide});
 
   final Guide guide;
 

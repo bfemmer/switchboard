@@ -6,9 +6,9 @@ class SkillCard extends StatefulWidget {
   final Skill skill;
 
   const SkillCard({
-    Key? key,
+    super.key,
     required this.skill,
-  }) : super(key: key);
+  });
 
   @override
   State<SkillCard> createState() => _SkillCardState();

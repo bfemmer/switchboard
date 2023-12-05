@@ -5,7 +5,7 @@ import '../repository/resource_repository.dart';
 import '../repository/sqlite/sqlite_resource_repository.dart';
 
 class FaqPage extends StatefulWidget {
-  const FaqPage({Key? key}) : super(key: key);
+  const FaqPage({super.key});
 
   @override
   FaqPageState createState() => FaqPageState();

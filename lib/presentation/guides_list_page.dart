@@ -6,7 +6,7 @@ import '../repository/sqlite/sqlite_resource_repository.dart';
 import 'guide_detail_page.dart';
 
 class GuidesListPage extends StatefulWidget {
-  const GuidesListPage({Key? key}) : super(key: key);
+  const GuidesListPage({super.key});
 
   @override
   State<GuidesListPage> createState() => _GuidesListPageState();

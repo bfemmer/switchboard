@@ -5,10 +5,10 @@ class InfoCard extends StatefulWidget {
   final String description;
 
   const InfoCard({
-    Key? key,
+    super.key,
     required this.title,
     required this.description,
-  }) : super(key: key);
+  });
 
   @override
   State<InfoCard> createState() => _InfoCardState();

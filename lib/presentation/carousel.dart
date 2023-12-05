@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 class Carousel extends StatefulWidget {
   const Carousel({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<Carousel> createState() => _CarouselState();

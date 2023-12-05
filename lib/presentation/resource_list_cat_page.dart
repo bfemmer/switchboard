@@ -12,8 +12,7 @@ import 'widgets/resource_card.dart';
 class ResourceListCatPage extends StatefulWidget {
   final Category category;
 
-  const ResourceListCatPage({Key? key, required this.category})
-      : super(key: key);
+  const ResourceListCatPage({super.key, required this.category});
 
   @override
   ResourceListCatPageState createState() => ResourceListCatPageState();

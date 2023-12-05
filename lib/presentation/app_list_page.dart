@@ -6,7 +6,7 @@ import '../repository/sqlite/sqlite_resource_repository.dart';
 import '../utility/url_helper.dart';
 
 class AppListPage extends StatefulWidget {
-  const AppListPage({Key? key}) : super(key: key);
+  const AppListPage({super.key});
 
   @override
   AppListPageState createState() => AppListPageState();

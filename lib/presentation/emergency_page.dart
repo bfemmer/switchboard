@@ -6,7 +6,7 @@ import '../utility/url_helper.dart';
 import 'widgets/ace_card.dart';
 
 class EmergencyPage extends StatefulWidget {
-  const EmergencyPage({Key? key}) : super(key: key);
+  const EmergencyPage({super.key});
 
   @override
   State<EmergencyPage> createState() => _EmergencyPageState();

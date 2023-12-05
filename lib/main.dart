@@ -8,7 +8,7 @@ void main() {
 }
 
 class SwitchboardApp extends StatelessWidget {
-  const SwitchboardApp({Key? key}) : super(key: key);
+  const SwitchboardApp({super.key});
 
   @override
   Widget build(BuildContext context) {

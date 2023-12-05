@@ -5,7 +5,7 @@ import 'hotline_list_page.dart';
 import 'resource_list_page.dart';
 
 class ResourcePage extends StatefulWidget {
-  const ResourcePage({Key? key}) : super(key: key);
+  const ResourcePage({super.key});
 
   @override
   ResourcePageState createState() => ResourcePageState();
@@ -18,9 +18,9 @@ class ResourcePageState extends State<ResourcePage> {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          flexibleSpace: Column(
+          flexibleSpace: const Column(
             mainAxisAlignment: MainAxisAlignment.end,
-            children: const [
+            children: [
               TabBar(
                 tabs: [
                   Tab(

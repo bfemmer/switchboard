@@ -6,7 +6,7 @@ import '../repository/sqlite/sqlite_resource_repository.dart';
 import 'widgets/resource_card.dart';
 
 class HotlineListPage extends StatefulWidget {
-  const HotlineListPage({Key? key}) : super(key: key);
+  const HotlineListPage({super.key});
 
   @override
   HotlineListPageState createState() => HotlineListPageState();

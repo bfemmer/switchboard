@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'guides_list_page.dart';
 
 class GuidesPage extends StatefulWidget {
-  const GuidesPage({Key? key}) : super(key: key);
+  const GuidesPage({super.key});
 
   @override
   State<GuidesPage> createState() => _GuidesPageState();

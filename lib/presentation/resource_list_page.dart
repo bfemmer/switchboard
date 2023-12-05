@@ -6,7 +6,7 @@ import '../repository/sqlite/sqlite_resource_repository.dart';
 import 'widgets/resource_card.dart';
 
 class ResourceListPage extends StatefulWidget {
-  const ResourceListPage({Key? key}) : super(key: key);
+  const ResourceListPage({super.key});
 
   @override
   ResourceListPageState createState() => ResourceListPageState();

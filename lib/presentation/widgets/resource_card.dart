@@ -8,9 +8,9 @@ class ResourceCard extends StatefulWidget {
   final Resource resource;
 
   const ResourceCard({
-    Key? key,
+    super.key,
     required this.resource,
-  }) : super(key: key);
+  });
 
   @override
   State<ResourceCard> createState() => _ResourceCardState();
