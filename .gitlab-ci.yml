@@ -4,7 +4,7 @@
 # This specific template is located at:
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Flutter.gitlab-ci.yml
 
-image: "cirrusci/flutter:3.0.3"
+image: "cirrusci/flutter:latest"
 
 stages:
   - build
@@ -33,7 +33,7 @@ code_quality:
 
 test:
   stage: test
-  image: "cirrusci/flutter:3.0.3"
+  image: "cirrusci/flutter:latest"
   before_script:
     - flutter pub global activate junitreport
     - export PATH="$PATH:$HOME/.pub-cache/bin"
