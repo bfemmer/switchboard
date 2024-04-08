@@ -15,8 +15,8 @@ class SwitchboardApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Switchboard',
-      theme: FlexThemeData.light(scheme: FlexScheme.tealM3),
-      darkTheme: FlexThemeData.dark(scheme: FlexScheme.tealM3),
+      theme: FlexThemeData.light(scheme: FlexScheme.blueM3),
+      darkTheme: FlexThemeData.dark(scheme: FlexScheme.blueM3),
       // Use dark or light theme based on system setting.
       themeMode: ThemeMode.system,
       home: const MainPage(),
