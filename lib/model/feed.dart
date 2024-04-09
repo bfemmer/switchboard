@@ -1,46 +1,47 @@
-class Resource {
+class Feed {
   int? id;
+  String? date;
   String? title;
-  String? subTitle;
+  String? subtitle;
   String? description;
   String? imageUrl;
   String? linkUrl;
-  String? pageRoute;
-  DateTime? date;
+  int? sortOrder;
 
-  Resource(
-      {
-      this.id,
-      this.title,
-      this.subTitle,
-      this.description,
-      this.imageUrl,
-      this.linkUrl,
-      this.pageRoute,
-      this.date});
+  Feed({
+    this.id,
+    this.date,
+    this.title,
+    this.subtitle,
+    this.description,
+    this.imageUrl,
+    this.linkUrl,
+    this.sortOrder,
+  });
 
-  Resource.fromJson(Map<String, dynamic> json) {
+  Feed.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    date = json['date'];
     title = json['title'];
-    subTitle = json['subTitle'];
+    subtitle = json['subtitle'];
     description = json['description'];
     linkUrl = json['linkUrl'];
     imageUrl = json['imageUrl'];
-    pageRoute = json['pageRoute'];
-    date = json['date'];
+    sortOrder = json['sortOrder'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
 
     data['id'] = id;
+    data['date'] = date;
     data['title'] = title;
-    data['subTitle'] = subTitle;
+    data['subtitle'] = subtitle;
     data['description'] = description;
     data['linkUrl'] = linkUrl;
     data['imageUrl'] = imageUrl;
-    data['pageRoute'] = pageRoute;
-    data['date'] = date;
+    data['sortOrder'] = sortOrder;
+
     return data;
   }
 }

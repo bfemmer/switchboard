@@ -3,6 +3,7 @@ import 'package:switchboard/model/suggestion.dart';
 import '../../model/app.dart';
 import '../../model/category.dart';
 import '../../model/faq.dart';
+import '../../model/feed.dart';
 import '../../model/guide.dart';
 import '../../model/resource.dart';
 import '../../model/skill.dart';
@@ -47,6 +48,16 @@ class SqliteResourceRepository extends ResourceRepository {
     var result = await db.rawQuery('SELECT * FROM guides ORDER BY name ASC;');
     List<Guide> list =
         result.isNotEmpty ? result.map((c) => Guide.fromJson(c)).toList() : [];
+    return list;
+  }
+
+  @override
+  Future<List<Feed>> getFeed() async {
+    var db = await dbHelper.database;
+    var result =
+        await db.rawQuery('SELECT * FROM feed ORDER BY sortOrder ASC;');
+    List<Feed> list =
+        result.isNotEmpty ? result.map((c) => Feed.fromJson(c)).toList() : [];
     return list;
   }
 
