@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
 import '../model/skill.dart';
 import '../repository/resource_repository.dart';
 import '../repository/sqlite/sqlite_resource_repository.dart';
-import 'widgets/skill_card.dart';
+import 'skill_list_desktop_view.dart';
+import 'skill_list_mobile_view.dart';
+import 'skill_list_tablet_view.dart';
 
 class SkillListPage extends StatefulWidget {
   const SkillListPage({super.key});
@@ -17,6 +20,8 @@ class SkillListPageState extends State<SkillListPage> {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(title: const Text('Resiliency Skills')),
       body: SafeArea(
@@ -26,16 +31,22 @@ class SkillListPageState extends State<SkillListPage> {
             if (!snapshot.hasData) {
               return const Center(child: CircularProgressIndicator());
             }
-            return ListView(
-              children: snapshot.data!
-                  .map((skill) => Padding(
-                        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                        child: SkillCard(
-                          skill: skill,
-                        ),
-                      ))
-                  .toList(),
-            );
+            if (!snapshot.hasData) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (screenSize.width < breakpointSmall) {
+              return SkillListMobileView(
+                skills: skills,
+              );
+            } else if (screenSize.width < breakpointMedium) {
+              return SkillListTabletView(
+                skills: skills,
+              );
+            } else {
+              return SkillListDesktopView(
+                skills: skills,
+              );
+            }
           },
         ),
       ),

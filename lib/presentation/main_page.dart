@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:switchboard/presentation/category_list_page.dart';
+import 'package:switchboard/presentation/guides_list_page.dart';
 import 'package:switchboard/presentation/home_page.dart';
+import 'package:switchboard/presentation/hotline_list_page.dart';
+import 'package:switchboard/presentation/resource_list_page.dart';
+import 'package:switchboard/presentation/skill_list_page.dart';
 
 import '../utility/resilience_search_delegate.dart';
 import 'app_list_page.dart';
@@ -22,9 +27,9 @@ class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    ResourcePage(),
-    SkillsPage(),
-    GuidesPage(),
+    CategoryListPage(), // ResourcePage(),
+    HotlineListPage(), // SkillsPage(),
+    ResourceListPage(), // GuidesPage(),
   ];
 
   int getIndex() {
@@ -83,8 +88,6 @@ class _MainPageState extends State<MainPage> {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return const EmergencyPage();
                   }));
-
-                  // Navigator.pop(context);
                 },
               ),
               ListTile(
@@ -93,8 +96,22 @@ class _MainPageState extends State<MainPage> {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return const AppListPage();
                   }));
-
-                  //Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: const Text('Skills'),
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const SkillListPage();
+                  }));
+                },
+              ),
+              ListTile(
+                title: const Text('Guides'),
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const GuidesListPage();
+                  }));
                 },
               ),
               ListTile(
@@ -103,8 +120,6 @@ class _MainPageState extends State<MainPage> {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return const UnitListPage();
                   }));
-
-                  //Navigator.pop(context);
                 },
               ),
               ListTile(
@@ -134,24 +149,24 @@ class _MainPageState extends State<MainPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.cable,
-              key: Key('resources'),
+              Icons.category,
+              key: Key('categories'),
             ),
-            label: 'Resources',
+            label: 'Categories',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              FontAwesomeIcons.toolbox,
-              key: Key('skills'),
+              FontAwesomeIcons.phone,
+              key: Key('hotlines'),
             ),
-            label: 'Skills',
+            label: 'Hotlines',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              FontAwesomeIcons.listCheck,
-              key: Key('guides'),
+              FontAwesomeIcons.arrowDownAZ,
+              key: Key('browse'),
             ),
-            label: 'Guides',
+            label: 'Browse',
           ),
         ],
         currentIndex: _selectedIndex,

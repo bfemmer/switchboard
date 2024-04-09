@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:switchboard/presentation/home_mobile_view.dart';
 
 import '../constants.dart';
 import '../model/resource.dart';
@@ -8,7 +7,6 @@ import '../repository/sqlite/sqlite_resource_repository.dart';
 import 'hotline_list_desktop_view.dart';
 import 'hotline_list_mobile_view.dart';
 import 'hotline_list_tablet_view.dart';
-import 'widgets/resource_card.dart';
 
 class HotlineListPage extends StatefulWidget {
   const HotlineListPage({super.key});

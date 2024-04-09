@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
 import '../model/resource.dart';
 import '../repository/resource_repository.dart';
 import '../repository/sqlite/sqlite_resource_repository.dart';
-import 'widgets/resource_card.dart';
+import 'resource_list_desktop_view.dart';
+import 'resource_list_mobile_view.dart';
+import 'resource_list_tablet_view.dart';
 
 class ResourceListPage extends StatefulWidget {
   const ResourceListPage({super.key});
@@ -17,6 +20,8 @@ class ResourceListPageState extends State<ResourceListPage> {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
       body: FutureBuilder<List<Resource>>(
         future: getResources(),
@@ -24,16 +29,19 @@ class ResourceListPageState extends State<ResourceListPage> {
           if (!snapshot.hasData) {
             return const Center(child: CircularProgressIndicator());
           }
-          return ListView(
-            children: snapshot.data!
-                .map((resource) => Padding(
-                      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                      child: ResourceCard(
-                        resource: resource,
-                      ),
-                    ))
-                .toList(),
-          );
+          if (screenSize.width < breakpointSmall) {
+            return ResourceListMobileView(
+              resources: resources,
+            );
+          } else if (screenSize.width < breakpointMedium) {
+            return ResourceListTabletView(
+              resources: resources,
+            );
+          } else {
+            return ResourceListDesktopView(
+              resources: resources,
+            );
+          }
         },
       ),
     );

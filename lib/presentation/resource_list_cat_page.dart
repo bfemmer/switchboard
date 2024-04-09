@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:switchboard/presentation/resource_list_desktop_view.dart';
 
+import '../constants.dart';
 import '../model/category.dart';
 import '../model/resource.dart';
 import '../repository/resource_repository.dart';
 import '../repository/sqlite/sqlite_resource_repository.dart';
-import 'widgets/resource_card.dart';
-
-// Image attribution requirement ... to be displayed on store page and in source code:
-// <a href="https://www.flaticon.com/free-icons/jack" title="jack icons">Jack icons created by Freepik - Flaticon</a>
+import 'resource_list_mobile_view.dart';
+import 'resource_list_tablet_view.dart';
 
 class ResourceListCatPage extends StatefulWidget {
   final Category category;
@@ -23,6 +23,8 @@ class ResourceListCatPageState extends State<ResourceListCatPage> {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(title: Text(widget.category.name!)),
       body: FutureBuilder<List<Resource>>(
@@ -31,18 +33,19 @@ class ResourceListCatPageState extends State<ResourceListCatPage> {
           if (!snapshot.hasData) {
             return const Center(child: CircularProgressIndicator());
           }
-          return SafeArea(
-            child: ListView(
-              children: snapshot.data!
-                  .map((resource) => Padding(
-                        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                        child: ResourceCard(
-                          resource: resource,
-                        ),
-                      ))
-                  .toList(),
-            ),
-          );
+          if (screenSize.width < breakpointSmall) {
+            return ResourceListMobileView(
+              resources: resources,
+            );
+          } else if (screenSize.width < breakpointMedium) {
+            return ResourceListTabletView(
+              resources: resources,
+            );
+          } else {
+            return ResourceListDesktopView(
+              resources: resources,
+            );
+          }
         },
       ),
     );
