@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:switchboard/presentation/home_mobile_view.dart';
 
+import '../constants.dart';
 import '../model/resource.dart';
 import '../repository/resource_repository.dart';
 import '../repository/sqlite/sqlite_resource_repository.dart';
+import 'hotline_list_desktop_view.dart';
+import 'hotline_list_mobile_view.dart';
+import 'hotline_list_tablet_view.dart';
 import 'widgets/resource_card.dart';
 
 class HotlineListPage extends StatefulWidget {
@@ -17,6 +22,7 @@ class HotlineListPageState extends State<HotlineListPage> {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     return Scaffold(
       body: FutureBuilder<List<Resource>>(
         future: _getHotlines(),
@@ -24,16 +30,19 @@ class HotlineListPageState extends State<HotlineListPage> {
           if (!snapshot.hasData) {
             return const Center(child: CircularProgressIndicator());
           }
-          return ListView(
-            children: snapshot.data!
-                .map((hotline) => Padding(
-                      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                      child: ResourceCard(
-                        resource: hotline,
-                      ),
-                    ))
-                .toList(),
-          );
+          if (screenSize.width < breakpointSmall) {
+            return HotlineListMobileView(
+              resources: hotlines,
+            );
+          } else if (screenSize.width < breakpointMedium) {
+            return HotlineListTabletView(
+              resources: hotlines,
+            );
+          } else {
+            return HotlineListDesktopView(
+              resources: hotlines,
+            );
+          }
         },
       ),
     );
