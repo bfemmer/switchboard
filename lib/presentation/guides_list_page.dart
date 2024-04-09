@@ -41,6 +41,10 @@ class _GuidesListPageState extends State<GuidesListPage> {
                                 backgroundColor: Colors.transparent,
                                 child: Image.asset(
                                   'assets/images/resilience.png',
+                                  color: Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? Theme.of(context).primaryColor
+                                      : null,
                                 )),
                             onTap: () {
                               Navigator.push(context,

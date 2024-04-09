@@ -35,14 +35,16 @@ class _MediaCardState extends State<MediaCard> {
                 backgroundColor: Colors.transparent,
                 child: Image.asset(
                   'assets/images/resilience.png',
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Theme.of(context).primaryColor
+                      : null,
                 )),
             title: Text(widget.title),
-            subtitle: Text(
-              widget.subTitle!,
-              style: TextStyle(color: Colors.black.withOpacity(0.6)),
-            ),
+            subtitle: Text(widget.subTitle!),
           ),
-          Image.asset(widget.imageUrl),
+          Image.asset(
+            widget.imageUrl,
+          ),
           const SizedBox(
             height: 16.0,
           ),
@@ -53,7 +55,6 @@ class _MediaCardState extends State<MediaCard> {
             ),
             child: Text(
               widget.description,
-              style: TextStyle(color: Colors.black.withOpacity(0.6)),
             ),
           ),
           if (widget.linkUrl != null)

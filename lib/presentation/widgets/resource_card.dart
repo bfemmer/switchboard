@@ -32,7 +32,6 @@ class _ResourceCardState extends State<ResourceCard> {
             title: Text(widget.resource.name!),
             subtitle: Text(
               widget.resource.type!,
-              style: TextStyle(color: Colors.black.withOpacity(0.6)),
             ),
           ),
           Container(
@@ -44,7 +43,6 @@ class _ResourceCardState extends State<ResourceCard> {
                     padding: const EdgeInsets.all(16.0),
                     child: Text(
                       widget.resource.description!,
-                      style: TextStyle(color: Colors.black.withOpacity(0.6)),
                     ),
                   ),
                 ),

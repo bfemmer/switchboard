@@ -27,25 +27,25 @@ class _SkillsPageState extends State<SkillsPage> {
                         backgroundColor: Colors.transparent,
                         child: Image.asset(
                           'assets/images/resilience.png',
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Theme.of(context).primaryColor
+                              : null,
                         )),
                     title: const Text('Resiliency Skills Overview'),
-                    subtitle: Text(
+                    subtitle: const Text(
                       'Refresher and quick reference',
-                      style: TextStyle(color: Colors.black.withOpacity(0.6)),
                     ),
                   ),
                   Container(
                     color:
                         Theme.of(context).secondaryHeaderColor.withOpacity(0.5),
-                    child: Row(
+                    child: const Row(
                       children: [
                         Flexible(
                           child: Padding(
-                            padding: const EdgeInsets.all(16.0),
+                            padding: EdgeInsets.all(16.0),
                             child: Text(
                               'First Sergeants receive RTA training and learn resiliency skills as part of the First Sergeant Academy curriculum. The resiliency skills listed below are provided here as a refresher and quick reference and are not intended to be a substitue for formal training in these areas. \n\nIf you are not a First Sergeant, please contact your wing\'s MRTs, RTAs, Resiliency Integrators, or First Sergeants for training opportunities and/or getting more information about these skills.',
-                              style: TextStyle(
-                                  color: Colors.black.withOpacity(0.6)),
                             ),
                           ),
                         ),

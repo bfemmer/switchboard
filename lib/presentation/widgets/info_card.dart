@@ -27,6 +27,9 @@ class _InfoCardState extends State<InfoCard> {
                 backgroundColor: Colors.transparent,
                 child: Image.asset(
                   'assets/images/resilience.png',
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Theme.of(context).primaryColor
+                      : null,
                 )),
             title: Text(widget.title),
           ),

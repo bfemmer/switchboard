@@ -28,6 +28,9 @@ class _SkillCardState extends State<SkillCard> {
                 backgroundColor: Colors.transparent,
                 child: Image.asset(
                   'assets/images/resilience.png',
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Theme.of(context).primaryColor
+                      : null,
                 )),
             title: Text(widget.skill.skill!),
           ),

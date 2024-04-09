@@ -21,7 +21,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
-    HomePage(title: 'Resiliency Switchboard'),
+    HomePage(),
     ResourcePage(),
     SkillsPage(),
     GuidesPage(),
@@ -115,16 +115,6 @@ class _MainPageState extends State<MainPage> {
                   }));
                 },
               ),
-              // ListTile(
-              //   title: const Text('About Switchboard'),
-              //   onTap: () {
-              //     Navigator.push(context, MaterialPageRoute(builder: (context) {
-              //       return const AboutPage();
-              //     }));
-
-              //     //Navigator.pop(context);
-              //   },
-              // ),
             ],
           ),
         ),

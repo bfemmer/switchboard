@@ -20,11 +20,13 @@ class AceCard extends StatelessWidget {
                 backgroundColor: Colors.transparent,
                 child: Image.asset(
                   'assets/images/resilience.png',
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Theme.of(context).primaryColor
+                      : null,
                 )),
             title: const Text('Suicide Intervention Reminder'),
-            subtitle: Text(
+            subtitle: const Text(
               'Make a difference today',
-              style: TextStyle(color: Colors.black.withOpacity(0.6)),
             ),
           ),
           Row(
