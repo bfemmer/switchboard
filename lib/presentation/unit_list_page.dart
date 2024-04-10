@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:switchboard/model/unit.dart';
 
+import '../constants.dart';
 import '../repository/resource_repository.dart';
 import '../repository/sqlite/sqlite_resource_repository.dart';
-import '../utility/url_helper.dart';
+import 'unit_list_desktop_view.dart';
+import 'unit_list_mobile_view.dart';
+import 'unit_list_tablet_view.dart';
 
 class UnitListPage extends StatefulWidget {
   const UnitListPage({super.key});
@@ -17,6 +20,8 @@ class UnitListPageState extends State<UnitListPage> {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('AFRC Units'),
@@ -28,29 +33,22 @@ class UnitListPageState extends State<UnitListPage> {
             if (!snapshot.hasData) {
               return const Center(child: CircularProgressIndicator());
             }
-            return ListView(
-              children: snapshot.data!
-                  .map((unit) => Padding(
-                        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                        child: Card(
-                          elevation: 3.0,
-                          child: ListTile(
-                            title: Text(unit.name!),
-                            subtitle: Text(unit.base!),
-                            leading: CircleAvatar(
-                              backgroundColor: Colors.transparent,
-                              child: Image.asset(
-                                'assets/images/usaf_roundel.png',
-                              ),
-                            ),
-                            onTap: () {
-                              UrlHelper.launchBrowser(unit.link!);
-                            },
-                          ),
-                        ),
-                      ))
-                  .toList(),
-            );
+            if (!snapshot.hasData) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (screenSize.width < breakpointSmall) {
+              return UnitListMobileView(
+                units: units,
+              );
+            } else if (screenSize.width < breakpointMedium) {
+              return UnitListTabletView(
+                units: units,
+              );
+            } else {
+              return UnitListDesktopView(
+                units: units,
+              );
+            }
           },
         ),
       ),
