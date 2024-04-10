@@ -17,6 +17,12 @@ class UrlHelper {
     await launchUrl(launchUri);
   }
 
+  static void sendEmail(String subject, String body) async {
+    final Uri launchUri =
+        Uri(scheme: 'mailto', query: 'subject=$subject&body=$body');
+    await launchUrl(launchUri);
+  }
+
   static void launchBrowser(String url) async {
     Uri uri = Uri.parse(url);
     if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
