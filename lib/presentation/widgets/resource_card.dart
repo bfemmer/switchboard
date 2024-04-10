@@ -51,34 +51,62 @@ class _ResourceCardState extends State<ResourceCard> {
           ),
           if (widget.resource.link != null)
             ButtonBar(
-              alignment: MainAxisAlignment.start,
+              alignment: MainAxisAlignment.spaceBetween,
               children: [
-                TextButton(
-                  onPressed: () {
-                    UrlHelper.launchBrowser(widget.resource.link!);
-                  },
-                  child: const Text(
-                    'Learn more',
-                  ),
+                Row(
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        UrlHelper.launchBrowser(widget.resource.link!);
+                      },
+                      child: const Text(
+                        'Learn more',
+                      ),
+                    ),
+                    widget.resource.voice != null
+                        ? IconButton(
+                            onPressed: () {
+                              UrlHelper.makePhoneCall(widget.resource.voice!);
+                            },
+                            icon: const FaIcon(FontAwesomeIcons.phone),
+                            color: Theme.of(context).primaryColor,
+                          )
+                        : Container(),
+                    widget.resource.sms != null
+                        ? IconButton(
+                            onPressed: () {
+                              UrlHelper.textMessage(widget.resource.sms!);
+                            },
+                            icon: const FaIcon(FontAwesomeIcons.commentSms),
+                            color: Theme.of(context).primaryColor,
+                          )
+                        : Container(),
+                  ],
                 ),
-                widget.resource.voice != null
-                    ? IconButton(
-                        onPressed: () {
-                          UrlHelper.makePhoneCall(widget.resource.voice!);
-                        },
-                        icon: const FaIcon(FontAwesomeIcons.phone),
-                        color: Theme.of(context).primaryColor,
-                      )
-                    : Container(),
-                widget.resource.sms != null
-                    ? IconButton(
-                        onPressed: () {
-                          UrlHelper.textMessage(widget.resource.sms!);
-                        },
-                        icon: const FaIcon(FontAwesomeIcons.commentSms),
-                        color: Theme.of(context).primaryColor,
-                      )
-                    : Container(),
+                const Spacer(),
+                IconButton(
+                  onPressed: () {
+                    String subject =
+                        'Resilience Resource - ${widget.resource.name!}';
+                    String body = '${widget.resource.description!}\n';
+
+                    if (widget.resource.link != null) {
+                      body += '\nEmail: ${widget.resource.link!}';
+                    }
+
+                    if (widget.resource.voice != null) {
+                      body += '\nPhone: ${widget.resource.voice!}';
+                    }
+
+                    if (widget.resource.sms != null) {
+                      body += '\nText Message: ${widget.resource.sms!}';
+                    }
+
+                    UrlHelper.sendEmail(subject, body);
+                  },
+                  icon: const Icon(Icons.send),
+                  color: Theme.of(context).primaryColor,
+                )
               ],
             )
           else
