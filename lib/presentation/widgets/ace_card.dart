@@ -10,7 +10,6 @@ class AceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 3.0,
-      //margin: const EdgeInsets.all(16.0),
       clipBehavior: Clip.antiAlias,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,7 +37,6 @@ class AceCard extends StatelessWidget {
                   foregroundColor: Colors.blue,
                   child: Icon(
                     FontAwesomeIcons.question,
-                    // color: Colors.blue,
                   ),
                 ),
               ),
@@ -68,7 +66,6 @@ class AceCard extends StatelessWidget {
                   foregroundColor: Colors.red,
                   child: Icon(
                     FontAwesomeIcons.handHoldingHeart,
-                    // color: Colors.blue,
                   ),
                 ),
               ),
@@ -100,7 +97,6 @@ class AceCard extends StatelessWidget {
                     foregroundColor: Colors.green,
                     child: Icon(
                       FontAwesomeIcons.peoplePulling,
-                      // color: Colors.blue,
                     ),
                   ),
                 ),

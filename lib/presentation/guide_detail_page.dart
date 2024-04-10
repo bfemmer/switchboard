@@ -60,4 +60,3 @@ class _GuideDetailPageState extends State<GuideDetailPage> {
         )));
   }
 }
-//if (widget.guide.signs != null)

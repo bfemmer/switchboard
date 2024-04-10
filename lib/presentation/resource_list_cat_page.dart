@@ -6,6 +6,7 @@ import '../model/category.dart';
 import '../model/resource.dart';
 import '../repository/resource_repository.dart';
 import '../repository/sqlite/sqlite_resource_repository.dart';
+import '../utility/url_helper.dart';
 import 'resource_list_mobile_view.dart';
 import 'resource_list_tablet_view.dart';
 
@@ -26,7 +27,44 @@ class ResourceListCatPageState extends State<ResourceListCatPage> {
     var screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: AppBar(title: Text(widget.category.name!)),
+      appBar: AppBar(
+        title: Text(widget.category.name!),
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.send,
+              color: Theme.of(context).primaryColorLight,
+            ),
+            onPressed: () {
+              String subject =
+                  'Resilience Resources - ${widget.category.name!}';
+              String body = '';
+
+              for (var i = 0; i < resources.length; i++) {
+                body += '${resources[i].name!}\n\n';
+
+                body += '${resources[i].description!}\n';
+
+                if (resources[i].link != null) {
+                  body += '\nWeb: ${resources[i].link!}';
+                }
+
+                if (resources[i].voice != null) {
+                  body += '\nPhone: ${resources[i].voice!}';
+                }
+
+                if (resources[i].sms != null) {
+                  body += '\nText Message: ${resources[i].sms!}';
+                }
+
+                body += '\n\n --- \n\n';
+              }
+
+              UrlHelper.sendEmail(subject, body);
+            },
+          )
+        ],
+      ),
       body: FutureBuilder<List<Resource>>(
         future: getResources(),
         builder: (context, snapshot) {
