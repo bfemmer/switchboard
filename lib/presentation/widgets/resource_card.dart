@@ -91,7 +91,7 @@ class _ResourceCardState extends State<ResourceCard> {
                     String body = '${widget.resource.description!}\n';
 
                     if (widget.resource.link != null) {
-                      body += '\nEmail: ${widget.resource.link!}';
+                      body += '\nWeb: ${widget.resource.link!}';
                     }
 
                     if (widget.resource.voice != null) {

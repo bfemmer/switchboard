@@ -32,8 +32,10 @@ class ResourceListCatPageState extends State<ResourceListCatPage> {
         actions: [
           IconButton(
             icon: Icon(
-              Icons.send,
-              color: Theme.of(context).primaryColorLight,
+              Theme.of(context).platform == TargetPlatform.iOS
+                  ? Icons.ios_share
+                  : Icons.share,
+              //color: Theme.of(context).primaryColorLight,
             ),
             onPressed: () {
               String subject =
