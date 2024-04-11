@@ -10,6 +10,7 @@ import 'package:switchboard/presentation/skill_list_page.dart';
 
 import '../core/app_theme.dart';
 import '../utility/resilience_search_delegate.dart';
+import '../utility/url_helper.dart';
 import 'app_list_page.dart';
 import 'emergency_page.dart';
 import 'faq_page.dart';
@@ -118,7 +119,7 @@ class _MainPageState extends State<MainPage> {
                   },
                 ),
                 ListTile(
-                  title: const Text('Guides'),
+                  title: const Text('Quick Guides'),
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -127,12 +128,19 @@ class _MainPageState extends State<MainPage> {
                   },
                 ),
                 ListTile(
-                  title: const Text('AFRC Units'),
+                  title: const Text('AFRC Units / Map'),
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
                       return const UnitListPage();
                     }));
+                  },
+                ),
+                ListTile(
+                  title: const Text('Connect the Network Guide'),
+                  onTap: () {
+                    UrlHelper.launchBrowser(
+                        'https://www.afrc.af.mil/Portals/87/AFRC%20ConnectTheNetwork_2024_1.pdf');
                   },
                 ),
                 ListTile(
