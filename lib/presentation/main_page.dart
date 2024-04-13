@@ -14,7 +14,6 @@ import '../utility/url_helper.dart';
 import 'app_list_page.dart';
 import 'emergency_page.dart';
 import 'faq_page.dart';
-import 'map_page.dart';
 import 'unit_list_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -47,182 +46,185 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Consumer<AppTheme>(
         builder: (context, AppTheme themeNotifier, child) {
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text('Resiliency Switchboard'),
-          actions: [
-            IconButton(
-              onPressed: () {
-                themeNotifier.isDark
-                    ? themeNotifier.isDark = false
-                    : themeNotifier.isDark = true;
-              },
-              icon: Icon(themeNotifier.isDark
-                  ? Icons.nightlight_round
-                  : Icons.wb_sunny),
-            ),
-            IconButton(
-              onPressed: () {
-                // method to show the search bar
-                showSearch(
-                    context: context,
-                    // delegate to customize the search bar
-                    delegate: ResilienceSearchDelegate());
-              },
-              icon: const Icon(Icons.search),
-            )
-          ],
-        ),
-        drawer: SafeArea(
-          child: Drawer(
-            child: ListView(
-              // Important: Remove any padding from the ListView.
-              padding: EdgeInsets.zero,
-              children: <Widget>[
-                const DrawerHeader(
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/operators.png'),
-                      fit: BoxFit.cover,
+      return PopScope(
+        canPop: false,
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text('Resiliency Switchboard'),
+            actions: [
+              IconButton(
+                onPressed: () {
+                  themeNotifier.isDark
+                      ? themeNotifier.isDark = false
+                      : themeNotifier.isDark = true;
+                },
+                icon: Icon(themeNotifier.isDark
+                    ? Icons.nightlight_round
+                    : Icons.wb_sunny),
+              ),
+              IconButton(
+                onPressed: () {
+                  // method to show the search bar
+                  showSearch(
+                      context: context,
+                      // delegate to customize the search bar
+                      delegate: ResilienceSearchDelegate());
+                },
+                icon: const Icon(Icons.search),
+              )
+            ],
+          ),
+          drawer: SafeArea(
+            child: Drawer(
+              child: ListView(
+                // Important: Remove any padding from the ListView.
+                padding: EdgeInsets.zero,
+                children: <Widget>[
+                  const DrawerHeader(
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/operators.png'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: Text(
+                      'Switchboard',
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
-                  child: Text(
-                    'Switchboard',
-                    style: TextStyle(color: Colors.white),
+                  ListTile(
+                    title: const Text('Browse Resources'),
+                    leading: Icon(
+                      FontAwesomeIcons.arrowDownAZ,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const ResourceListPage();
+                      }));
+                    },
                   ),
-                ),
-                ListTile(
-                  title: const Text('Browse Resources'),
-                  leading: Icon(
-                    FontAwesomeIcons.arrowDownAZ,
-                    color: Theme.of(context).primaryColor,
+                  ListTile(
+                    title: const Text('Helpful Apps'),
+                    leading: Icon(
+                      Icons.apps,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const AppListPage();
+                      }));
+                    },
                   ),
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return const ResourceListPage();
-                    }));
-                  },
-                ),
-                ListTile(
-                  title: const Text('Helpful Apps'),
-                  leading: Icon(
-                    Icons.apps,
-                    color: Theme.of(context).primaryColor,
+                  ListTile(
+                    title: const Text('Resilience Skills'),
+                    leading: Icon(
+                      Icons.business_center,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const SkillListPage();
+                      }));
+                    },
                   ),
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return const AppListPage();
-                    }));
-                  },
-                ),
-                ListTile(
-                  title: const Text('Resilience Skills'),
-                  leading: Icon(
-                    Icons.business_center,
-                    color: Theme.of(context).primaryColor,
+                  ListTile(
+                    title: const Text('Quick Guides'),
+                    leading: Icon(
+                      Icons.collections_bookmark,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const GuidesListPage();
+                      }));
+                    },
                   ),
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return const SkillListPage();
-                    }));
-                  },
-                ),
-                ListTile(
-                  title: const Text('Quick Guides'),
-                  leading: Icon(
-                    Icons.collections_bookmark,
-                    color: Theme.of(context).primaryColor,
+                  ListTile(
+                    title: const Text('AFRC Units (List/Map)'),
+                    leading: Icon(
+                      Icons.map,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const UnitListPage();
+                      }));
+                    },
                   ),
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return const GuidesListPage();
-                    }));
-                  },
-                ),
-                ListTile(
-                  title: const Text('AFRC Units (List/Map)'),
-                  leading: Icon(
-                    Icons.map,
-                    color: Theme.of(context).primaryColor,
+                  ListTile(
+                    title: const Text('Connect the Network Guide'),
+                    leading: Icon(
+                      Icons.download,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    onTap: () {
+                      UrlHelper.launchBrowser(
+                          'https://www.afrc.af.mil/Portals/87/AFRC%20ConnectTheNetwork_2024_1.pdf');
+                    },
                   ),
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return const UnitListPage();
-                    }));
-                  },
-                ),
-                ListTile(
-                  title: const Text('Connect the Network Guide'),
-                  leading: Icon(
-                    Icons.download,
-                    color: Theme.of(context).primaryColor,
+                  ListTile(
+                    title: const Text('Frequently Asked Questions'),
+                    leading: Icon(
+                      Icons.question_mark,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const FaqPage();
+                      }));
+                    },
                   ),
-                  onTap: () {
-                    UrlHelper.launchBrowser(
-                        'https://www.afrc.af.mil/Portals/87/AFRC%20ConnectTheNetwork_2024_1.pdf');
-                  },
-                ),
-                ListTile(
-                  title: const Text('Frequently Asked Questions'),
-                  leading: Icon(
-                    Icons.question_mark,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return const FaqPage();
-                    }));
-                  },
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-        body: SafeArea(child: _widgetOptions.elementAt(_selectedIndex)),
-        bottomNavigationBar: BottomNavigationBar(
-          showUnselectedLabels: true,
-          type: BottomNavigationBarType.fixed,
-          key: const Key('navBar'), // used for testing
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-                key: Key('home'),
+          body: SafeArea(child: _widgetOptions.elementAt(_selectedIndex)),
+          bottomNavigationBar: BottomNavigationBar(
+            showUnselectedLabels: true,
+            type: BottomNavigationBarType.fixed,
+            key: const Key('navBar'), // used for testing
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
+                  key: Key('home'),
+                ),
+                label: 'Home',
               ),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.category,
-                key: Key('categories'),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.category,
+                  key: Key('categories'),
+                ),
+                label: 'Categories',
               ),
-              label: 'Categories',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                FontAwesomeIcons.phone,
-                key: Key('hotlines'),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  FontAwesomeIcons.phone,
+                  key: Key('hotlines'),
+                ),
+                label: 'Hotlines',
               ),
-              label: 'Hotlines',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.emergency,
-                key: Key('emergency'),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.emergency,
+                  key: Key('emergency'),
+                ),
+                label: 'Emergency',
               ),
-              label: 'Emergency',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
-          onTap: _onItemTapped,
+            ],
+            currentIndex: _selectedIndex,
+            selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+            onTap: _onItemTapped,
+          ),
         ),
       );
     });
