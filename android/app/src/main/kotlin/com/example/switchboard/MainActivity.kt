@@ -1,4 +1,4 @@
-package com.example.switchboard
+package com.bfemmer.switchboard
 
 import io.flutter.embedding.android.FlutterActivity
 
