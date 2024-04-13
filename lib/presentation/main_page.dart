@@ -14,6 +14,7 @@ import '../utility/url_helper.dart';
 import 'app_list_page.dart';
 import 'emergency_page.dart';
 import 'faq_page.dart';
+import 'map_page.dart';
 import 'unit_list_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -29,7 +30,7 @@ class _MainPageState extends State<MainPage> {
     HomePage(),
     CategoryListPage(),
     HotlineListPage(),
-    ResourceListPage(),
+    EmergencyPage(),
   ];
 
   int getIndex() {
@@ -92,16 +93,24 @@ class _MainPageState extends State<MainPage> {
                   ),
                 ),
                 ListTile(
-                  title: const Text('Emergency'),
+                  title: const Text('Browse Resources'),
+                  leading: Icon(
+                    FontAwesomeIcons.arrowDownAZ,
+                    color: Theme.of(context).primaryColor,
+                  ),
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return const EmergencyPage();
+                      return const ResourceListPage();
                     }));
                   },
                 ),
                 ListTile(
-                  title: const Text('Apps'),
+                  title: const Text('Helpful Apps'),
+                  leading: Icon(
+                    Icons.apps,
+                    color: Theme.of(context).primaryColor,
+                  ),
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -110,7 +119,11 @@ class _MainPageState extends State<MainPage> {
                   },
                 ),
                 ListTile(
-                  title: const Text('Skills'),
+                  title: const Text('Resilience Skills'),
+                  leading: Icon(
+                    Icons.business_center,
+                    color: Theme.of(context).primaryColor,
+                  ),
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -120,6 +133,10 @@ class _MainPageState extends State<MainPage> {
                 ),
                 ListTile(
                   title: const Text('Quick Guides'),
+                  leading: Icon(
+                    Icons.collections_bookmark,
+                    color: Theme.of(context).primaryColor,
+                  ),
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -128,7 +145,11 @@ class _MainPageState extends State<MainPage> {
                   },
                 ),
                 ListTile(
-                  title: const Text('AFRC Units / Map'),
+                  title: const Text('AFRC Units (List/Map)'),
+                  leading: Icon(
+                    Icons.map,
+                    color: Theme.of(context).primaryColor,
+                  ),
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -138,6 +159,10 @@ class _MainPageState extends State<MainPage> {
                 ),
                 ListTile(
                   title: const Text('Connect the Network Guide'),
+                  leading: Icon(
+                    Icons.download,
+                    color: Theme.of(context).primaryColor,
+                  ),
                   onTap: () {
                     UrlHelper.launchBrowser(
                         'https://www.afrc.af.mil/Portals/87/AFRC%20ConnectTheNetwork_2024_1.pdf');
@@ -145,6 +170,10 @@ class _MainPageState extends State<MainPage> {
                 ),
                 ListTile(
                   title: const Text('Frequently Asked Questions'),
+                  leading: Icon(
+                    Icons.question_mark,
+                    color: Theme.of(context).primaryColor,
+                  ),
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -185,10 +214,10 @@ class _MainPageState extends State<MainPage> {
             ),
             BottomNavigationBarItem(
               icon: Icon(
-                FontAwesomeIcons.arrowDownAZ,
-                key: Key('browse'),
+                Icons.emergency,
+                key: Key('emergency'),
               ),
-              label: 'Browse',
+              label: 'Emergency',
             ),
           ],
           currentIndex: _selectedIndex,

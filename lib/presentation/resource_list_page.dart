@@ -23,6 +23,7 @@ class ResourceListPageState extends State<ResourceListPage> {
     var screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
+      appBar: AppBar(title: const Text('Browse Resources')),
       body: FutureBuilder<List<Resource>>(
         future: getResources(),
         builder: (context, snapshot) {

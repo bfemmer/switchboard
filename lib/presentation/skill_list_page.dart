@@ -23,7 +23,7 @@ class SkillListPageState extends State<SkillListPage> {
     var screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Resiliency Skills')),
+      appBar: AppBar(title: const Text('Resilience Skills')),
       body: SafeArea(
         child: FutureBuilder<List<Skill>>(
           future: _getSkills(),

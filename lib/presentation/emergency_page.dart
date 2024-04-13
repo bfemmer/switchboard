@@ -16,57 +16,56 @@ class _EmergencyPageState extends State<EmergencyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Emergency Information')),
         body: SafeArea(
-          child: ListView(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Card(
-                  elevation: 3.0,
-                  child: ListTile(
-                    title: const Text('Sexual Assault Help'),
-                    leading: FaIcon(
-                      FaHelper.getIconFromName('ribbon'),
-                      color: Colors.teal,
-                    ),
-                    onTap: () {
-                      UrlHelper.makePhoneCall('8779955247');
-                    },
-                    trailing: const Icon(
-                      Icons.phone,
-                      color: Colors.teal,
-                    ),
-                  ),
+      child: ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Card(
+              elevation: 3.0,
+              child: ListTile(
+                title: const Text('Sexual Assault Help'),
+                leading: FaIcon(
+                  FaHelper.getIconFromName('ribbon'),
+                  color: Colors.teal,
+                ),
+                onTap: () {
+                  UrlHelper.makePhoneCall('8779955247');
+                },
+                trailing: const Icon(
+                  Icons.phone,
+                  color: Colors.teal,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 10.0, right: 10.0, bottom: 10.0),
-                child: Card(
-                  elevation: 3.0,
-                  child: ListTile(
-                    title: const Text('Military Crisis Line'),
-                    leading: FaIcon(
-                      FaHelper.getIconFromName('crisis'),
-                      color: Colors.red,
-                    ),
-                    trailing: const Icon(
-                      Icons.phone,
-                      color: Colors.red,
-                    ),
-                    onTap: () {
-                      UrlHelper.makePhoneCall('8002738255');
-                    },
-                  ),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
-                child: AceCard(),
-              ),
-            ],
+            ),
           ),
-        ));
+          Padding(
+            padding:
+                const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+            child: Card(
+              elevation: 3.0,
+              child: ListTile(
+                title: const Text('Military Crisis Line'),
+                leading: FaIcon(
+                  FaHelper.getIconFromName('crisis'),
+                  color: Colors.red,
+                ),
+                trailing: const Icon(
+                  Icons.phone,
+                  color: Colors.red,
+                ),
+                onTap: () {
+                  UrlHelper.makePhoneCall('8002738255');
+                },
+              ),
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+            child: AceCard(),
+          ),
+        ],
+      ),
+    ));
   }
 }

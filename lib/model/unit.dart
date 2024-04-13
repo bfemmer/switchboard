@@ -4,6 +4,8 @@ class Unit {
   String? base;
   String? state;
   String? link;
+  double? lat;
+  double? long;
 
   Unit({this.base, this.id, this.link, this.name, this.state});
 
@@ -13,6 +15,8 @@ class Unit {
     link = json['link'];
     name = json['name'];
     state = json['state'];
+    lat = json['lat'];
+    long = json['long'];
   }
 
   Map<String, dynamic> toJson() {
@@ -22,6 +26,8 @@ class Unit {
     data['link'] = link;
     data['name'] = name;
     data['state'] = state;
+    data['lat'] = lat;
+    data['long'] = long;
     return data;
   }
 }

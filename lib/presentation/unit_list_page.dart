@@ -4,6 +4,7 @@ import 'package:switchboard/model/unit.dart';
 import '../constants.dart';
 import '../repository/resource_repository.dart';
 import '../repository/sqlite/sqlite_resource_repository.dart';
+import 'map_page.dart';
 import 'unit_list_desktop_view.dart';
 import 'unit_list_mobile_view.dart';
 import 'unit_list_tablet_view.dart';
@@ -25,6 +26,15 @@ class UnitListPageState extends State<UnitListPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('AFRC Units'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const MapPage();
+                }));
+              },
+              icon: const Icon(Icons.map))
+        ],
       ),
       body: SafeArea(
         child: FutureBuilder<List<Unit>>(
