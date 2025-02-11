@@ -35,7 +35,6 @@ class ResourceListCatPageState extends State<ResourceListCatPage> {
               Theme.of(context).platform == TargetPlatform.iOS
                   ? Icons.ios_share
                   : Icons.share,
-              //color: Theme.of(context).primaryColorLight,
             ),
             onPressed: () {
               String subject =

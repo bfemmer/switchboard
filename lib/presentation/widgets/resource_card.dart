@@ -83,7 +83,7 @@ class _ResourceCardState extends State<ResourceCard> {
                         : Container(),
                   ],
                 ),
-                const Spacer(),
+                //const Spacer(),
                 IconButton(
                   onPressed: () {
                     String subject =
