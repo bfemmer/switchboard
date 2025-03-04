@@ -7,6 +7,7 @@ class Resource {
   String? link;
   String? voice;
   String? sms;
+  String? video;
   String? icon;
   String? image;
 
@@ -17,6 +18,7 @@ class Resource {
       this.link,
       this.voice,
       this.sms,
+      this.video,
       this.name,
       this.type,
       this.icon,
@@ -31,6 +33,7 @@ class Resource {
     link = json['link'];
     voice = json['voice'];
     sms = json['sms'];
+    video = json['video'];
     icon = json['icon'];
     image = json['image'];
   }
@@ -46,6 +49,7 @@ class Resource {
     data['link'] = link;
     data['voice'] = voice;
     data['sms'] = sms;
+    data['video'] = video;
     data['icon'] = icon;
     data['image'] = image;
     return data;
