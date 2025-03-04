@@ -35,7 +35,10 @@ class _ResourceCardState extends State<ResourceCard> {
             ),
           ),
           Container(
-            color: Theme.of(context).secondaryHeaderColor.withOpacity(0.5),
+            color: Theme.of(context)
+                .secondaryHeaderColor
+                .withValues()
+                .withAlpha(128),
             child: Row(
               children: [
                 Flexible(
@@ -63,6 +66,15 @@ class _ResourceCardState extends State<ResourceCard> {
                         'Learn more',
                       ),
                     ),
+                    widget.resource.video != null
+                        ? IconButton(
+                            onPressed: () {
+                              UrlHelper.launchBrowser(widget.resource.video!);
+                            },
+                            icon: const FaIcon(FontAwesomeIcons.video),
+                            color: Theme.of(context).primaryColor,
+                          )
+                        : Container(),
                     widget.resource.voice != null
                         ? IconButton(
                             onPressed: () {

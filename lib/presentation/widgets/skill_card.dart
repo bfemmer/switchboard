@@ -35,7 +35,10 @@ class _SkillCardState extends State<SkillCard> {
             title: Text(widget.skill.skill!),
           ),
           Container(
-            color: Theme.of(context).secondaryHeaderColor.withOpacity(0.5),
+            color: Theme.of(context)
+                .secondaryHeaderColor
+                .withValues()
+                .withAlpha(128),
             child: Row(
               children: [
                 Flexible(

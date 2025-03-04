@@ -32,8 +32,9 @@ class _AboutPageState extends State<AboutPage> {
                         title: const Text('Switchboard By The Numbers'),
                         subtitle: Text(
                           'This version provides access to ...',
-                          style:
-                              TextStyle(color: Colors.black.withOpacity(0.6)),
+                          style: TextStyle(
+                            color: Colors.black.withValues().withAlpha(153),
+                          ),
                         ),
                       ),
                       Row(
