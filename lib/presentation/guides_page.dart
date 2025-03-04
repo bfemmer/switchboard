@@ -37,8 +37,10 @@ class _GuidesPageState extends State<GuidesPage> {
                     ),
                   ),
                   Container(
-                    color:
-                        Theme.of(context).secondaryHeaderColor.withOpacity(0.5),
+                    color: Theme.of(context)
+                        .secondaryHeaderColor
+                        .withValues()
+                        .withAlpha(128),
                     child: const Row(
                       children: [
                         Flexible(

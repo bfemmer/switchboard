@@ -53,7 +53,7 @@ class _ResourceCardState extends State<ResourceCard> {
             ),
           ),
           if (widget.resource.link != null)
-            ButtonBar(
+            OverflowBar(
               alignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(

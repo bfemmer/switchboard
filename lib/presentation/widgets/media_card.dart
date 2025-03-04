@@ -58,7 +58,7 @@ class _MediaCardState extends State<MediaCard> {
             ),
           ),
           if (widget.linkUrl != null)
-            ButtonBar(
+            OverflowBar(
               alignment: MainAxisAlignment.start,
               children: [
                 TextButton(
