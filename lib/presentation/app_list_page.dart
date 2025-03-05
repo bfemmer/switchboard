@@ -49,7 +49,7 @@ class AppListPageState extends State<AppListPage> {
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(app.description!),
                                   ),
-                                  ButtonBar(
+                                  OverflowBar(
                                     alignment: MainAxisAlignment.start,
                                     children: [
                                       TextButton(
