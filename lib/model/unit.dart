@@ -4,15 +4,17 @@ class Unit {
   String? base;
   String? state;
   String? link;
+  String? facebook;
   double? lat;
   double? long;
 
-  Unit({this.base, this.id, this.link, this.name, this.state});
+  Unit({this.base, this.id, this.link, this.facebook, this.name, this.state});
 
   Unit.fromJson(Map<String, dynamic> json) {
     base = json['base'];
     id = json['id'];
     link = json['link'];
+    facebook = json['facebook'];
     name = json['name'];
     state = json['state'];
     lat = json['lat'];
@@ -24,6 +26,7 @@ class Unit {
     data['base'] = base;
     data['id'] = id;
     data['link'] = link;
+    data['facebook'] = facebook;
     data['name'] = name;
     data['state'] = state;
     data['lat'] = lat;

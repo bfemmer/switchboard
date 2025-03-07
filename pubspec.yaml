@@ -47,6 +47,7 @@ dependencies:
   shared_preferences: ^2.2.2
   google_maps_flutter: ^2.6.0
   skeletonizer: ^1.1.1
+  settings_ui: ^2.0.2
 
 dev_dependencies:
   flutter_test:
@@ -90,6 +91,7 @@ flutter:
     - assets/images/military_onesource_app_icon.jpeg
     - assets/images/breathe2relax_app_icon.jpeg
     - assets/images/covidcoach_app_icon.jpeg
+    - assets/images/kinderspot_app_icon.jpeg
     - assets/images/usaf_roundel.png
     - assets/images/resilience.png
     - assets/images/network_alpha.png
