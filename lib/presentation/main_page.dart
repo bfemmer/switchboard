@@ -94,6 +94,19 @@ class _MainPageState extends State<MainPage> {
                     ),
                   ),
                   ListTile(
+                    title: const Text('Profile'),
+                    leading: Icon(
+                      FontAwesomeIcons.user,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const ResourceListPage();
+                      }));
+                    },
+                  ),
+                  ListTile(
                     title: const Text('Browse Resources'),
                     leading: Icon(
                       FontAwesomeIcons.arrowDownAZ,
