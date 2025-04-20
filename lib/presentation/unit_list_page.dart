@@ -26,15 +26,15 @@ class UnitListPageState extends State<UnitListPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('AFRC Units'),
-        actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return const MapPage();
-                }));
-              },
-              icon: const Icon(Icons.map))
-        ],
+        // actions: [
+        //   IconButton(
+        //       onPressed: () {
+        //         Navigator.push(context, MaterialPageRoute(builder: (context) {
+        //           return const MapPage();
+        //         }));
+        //       },
+        //       icon: const Icon(Icons.map))
+        // ],
       ),
       body: SafeArea(
         child: FutureBuilder<List<Unit>>(
