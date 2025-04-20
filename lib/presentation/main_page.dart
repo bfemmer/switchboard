@@ -50,7 +50,7 @@ class _MainPageState extends State<MainPage> {
         canPop: false,
         child: Scaffold(
           appBar: AppBar(
-            title: const Text('Resiliency Switchboard'),
+            title: const Text('Switchboard'),
             actions: [
               IconButton(
                 onPressed: () {
@@ -93,19 +93,19 @@ class _MainPageState extends State<MainPage> {
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
-                  ListTile(
-                    title: const Text('Profile'),
-                    leading: Icon(
-                      FontAwesomeIcons.user,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return const ResourceListPage();
-                      }));
-                    },
-                  ),
+                  // ListTile(
+                  //   title: const Text('Profile'),
+                  //   leading: Icon(
+                  //     FontAwesomeIcons.user,
+                  //     color: Theme.of(context).primaryColor,
+                  //   ),
+                  //   onTap: () {
+                  //     Navigator.push(context,
+                  //         MaterialPageRoute(builder: (context) {
+                  //       return const ResourceListPage();
+                  //     }));
+                  //   },
+                  // ),
                   ListTile(
                     title: const Text('Browse Resources'),
                     leading: Icon(
@@ -159,7 +159,7 @@ class _MainPageState extends State<MainPage> {
                     },
                   ),
                   ListTile(
-                    title: const Text('AFRC Units (List/Map)'),
+                    title: const Text('AFRC Units'),
                     leading: Icon(
                       Icons.map,
                       color: Theme.of(context).primaryColor,
