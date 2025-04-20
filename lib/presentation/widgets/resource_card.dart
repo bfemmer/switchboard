@@ -71,7 +71,7 @@ class _ResourceCardState extends State<ResourceCard> {
                             onPressed: () {
                               UrlHelper.launchBrowser(widget.resource.video!);
                             },
-                            icon: const FaIcon(FontAwesomeIcons.video),
+                            icon: const FaIcon(FontAwesomeIcons.youtube),
                             color: Theme.of(context).primaryColor,
                           )
                         : Container(),
@@ -93,32 +93,60 @@ class _ResourceCardState extends State<ResourceCard> {
                             color: Theme.of(context).primaryColor,
                           )
                         : Container(),
+                    const Spacer(),
+                    IconButton(
+                      onPressed: () {
+                        String subject =
+                            'Resilience Resource - ${widget.resource.name!}';
+                        String body = '${widget.resource.description!}\n';
+
+                        if (widget.resource.link != null) {
+                          body += '\nWeb: ${widget.resource.link!}';
+                        }
+
+                        if (widget.resource.video != null) {
+                          body += '\nVideo: ${widget.resource.video!}';
+                        }
+
+                        if (widget.resource.voice != null) {
+                          body += '\nPhone: ${widget.resource.voice!}';
+                        }
+
+                        if (widget.resource.sms != null) {
+                          body += '\nText Message: ${widget.resource.sms!}';
+                        }
+
+                        UrlHelper.sendEmail(subject, body);
+                      },
+                      icon: const Icon(Icons.send),
+                      color: Theme.of(context).primaryColor,
+                    )
                   ],
                 ),
-                //const Spacer(),
-                IconButton(
-                  onPressed: () {
-                    String subject =
-                        'Resilience Resource - ${widget.resource.name!}';
-                    String body = '${widget.resource.description!}\n';
+                // //const Spacer(),
+                // IconButton(
+                //   onPressed: () {
+                //     String subject =
+                //         'Resilience Resource - ${widget.resource.name!}';
+                //     String body = '${widget.resource.description!}\n';
 
-                    if (widget.resource.link != null) {
-                      body += '\nWeb: ${widget.resource.link!}';
-                    }
+                //     if (widget.resource.link != null) {
+                //       body += '\nWeb: ${widget.resource.link!}';
+                //     }
 
-                    if (widget.resource.voice != null) {
-                      body += '\nPhone: ${widget.resource.voice!}';
-                    }
+                //     if (widget.resource.voice != null) {
+                //       body += '\nPhone: ${widget.resource.voice!}';
+                //     }
 
-                    if (widget.resource.sms != null) {
-                      body += '\nText Message: ${widget.resource.sms!}';
-                    }
+                //     if (widget.resource.sms != null) {
+                //       body += '\nText Message: ${widget.resource.sms!}';
+                //     }
 
-                    UrlHelper.sendEmail(subject, body);
-                  },
-                  icon: const Icon(Icons.send),
-                  color: Theme.of(context).primaryColor,
-                )
+                //     UrlHelper.sendEmail(subject, body);
+                //   },
+                //   icon: const Icon(Icons.send),
+                //   color: Theme.of(context).primaryColor,
+                // )
               ],
             )
           else
