@@ -179,7 +179,7 @@ class _MainPageState extends State<MainPage> {
                     ),
                     onTap: () {
                       UrlHelper.launchBrowser(
-                          'https://www.afrc.af.mil/Portals/87/AFRC%20ConnectTheNetwork_2024_1.pdf');
+                          'https://billfemmer.gitlab.io/switchboard-support/Connect_the_Network_Guide_March2025.pdf');
                     },
                   ),
                   ListTile(
