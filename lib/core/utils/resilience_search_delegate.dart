@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:switchboard/dependencies.dart';
 import 'package:switchboard/features/resources/data/models/category.dart';
 import 'package:switchboard/features/resources/data/models/resource.dart';
 import 'package:switchboard/features/search/data/models/suggestion.dart';
+import 'package:switchboard/features/units/presentation/viewmodels/unit_viewmodel.dart';
 
-import '../../features/apps/presentation/views/app_list_page.dart';
 import '../../features/resources/presentation/views/resource_detail_page.dart';
 import '../../features/resources/presentation/views/resource_list_cat_page.dart';
 import '../../features/units/presentation/views/unit_list_page.dart';
@@ -102,7 +103,10 @@ class ResilienceSearchDelegate extends SearchDelegate {
     );
   }
 
-  _processSearchRequest(BuildContext context, String result) async {
+  Future<void> _processSearchRequest(
+    BuildContext context,
+    String result,
+  ) async {
     final navigator = Navigator.of(context);
 
     Category? category = await _getCategoryByName(result);
@@ -135,7 +139,7 @@ class ResilienceSearchDelegate extends SearchDelegate {
       navigator.push(
         MaterialPageRoute(
           builder: (context) {
-            return const UnitListPage();
+            return UnitListPage(viewmodel: serviceLocator<UnitViewModel>());
           },
         ),
       );
@@ -143,13 +147,13 @@ class ResilienceSearchDelegate extends SearchDelegate {
 
     // Check if Mobile Apps
     if (result == "Mobile Apps") {
-      navigator.push(
-        MaterialPageRoute(
-          builder: (context) {
-            return const AppListPage();
-          },
-        ),
-      );
+      // navigator.push(
+      //   MaterialPageRoute(
+      //     builder: (context) {
+      //       return const AppListPage();
+      //     },
+      //   ),
+      // );
     }
   }
 

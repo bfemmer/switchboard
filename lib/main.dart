@@ -1,11 +1,12 @@
+import 'package:switchboard/core/app_theme.dart';
+import 'package:switchboard/core/router/app_router.dart';
+import 'package:switchboard/dependencies.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'core/app_theme.dart';
-import 'features/home/presentation/views/main_page.dart';
-
-void main() {
+void main() async {
+  await initDependencies();
   runApp(const SwitchboardApp());
 }
 
@@ -18,14 +19,13 @@ class SwitchboardApp extends StatelessWidget {
       create: (_) => AppTheme(),
       child: Consumer<AppTheme>(
         builder: (context, AppTheme themeNotifier, child) {
-          return MaterialApp(
+          return MaterialApp.router(
             debugShowCheckedModeBanner: false,
             title: 'Switchboard',
             theme: FlexThemeData.light(scheme: FlexScheme.blueM3),
             darkTheme: FlexThemeData.dark(scheme: FlexScheme.blueM3),
-            // Use dark or light theme based on preferences
             themeMode: themeNotifier.isDark ? ThemeMode.dark : ThemeMode.light,
-            home: const MainPage(),
+            routerConfig: AppRouter.router,
           );
         },
       ),

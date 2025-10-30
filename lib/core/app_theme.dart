@@ -19,7 +19,7 @@ class AppTheme extends ChangeNotifier {
     notifyListeners();
   }
 
-  getPreferences() async {
+  Future<void> getPreferences() async {
     _isDark = await _preferences.getTheme();
     notifyListeners();
   }

@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:switchboard/features/units/data/models/unit.dart';
-
-import '../../../../constants.dart';
-import '../../../../repository/resource_repository.dart';
-import '../../../../repository/sqlite/sqlite_resource_repository.dart';
-import 'map_page.dart';
-import 'unit_list_desktop_view.dart';
-import 'unit_list_mobile_view.dart';
-import 'unit_list_tablet_view.dart';
+import 'package:switchboard/constants.dart';
+import 'package:switchboard/features/units/presentation/viewmodels/unit_viewmodel.dart';
+import 'package:switchboard/features/units/presentation/views/unit_list_desktop_view.dart';
+import 'package:switchboard/features/units/presentation/views/unit_list_mobile_view.dart';
+import 'package:switchboard/features/units/presentation/views/unit_list_tablet_view.dart';
 
 class UnitListPage extends StatefulWidget {
-  const UnitListPage({super.key});
+  const UnitListPage({super.key, required this.viewmodel});
+  final UnitViewModel viewmodel;
+  static String route() => "/units";
 
   @override
   UnitListPageState createState() => UnitListPageState();
 }
 
 class UnitListPageState extends State<UnitListPage> {
-  late List<Unit> units;
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    widget.viewmodel.load.execute();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,32 +44,17 @@ class UnitListPageState extends State<UnitListPage> {
         // ],
       ),
       body: SafeArea(
-        child: FutureBuilder<List<Unit>>(
-          future: getUnits(),
-          builder: (context, snapshot) {
-            if (!snapshot.hasData) {
-              return const Center(child: CircularProgressIndicator());
-            }
-            if (!snapshot.hasData) {
-              return const Center(child: CircularProgressIndicator());
-            }
-            if (screenSize.width < breakpointSmall) {
-              return UnitListMobileView(units: units);
-            } else if (screenSize.width < breakpointMedium) {
-              return UnitListTabletView(units: units);
-            } else {
-              return UnitListDesktopView(units: units);
-            }
+        child: ListenableBuilder(
+          listenable: widget.viewmodel.load,
+          builder: (context, _) {
+            return screenSize.width < breakpointSmall
+                ? UnitListMobileView(units: widget.viewmodel.units)
+                : screenSize.width < breakpointMedium
+                ? UnitListTabletView(units: widget.viewmodel.units)
+                : UnitListDesktopView(units: widget.viewmodel.units);
           },
         ),
       ),
     );
-  }
-
-  Future<List<Unit>> getUnits() async {
-    ResourceRepository repository = SqliteResourceRepository();
-
-    units = await repository.getUnits();
-    return units;
   }
 }

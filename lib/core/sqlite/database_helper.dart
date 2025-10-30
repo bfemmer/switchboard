@@ -22,7 +22,7 @@ class DatabaseHelper {
   }
 
   // this opens the database (and creates it if it doesn't exist)
-  _initDatabase() async {
+  Future<Database> _initDatabase() async {
     var databasesPath = await getDatabasesPath();
     var path = p.join(databasesPath, _databaseName);
 
@@ -32,10 +32,13 @@ class DatabaseHelper {
     // Only copy if the database doesn't exist
     if (FileSystemEntity.typeSync(path) == FileSystemEntityType.notFound) {
       // Copy from asset
-      ByteData data =
-          await rootBundle.load(p.join("assets/databases", _databaseName));
-      List<int> bytes =
-          data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+      ByteData data = await rootBundle.load(
+        p.join("assets/databases", _databaseName),
+      );
+      List<int> bytes = data.buffer.asUint8List(
+        data.offsetInBytes,
+        data.lengthInBytes,
+      );
       await File(path).writeAsBytes(bytes);
     }
 

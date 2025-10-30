@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:switchboard/features/feed/data/models/feed.dart';
-
-import '../../../resources/presentation/widgets/media_card.dart';
+import 'package:switchboard/features/resources/presentation/widgets/media_card.dart';
 
 class HomeMobileView extends StatefulWidget {
   const HomeMobileView({required this.feed, super.key});
@@ -26,8 +25,10 @@ class _HomeMobileViewState extends State<HomeMobileView> {
                 title: widget.feed[index].title!,
                 subTitle: widget.feed[index].subtitle!,
                 description: widget.feed[index].description!,
-                linkUrl: widget.feed[index].linkUrl,
-                imageUrl: widget.feed[index].imageUrl!,
+                linkUrl: null,
+                imageUrl: 'assets/images/operators.png',
+                // linkUrl: widget.feed[index].linkUrl,
+                // imageUrl: widget.feed[index].imageUrl!,
               ),
             );
           },

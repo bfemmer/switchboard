@@ -1,23 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:switchboard/core/app_theme.dart';
+import 'package:switchboard/core/utils/resilience_search_delegate.dart';
+import 'package:switchboard/core/utils/url_helper.dart';
+import 'package:switchboard/features/home/presentation/views/emergency_page.dart';
 import 'package:switchboard/features/resources/presentation/views/category_list_page.dart';
-import 'package:switchboard/features/guides/presentation/views/guides_list_page.dart';
 import 'package:switchboard/features/home/presentation/views/home_page.dart';
 import 'package:switchboard/features/resources/presentation/views/hotline_list_page.dart';
 import 'package:switchboard/features/resources/presentation/views/resource_list_page.dart';
-import 'package:switchboard/features/skills/presentation/views/skill_list_page.dart';
-
-import '../../../../core/app_theme.dart';
-import '../../../../core/utils/resilience_search_delegate.dart';
-import '../../../../core/utils/url_helper.dart';
-import '../../../apps/presentation/views/app_list_page.dart';
-import 'emergency_page.dart';
-import '../../../faq/presentation/views/faq_page.dart';
-import '../../../units/presentation/views/unit_list_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
+  static String route() => "/main";
 
   @override
   State<MainPage> createState() => _MainPageState();
@@ -133,14 +129,7 @@ class _MainPageState extends State<MainPage> {
                         color: Theme.of(context).primaryColor,
                       ),
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return const AppListPage();
-                            },
-                          ),
-                        );
+                        context.push('/apps');
                       },
                     ),
                     ListTile(
@@ -150,14 +139,7 @@ class _MainPageState extends State<MainPage> {
                         color: Theme.of(context).primaryColor,
                       ),
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return const SkillListPage();
-                            },
-                          ),
-                        );
+                        context.push('/skills');
                       },
                     ),
                     ListTile(
@@ -167,14 +149,7 @@ class _MainPageState extends State<MainPage> {
                         color: Theme.of(context).primaryColor,
                       ),
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return const GuidesListPage();
-                            },
-                          ),
-                        );
+                        context.push('/guides');
                       },
                     ),
                     ListTile(
@@ -184,14 +159,7 @@ class _MainPageState extends State<MainPage> {
                         color: Theme.of(context).primaryColor,
                       ),
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return const UnitListPage();
-                            },
-                          ),
-                        );
+                        context.push('/units');
                       },
                     ),
                     ListTile(
@@ -213,14 +181,7 @@ class _MainPageState extends State<MainPage> {
                         color: Theme.of(context).primaryColor,
                       ),
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return const FaqPage();
-                            },
-                          ),
-                        );
+                        context.push('/faqs');
                       },
                     ),
                   ],
