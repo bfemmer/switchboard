@@ -1,12 +1,12 @@
-import '../model/app.dart';
-import '../model/category.dart';
-import '../model/faq.dart';
-import '../model/feed.dart';
-import '../model/guide.dart';
-import '../model/resource.dart';
-import '../model/skill.dart';
-import '../model/suggestion.dart';
-import '../model/unit.dart';
+import 'package:switchboard/features/apps/data/models/app.dart';
+import 'package:switchboard/features/faq/data/models/faq.dart';
+import 'package:switchboard/features/feed/data/models/feed.dart';
+import 'package:switchboard/features/guides/data/models/guide.dart';
+import 'package:switchboard/features/resources/data/models/category.dart';
+import 'package:switchboard/features/resources/data/models/resource.dart';
+import 'package:switchboard/features/search/data/models/suggestion.dart';
+import 'package:switchboard/features/skills/data/models/skill.dart';
+import 'package:switchboard/features/units/data/models/unit.dart';
 
 abstract class ResourceRepository {
   Future<List<Unit>> getUnits();

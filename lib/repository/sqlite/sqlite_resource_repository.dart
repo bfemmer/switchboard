@@ -1,15 +1,15 @@
-import 'package:switchboard/model/suggestion.dart';
+import 'package:switchboard/features/apps/data/models/app.dart';
+import 'package:switchboard/features/faq/data/models/faq.dart';
+import 'package:switchboard/features/feed/data/models/feed.dart';
+import 'package:switchboard/features/guides/data/models/guide.dart';
+import 'package:switchboard/features/resources/data/models/category.dart';
+import 'package:switchboard/features/resources/data/models/resource.dart';
+import 'package:switchboard/features/search/data/models/suggestion.dart';
+import 'package:switchboard/features/skills/data/models/skill.dart';
+import 'package:switchboard/features/units/data/models/unit.dart';
 
-import '../../model/app.dart';
-import '../../model/category.dart';
-import '../../model/faq.dart';
-import '../../model/feed.dart';
-import '../../model/guide.dart';
-import '../../model/resource.dart';
-import '../../model/skill.dart';
-import '../../model/unit.dart';
 import '../resource_repository.dart';
-import 'database_helper.dart';
+import '../../core/sqlite/database_helper.dart';
 
 class SqliteResourceRepository extends ResourceRepository {
   final DatabaseHelper dbHelper = DatabaseHelper.instance;
@@ -17,10 +17,12 @@ class SqliteResourceRepository extends ResourceRepository {
   @override
   Future<List<Unit>> getUnits() async {
     var db = await dbHelper.database;
-    var result = await db
-        .rawQuery('SELECT * FROM units ORDER BY name COLLATE NOCASE ASC;');
-    List<Unit> list =
-        result.isNotEmpty ? result.map((c) => Unit.fromJson(c)).toList() : [];
+    var result = await db.rawQuery(
+      'SELECT * FROM units ORDER BY name COLLATE NOCASE ASC;',
+    );
+    List<Unit> list = result.isNotEmpty
+        ? result.map((c) => Unit.fromJson(c)).toList()
+        : [];
     return list;
   }
 
@@ -28,8 +30,9 @@ class SqliteResourceRepository extends ResourceRepository {
   Future<List<Faq>> getFaqs() async {
     var db = await dbHelper.database;
     var result = await db.rawQuery('SELECT * FROM faqs ORDER BY id ASC;');
-    List<Faq> list =
-        result.isNotEmpty ? result.map((c) => Faq.fromJson(c)).toList() : [];
+    List<Faq> list = result.isNotEmpty
+        ? result.map((c) => Faq.fromJson(c)).toList()
+        : [];
     return list;
   }
 
@@ -37,8 +40,9 @@ class SqliteResourceRepository extends ResourceRepository {
   Future<List<Skill>> getSkills() async {
     var db = await dbHelper.database;
     var result = await db.rawQuery('SELECT * FROM skills ORDER BY id ASC;');
-    List<Skill> list =
-        result.isNotEmpty ? result.map((c) => Skill.fromJson(c)).toList() : [];
+    List<Skill> list = result.isNotEmpty
+        ? result.map((c) => Skill.fromJson(c)).toList()
+        : [];
     return list;
   }
 
@@ -46,26 +50,30 @@ class SqliteResourceRepository extends ResourceRepository {
   Future<List<Guide>> getGuides() async {
     var db = await dbHelper.database;
     var result = await db.rawQuery('SELECT * FROM guides ORDER BY name ASC;');
-    List<Guide> list =
-        result.isNotEmpty ? result.map((c) => Guide.fromJson(c)).toList() : [];
+    List<Guide> list = result.isNotEmpty
+        ? result.map((c) => Guide.fromJson(c)).toList()
+        : [];
     return list;
   }
 
   @override
   Future<List<Feed>> getFeed() async {
     var db = await dbHelper.database;
-    var result =
-        await db.rawQuery('SELECT * FROM feed ORDER BY sortOrder ASC;');
-    List<Feed> list =
-        result.isNotEmpty ? result.map((c) => Feed.fromJson(c)).toList() : [];
+    var result = await db.rawQuery(
+      'SELECT * FROM feed ORDER BY sortOrder ASC;',
+    );
+    List<Feed> list = result.isNotEmpty
+        ? result.map((c) => Feed.fromJson(c)).toList()
+        : [];
     return list;
   }
 
   @override
   Future<List<Category>> getCategories() async {
     var db = await dbHelper.database;
-    var result = await db
-        .rawQuery('SELECT * FROM categories ORDER BY name COLLATE NOCASE ASC;');
+    var result = await db.rawQuery(
+      'SELECT * FROM categories ORDER BY name COLLATE NOCASE ASC;',
+    );
     List<Category> list = result.isNotEmpty
         ? result.map((c) => Category.fromJson(c)).toList()
         : [];
@@ -75,8 +83,11 @@ class SqliteResourceRepository extends ResourceRepository {
   @override
   Future<Category?> getCategoryByName(String name) async {
     var db = await dbHelper.database;
-    var result =
-        await db.query("categories", where: "name = ?", whereArgs: [name]);
+    var result = await db.query(
+      "categories",
+      where: "name = ?",
+      whereArgs: [name],
+    );
 
     if (result.isNotEmpty) {
       return Category.fromJson(result.first);
@@ -95,8 +106,11 @@ class SqliteResourceRepository extends ResourceRepository {
   @override
   Future<Resource?> getResourceByName(String name) async {
     var db = await dbHelper.database;
-    var result =
-        await db.query("resources", where: "name = ?", whereArgs: [name]);
+    var result = await db.query(
+      "resources",
+      where: "name = ?",
+      whereArgs: [name],
+    );
 
     if (result.isNotEmpty) {
       return Resource.fromJson(result.first);
@@ -108,8 +122,9 @@ class SqliteResourceRepository extends ResourceRepository {
   @override
   Future<List<Resource>> getResources() async {
     var db = await dbHelper.database;
-    var result = await db
-        .rawQuery('SELECT * FROM resources ORDER BY name COLLATE NOCASE ASC;');
+    var result = await db.rawQuery(
+      'SELECT * FROM resources ORDER BY name COLLATE NOCASE ASC;',
+    );
     List<Resource> list = result.isNotEmpty
         ? result.map((c) => Resource.fromJson(c)).toList()
         : [];
@@ -158,7 +173,8 @@ class SqliteResourceRepository extends ResourceRepository {
   Future<List<Suggestion>> getResourceAndCategoryNames() async {
     var db = await dbHelper.database;
     var result = await db.rawQuery(
-        'select name from categories union select name from resources ORDER BY name COLLATE NOCASE ASC;');
+      'select name from categories union select name from resources ORDER BY name COLLATE NOCASE ASC;',
+    );
 
     List<Suggestion> list = result.isNotEmpty
         ? result.map((c) => Suggestion.fromJson(c)).toList()
@@ -171,7 +187,8 @@ class SqliteResourceRepository extends ResourceRepository {
   Future<List<Resource>> getHotlines() async {
     var db = await dbHelper.database;
     var result = await db.rawQuery(
-        'SELECT * FROM resources WHERE voice <> "" ORDER BY name COLLATE NOCASE ASC;');
+      'SELECT * FROM resources WHERE voice <> "" ORDER BY name COLLATE NOCASE ASC;',
+    );
     List<Resource> list = result.isNotEmpty
         ? result.map((c) => Resource.fromJson(c)).toList()
         : [];
@@ -181,10 +198,12 @@ class SqliteResourceRepository extends ResourceRepository {
   @override
   Future<List<App>> getApps() async {
     var db = await dbHelper.database;
-    var result = await db
-        .rawQuery('SELECT * FROM apps ORDER BY name COLLATE NOCASE ASC;');
-    List<App> list =
-        result.isNotEmpty ? result.map((c) => App.fromJson(c)).toList() : [];
+    var result = await db.rawQuery(
+      'SELECT * FROM apps ORDER BY name COLLATE NOCASE ASC;',
+    );
+    List<App> list = result.isNotEmpty
+        ? result.map((c) => App.fromJson(c)).toList()
+        : [];
     return list;
   }
 }
