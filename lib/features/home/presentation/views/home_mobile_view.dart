@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:switchboard/features/feed/data/models/feed.dart';
+import 'package:switchboard/features/home/data/models/feed.dart';
 import 'package:switchboard/features/resources/presentation/widgets/media_card.dart';
 
 class HomeMobileView extends StatefulWidget {

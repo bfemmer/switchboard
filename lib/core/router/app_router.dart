@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:switchboard/core/router/nav_scaffold.dart';
 import 'package:switchboard/dependencies.dart';
@@ -6,11 +5,12 @@ import 'package:switchboard/features/apps/presentation/viewmodels/app_viewmodel.
 import 'package:switchboard/features/apps/presentation/views/app_list_page.dart';
 import 'package:switchboard/features/faq/presentation/viewmodels/faq_viewmodel.dart';
 import 'package:switchboard/features/faq/presentation/views/faq_page.dart';
-import 'package:switchboard/features/feed/presentation/viewmodels/feed_viewmodel.dart';
+import 'package:switchboard/features/home/presentation/viewmodels/feed_viewmodel.dart';
 import 'package:switchboard/features/guides/presentation/viewmodels/guide_viewmodel.dart';
 import 'package:switchboard/features/guides/presentation/views/guides_list_page.dart';
 import 'package:switchboard/features/home/presentation/views/emergency_page.dart';
 import 'package:switchboard/features/home/presentation/views/home_page.dart';
+import 'package:switchboard/features/resources/presentation/viewmodels/category_viewmodel.dart';
 import 'package:switchboard/features/resources/presentation/views/category_list_page.dart';
 import 'package:switchboard/features/resources/presentation/views/hotline_list_page.dart';
 import 'package:switchboard/features/skills/presentation/viewmodels/skill_viewmodel.dart';
@@ -70,8 +70,10 @@ class AppRouter {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: '/categories',
-                builder: (context, _) => const CategoryListPage(),
+                path: CategoryListPage.route(),
+                builder: (context, _) => CategoryListPage(
+                  viewmodel: serviceLocator<CategoryViewModel>(),
+                ),
               ),
             ],
           ),

@@ -1,7 +1,7 @@
 import 'package:switchboard/core/utils/result.dart';
-import 'package:switchboard/features/feed/data/datasources/feed_datasource.dart';
-import 'package:switchboard/features/feed/data/models/feed.dart';
-import 'package:switchboard/features/feed/domain/repositories/feed_repository.dart';
+import 'package:switchboard/features/home/data/datasources/feed_datasource.dart';
+import 'package:switchboard/features/home/data/models/feed.dart';
+import 'package:switchboard/features/home/domain/repositories/feed_repository.dart';
 
 class FeedRepositoryImpl implements FeedRepository {
   final FeedDatasource datasource;

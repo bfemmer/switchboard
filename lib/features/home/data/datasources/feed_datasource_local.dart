@@ -1,6 +1,6 @@
 import 'package:switchboard/core/sqlite/database_helper.dart';
-import 'package:switchboard/features/feed/data/datasources/feed_datasource.dart';
-import 'package:switchboard/features/feed/data/models/feed.dart';
+import 'package:switchboard/features/home/data/datasources/feed_datasource.dart';
+import 'package:switchboard/features/home/data/models/feed.dart';
 
 class FeedDatasourceLocal implements FeedDatasource {
   final DatabaseHelper dbHelper = DatabaseHelper.instance;

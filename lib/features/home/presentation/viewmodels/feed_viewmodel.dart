@@ -1,14 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:switchboard/core/utils/command.dart';
 import 'package:switchboard/core/utils/result.dart';
-import 'package:switchboard/features/feed/data/models/feed.dart';
-import 'package:switchboard/features/feed/domain/repositories/feed_repository.dart';
+import 'package:switchboard/features/home/data/models/feed.dart';
+import 'package:switchboard/features/home/domain/repositories/feed_repository.dart';
 
 class FeedViewModel extends ChangeNotifier {
   final FeedRepository _feedRepository;
 
-  List<Feed> _faqs = [];
-  List<Feed> get faqs => _faqs;
+  List<Feed> _feed = [];
+  List<Feed> get feed => _feed;
 
   late Command0<void> load;
 
@@ -22,7 +22,7 @@ class FeedViewModel extends ChangeNotifier {
 
       switch (fetchedDataResult) {
         case Ok<List<Feed>>():
-          _faqs = fetchedDataResult.value;
+          _feed = fetchedDataResult.value;
 
         case Error<List<Feed>>():
       }

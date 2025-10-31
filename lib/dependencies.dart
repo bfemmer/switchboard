@@ -9,16 +9,21 @@ import 'package:switchboard/features/faq/data/datasources/faq_datasource_local.d
 import 'package:switchboard/features/faq/data/repositories/faq_repository_impl.dart';
 import 'package:switchboard/features/faq/domain/repositories/faq_repository.dart';
 import 'package:switchboard/features/faq/presentation/viewmodels/faq_viewmodel.dart';
-import 'package:switchboard/features/feed/data/datasources/feed_datasource.dart';
-import 'package:switchboard/features/feed/data/datasources/feed_datasource_local.dart';
-import 'package:switchboard/features/feed/data/repositories/feed_repository_impl.dart';
-import 'package:switchboard/features/feed/domain/repositories/feed_repository.dart';
-import 'package:switchboard/features/feed/presentation/viewmodels/feed_viewmodel.dart';
+import 'package:switchboard/features/home/data/datasources/feed_datasource.dart';
+import 'package:switchboard/features/home/data/datasources/feed_datasource_local.dart';
+import 'package:switchboard/features/home/data/repositories/feed_repository_impl.dart';
+import 'package:switchboard/features/home/domain/repositories/feed_repository.dart';
+import 'package:switchboard/features/home/presentation/viewmodels/feed_viewmodel.dart';
 import 'package:switchboard/features/guides/data/datasources/guide_datasource.dart';
 import 'package:switchboard/features/guides/data/datasources/guide_datasource_local.dart';
 import 'package:switchboard/features/guides/data/repositories/guide_repository_impl.dart';
 import 'package:switchboard/features/guides/domain/repositories/guide_repository.dart';
 import 'package:switchboard/features/guides/presentation/viewmodels/guide_viewmodel.dart';
+import 'package:switchboard/features/resources/data/datasources/category_datasource.dart';
+import 'package:switchboard/features/resources/data/datasources/category_datasource_local.dart';
+import 'package:switchboard/features/resources/data/repositories/category_repository_impl.dart';
+import 'package:switchboard/features/resources/domain/repositories/category_repository.dart';
+import 'package:switchboard/features/resources/presentation/viewmodels/category_viewmodel.dart';
 import 'package:switchboard/features/skills/data/datasources/skill_datasource.dart';
 import 'package:switchboard/features/skills/data/datasources/skill_datasource_local.dart';
 import 'package:switchboard/features/skills/data/repositories/skill_repository_impl.dart';
@@ -34,6 +39,7 @@ final serviceLocator = GetIt.instance;
 
 Future<void> initDependencies() async {
   _initApps();
+  _initCategories();
   _initFaqs();
   _initFeed();
   _initGuides();
@@ -53,6 +59,25 @@ void _initApps() {
   // Viewmodel
   serviceLocator.registerLazySingleton<AppViewModel>(
     () => AppViewModel(serviceLocator<AppRepository>()),
+  );
+}
+
+void _initCategories() {
+  // Datasource
+  serviceLocator.registerFactory<CategoryDatasource>(
+    () => CategoryDatasourceLocal(),
+  );
+
+  // Repository
+  serviceLocator.registerFactory<CategoryRepository>(
+    () => CategoryRepositoryImpl(
+      datasource: serviceLocator<CategoryDatasource>(),
+    ),
+  );
+
+  // Viewmodel
+  serviceLocator.registerLazySingleton<CategoryViewModel>(
+    () => CategoryViewModel(serviceLocator<CategoryRepository>()),
   );
 }
 

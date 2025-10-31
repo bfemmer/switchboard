@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AceCard extends StatelessWidget {
-  const AceCard({
-    super.key,
-  });
+  const AceCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,28 +14,25 @@ class AceCard extends StatelessWidget {
         children: [
           ListTile(
             leading: CircleAvatar(
-                backgroundColor: Colors.transparent,
-                child: Image.asset(
-                  'assets/images/resilience.png',
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? Theme.of(context).primaryColor
-                      : null,
-                )),
-            title: const Text('Suicide Intervention Reminder'),
-            subtitle: const Text(
-              'Make a difference today',
+              backgroundColor: Colors.transparent,
+              child: Image.asset(
+                'assets/images/resilience.png',
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Theme.of(context).primaryColor
+                    : null,
+              ),
             ),
+            title: const Text('Suicide Intervention Reminder'),
+            subtitle: const Text('Make a difference today'),
           ),
           Row(
             children: [
-              const Padding(
+              Padding(
                 padding: EdgeInsets.all(16.0),
                 child: CircleAvatar(
                   backgroundColor: Colors.transparent,
-                  foregroundColor: Colors.blue,
-                  child: Icon(
-                    FontAwesomeIcons.question,
-                  ),
+                  foregroundColor: Theme.of(context).primaryColor,
+                  child: Icon(FontAwesomeIcons.question),
                 ),
               ),
               Column(
@@ -50,10 +45,11 @@ class AceCard extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width - 160,
                     child: const Text(
-                        'Directly ask the individual if they are having thoughts of death, self-harm, or suicide.'),
-                  )
+                      'Directly ask the individual if they are having thoughts of death, self-harm, or suicide.',
+                    ),
+                  ),
                 ],
-              )
+              ),
             ],
           ),
           const Divider(),
@@ -64,9 +60,7 @@ class AceCard extends StatelessWidget {
                 child: CircleAvatar(
                   backgroundColor: Colors.transparent,
                   foregroundColor: Colors.red,
-                  child: Icon(
-                    FontAwesomeIcons.handHoldingHeart,
-                  ),
+                  child: Icon(FontAwesomeIcons.handHoldingHeart),
                 ),
               ),
               Column(
@@ -79,10 +73,11 @@ class AceCard extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width - 160,
                     child: const Text(
-                        'Care about their answer. If they hesitate, or seem uncertain, ask follow-up questions to convey that you care about their well-being.'),
-                  )
+                      'Care about their answer. If they hesitate, or seem uncertain, ask follow-up questions to convey that you care about their well-being.',
+                    ),
+                  ),
                 ],
-              )
+              ),
             ],
           ),
           const Divider(),
@@ -95,9 +90,7 @@ class AceCard extends StatelessWidget {
                   child: CircleAvatar(
                     backgroundColor: Colors.transparent,
                     foregroundColor: Colors.green,
-                    child: Icon(
-                      FontAwesomeIcons.peoplePulling,
-                    ),
+                    child: Icon(FontAwesomeIcons.peoplePulling),
                   ),
                 ),
                 Column(
@@ -110,10 +103,11 @@ class AceCard extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width - 160,
                       child: const Text(
-                          'If the individual is having thoughts of suicide or needs help, escort them to a qualified professional or leadership.'),
-                    )
+                        'If the individual is having thoughts of suicide or needs help, escort them to a qualified professional or leadership.',
+                      ),
+                    ),
                   ],
-                )
+                ),
               ],
             ),
           ),

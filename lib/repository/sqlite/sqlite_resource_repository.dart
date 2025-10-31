@@ -1,5 +1,4 @@
 import 'package:switchboard/core/sqlite/database_helper.dart';
-import 'package:switchboard/features/feed/data/models/feed.dart';
 import 'package:switchboard/features/resources/data/models/category.dart';
 import 'package:switchboard/features/resources/data/models/resource.dart';
 import 'package:switchboard/features/search/data/models/suggestion.dart';
@@ -7,30 +6,6 @@ import 'package:switchboard/repository/resource_repository.dart';
 
 class SqliteResourceRepository extends ResourceRepository {
   final DatabaseHelper dbHelper = DatabaseHelper.instance;
-
-  @override
-  Future<List<Feed>> getFeed() async {
-    var db = await dbHelper.database;
-    var result = await db.rawQuery(
-      'SELECT * FROM feed ORDER BY sortOrder ASC;',
-    );
-    List<Feed> list = result.isNotEmpty
-        ? result.map((c) => Feed.fromJson(c)).toList()
-        : [];
-    return list;
-  }
-
-  @override
-  Future<List<Category>> getCategories() async {
-    var db = await dbHelper.database;
-    var result = await db.rawQuery(
-      'SELECT * FROM categories ORDER BY name COLLATE NOCASE ASC;',
-    );
-    List<Category> list = result.isNotEmpty
-        ? result.map((c) => Category.fromJson(c)).toList()
-        : [];
-    return list;
-  }
 
   @override
   Future<Category?> getCategoryByName(String name) async {

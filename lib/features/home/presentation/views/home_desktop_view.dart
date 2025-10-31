@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:switchboard/features/feed/data/models/feed.dart';
+import 'package:switchboard/features/home/data/models/feed.dart';
 
 import '../../../resources/presentation/widgets/media_card.dart';
 

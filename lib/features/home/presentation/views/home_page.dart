@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:switchboard/features/feed/data/models/feed.dart';
-import 'package:switchboard/features/feed/presentation/viewmodels/feed_viewmodel.dart';
+import 'package:switchboard/features/home/presentation/viewmodels/feed_viewmodel.dart';
 import 'package:switchboard/features/home/presentation/views/home_mobile_view.dart';
-import 'package:switchboard/repository/resource_repository.dart';
-import 'package:switchboard/repository/sqlite/sqlite_resource_repository.dart';
 
 import '../../../../constants.dart';
 import 'home_desktop_view.dart';
@@ -19,35 +16,32 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late List<Feed> feed;
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    widget.viewmodel.load.execute();
+  }
 
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: FutureBuilder<List<Feed>>(
-        future: _getFeed(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (screenSize.width < breakpointSmall) {
-            return HomeMobileView(feed: feed);
-          } else if (screenSize.width < breakpointMedium) {
-            return HomeTabletView(feed: feed);
-          } else {
-            return HomeDesktopView(feed: feed);
-          }
+      body: ListenableBuilder(
+        listenable: widget.viewmodel.load,
+        builder: (context, _) {
+          return screenSize.width < breakpointSmall
+              ? HomeMobileView(feed: widget.viewmodel.feed)
+              : screenSize.width < breakpointMedium
+              ? HomeTabletView(feed: widget.viewmodel.feed)
+              : HomeDesktopView(feed: widget.viewmodel.feed);
         },
       ),
     );
-  }
-
-  Future<List<Feed>> _getFeed() async {
-    ResourceRepository repository = SqliteResourceRepository();
-
-    feed = await repository.getFeed();
-    return feed;
   }
 }

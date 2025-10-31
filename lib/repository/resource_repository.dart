@@ -1,12 +1,11 @@
-import 'package:switchboard/features/feed/data/models/feed.dart';
 import 'package:switchboard/features/resources/data/models/category.dart';
 import 'package:switchboard/features/resources/data/models/resource.dart';
 import 'package:switchboard/features/search/data/models/suggestion.dart';
 
 abstract class ResourceRepository {
-  Future<List<Feed>> getFeed();
+  // Future<List<Feed>> getFeed();
 
-  Future<List<Category>> getCategories();
+  // Future<List<Category>> getCategories();
 
   Future<Category?> getCategoryByName(String name);
 
