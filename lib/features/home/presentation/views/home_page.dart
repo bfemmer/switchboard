@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:switchboard/features/feed/data/models/feed.dart';
+import 'package:switchboard/features/feed/presentation/viewmodels/feed_viewmodel.dart';
 import 'package:switchboard/features/home/presentation/views/home_mobile_view.dart';
 import 'package:switchboard/repository/resource_repository.dart';
 import 'package:switchboard/repository/sqlite/sqlite_resource_repository.dart';
@@ -9,7 +10,9 @@ import 'home_desktop_view.dart';
 import 'home_tablet_view.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({super.key, required this.viewmodel});
+  final FeedViewModel viewmodel;
+  static String route() => "/home";
 
   @override
   State<HomePage> createState() => _HomePageState();

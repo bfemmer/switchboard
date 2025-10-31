@@ -1,12 +1,18 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:switchboard/core/router/nav_scaffold.dart';
 import 'package:switchboard/dependencies.dart';
 import 'package:switchboard/features/apps/presentation/viewmodels/app_viewmodel.dart';
 import 'package:switchboard/features/apps/presentation/views/app_list_page.dart';
 import 'package:switchboard/features/faq/presentation/viewmodels/faq_viewmodel.dart';
 import 'package:switchboard/features/faq/presentation/views/faq_page.dart';
+import 'package:switchboard/features/feed/presentation/viewmodels/feed_viewmodel.dart';
 import 'package:switchboard/features/guides/presentation/viewmodels/guide_viewmodel.dart';
 import 'package:switchboard/features/guides/presentation/views/guides_list_page.dart';
-import 'package:switchboard/features/home/presentation/views/main_page.dart';
+import 'package:switchboard/features/home/presentation/views/emergency_page.dart';
+import 'package:switchboard/features/home/presentation/views/home_page.dart';
+import 'package:switchboard/features/resources/presentation/views/category_list_page.dart';
+import 'package:switchboard/features/resources/presentation/views/hotline_list_page.dart';
 import 'package:switchboard/features/skills/presentation/viewmodels/skill_viewmodel.dart';
 import 'package:switchboard/features/skills/presentation/views/skill_list_page.dart';
 import 'package:switchboard/features/units/presentation/viewmodels/unit_viewmodel.dart';
@@ -18,11 +24,10 @@ class AppRouter {
 
   static GoRouter router = GoRouter(
     // navigatorKey: _rootNavigatorKey,
-    initialLocation: MainPage.route(),
+    initialLocation: '/home',
     // redirect: _redirect,
-    // refreshListenable: serviceLocator<SessionManager>(),
+    // refreshListenable: ,
     routes: [
-      GoRoute(path: MainPage.route(), builder: (context, _) => MainPage()),
       GoRoute(
         path: UnitListPage.route(),
         builder: (context, _) =>
@@ -48,54 +53,46 @@ class AppRouter {
         builder: (context, _) =>
             GuidesListPage(viewmodel: serviceLocator<GuideViewModel>()),
       ),
-      // StatefulShellRoute.indexedStack(
-      //   builder: (context, state, navigationShell) {
-      //     return ScaffoldWithNestedNavigation(navigationShell: navigationShell);
-      //   },
-      //   branches: [
-      //     StatefulShellBranch(
-      //       routes: [
-      //         GoRoute(
-      //           path: '/home',
-      //           builder: (context, _) =>
-      //               HomePage(viewmodel: serviceLocator<HomeViewModel>()),
-      //         ),
-      //       ],
-      //     ),
-      //     StatefulShellBranch(
-      //       routes: [
-      //         GoRoute(path: '/logs', builder: (context, _) => const LogPage()),
-      //       ],
-      //     ),
-      //     StatefulShellBranch(
-      //       routes: [
-      //         GoRoute(
-      //           path: '/journal',
-      //           builder: (context, _) => const JournalPage(),
-      //         ),
-      //       ],
-      //     ),
-      //     StatefulShellBranch(
-      //       routes: [
-      //         GoRoute(
-      //           path: ChannelListPage.route(),
-      //           builder: (context, _) =>
-      //               ChannelListPage(viewmodel: serviceLocator<ChatViewmodel>()),
-      //         ),
-      //       ],
-      //     ),
-      //     StatefulShellBranch(
-      //       routes: [
-      //         GoRoute(
-      //           path: ModuleListPage.route(),
-      //           builder: (context, _) => ModuleListPage(
-      //             viewmodel: serviceLocator<ModuleViewModel>(),
-      //           ),
-      //         ),
-      //       ],
-      //     ),
-      //   ],
-      // ),
+      StatefulShellRoute.indexedStack(
+        builder: (context, state, navigationShell) {
+          return ScaffoldWithNestedNavigation(navigationShell: navigationShell);
+        },
+        branches: [
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/home',
+                builder: (context, _) =>
+                    HomePage(viewmodel: serviceLocator<FeedViewModel>()),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/categories',
+                builder: (context, _) => const CategoryListPage(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/hotlines',
+                builder: (context, _) => const HotlineListPage(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/emergency',
+                builder: (context, _) => EmergencyPage(),
+              ),
+            ],
+          ),
+        ],
+      ),
     ],
   );
 }

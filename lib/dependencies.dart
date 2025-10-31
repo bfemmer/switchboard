@@ -9,6 +9,11 @@ import 'package:switchboard/features/faq/data/datasources/faq_datasource_local.d
 import 'package:switchboard/features/faq/data/repositories/faq_repository_impl.dart';
 import 'package:switchboard/features/faq/domain/repositories/faq_repository.dart';
 import 'package:switchboard/features/faq/presentation/viewmodels/faq_viewmodel.dart';
+import 'package:switchboard/features/feed/data/datasources/feed_datasource.dart';
+import 'package:switchboard/features/feed/data/datasources/feed_datasource_local.dart';
+import 'package:switchboard/features/feed/data/repositories/feed_repository_impl.dart';
+import 'package:switchboard/features/feed/domain/repositories/feed_repository.dart';
+import 'package:switchboard/features/feed/presentation/viewmodels/feed_viewmodel.dart';
 import 'package:switchboard/features/guides/data/datasources/guide_datasource.dart';
 import 'package:switchboard/features/guides/data/datasources/guide_datasource_local.dart';
 import 'package:switchboard/features/guides/data/repositories/guide_repository_impl.dart';
@@ -30,6 +35,7 @@ final serviceLocator = GetIt.instance;
 Future<void> initDependencies() async {
   _initApps();
   _initFaqs();
+  _initFeed();
   _initGuides();
   _initSkills();
   _initUnits();
@@ -62,6 +68,21 @@ void _initFaqs() {
   // Viewmodel
   serviceLocator.registerLazySingleton<FaqViewModel>(
     () => FaqViewModel(serviceLocator<FaqRepository>()),
+  );
+}
+
+void _initFeed() {
+  // Datasource
+  serviceLocator.registerFactory<FeedDatasource>(() => FeedDatasourceLocal());
+
+  // Repository
+  serviceLocator.registerFactory<FeedRepository>(
+    () => FeedRepositoryImpl(datasource: serviceLocator<FeedDatasource>()),
+  );
+
+  // Viewmodel
+  serviceLocator.registerLazySingleton<FeedViewModel>(
+    () => FeedViewModel(serviceLocator<FeedRepository>()),
   );
 }
 
