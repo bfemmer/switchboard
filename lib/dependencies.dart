@@ -21,9 +21,14 @@ import 'package:switchboard/features/guides/domain/repositories/guide_repository
 import 'package:switchboard/features/guides/presentation/viewmodels/guide_viewmodel.dart';
 import 'package:switchboard/features/resources/data/datasources/category_datasource.dart';
 import 'package:switchboard/features/resources/data/datasources/category_datasource_local.dart';
+import 'package:switchboard/features/resources/data/datasources/resource_datasource.dart';
+import 'package:switchboard/features/resources/data/datasources/resource_datasource_local.dart';
 import 'package:switchboard/features/resources/data/repositories/category_repository_impl.dart';
+import 'package:switchboard/features/resources/data/repositories/resource_repository_impl.dart';
 import 'package:switchboard/features/resources/domain/repositories/category_repository.dart';
+import 'package:switchboard/features/resources/domain/repositories/resource_repository.dart';
 import 'package:switchboard/features/resources/presentation/viewmodels/category_viewmodel.dart';
+import 'package:switchboard/features/resources/presentation/viewmodels/resource_viewmodel.dart';
 import 'package:switchboard/features/skills/data/datasources/skill_datasource.dart';
 import 'package:switchboard/features/skills/data/datasources/skill_datasource_local.dart';
 import 'package:switchboard/features/skills/data/repositories/skill_repository_impl.dart';
@@ -43,6 +48,7 @@ Future<void> initDependencies() async {
   _initFaqs();
   _initFeed();
   _initGuides();
+  _initResources();
   _initSkills();
   _initUnits();
 }
@@ -111,21 +117,6 @@ void _initFeed() {
   );
 }
 
-void _initSkills() {
-  // Datasource
-  serviceLocator.registerFactory<SkillDatasource>(() => SkillDatasourceLocal());
-
-  // Repository
-  serviceLocator.registerFactory<SkillRepository>(
-    () => SkillRepositoryImpl(datasource: serviceLocator<SkillDatasource>()),
-  );
-
-  // Viewmodel
-  serviceLocator.registerLazySingleton<SkillViewModel>(
-    () => SkillViewModel(serviceLocator<SkillRepository>()),
-  );
-}
-
 void _initGuides() {
   // Datasource
   serviceLocator.registerFactory<GuideDatasource>(() => GuideDatasourceLocal());
@@ -138,6 +129,40 @@ void _initGuides() {
   // Viewmodel
   serviceLocator.registerLazySingleton<GuideViewModel>(
     () => GuideViewModel(serviceLocator<GuideRepository>()),
+  );
+}
+
+void _initResources() {
+  // Datasource
+  serviceLocator.registerFactory<ResourceDatasource>(
+    () => ResourceDatasourceLocal(),
+  );
+
+  // Repository
+  serviceLocator.registerFactory<ResourceRepository>(
+    () => ResourceRepositoryImpl(
+      datasource: serviceLocator<ResourceDatasource>(),
+    ),
+  );
+
+  // Viewmodel
+  serviceLocator.registerLazySingleton<ResourceViewModel>(
+    () => ResourceViewModel(serviceLocator<ResourceRepository>()),
+  );
+}
+
+void _initSkills() {
+  // Datasource
+  serviceLocator.registerFactory<SkillDatasource>(() => SkillDatasourceLocal());
+
+  // Repository
+  serviceLocator.registerFactory<SkillRepository>(
+    () => SkillRepositoryImpl(datasource: serviceLocator<SkillDatasource>()),
+  );
+
+  // Viewmodel
+  serviceLocator.registerLazySingleton<SkillViewModel>(
+    () => SkillViewModel(serviceLocator<SkillRepository>()),
   );
 }
 

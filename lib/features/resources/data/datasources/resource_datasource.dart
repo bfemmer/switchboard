@@ -1,0 +1,5 @@
+import 'package:switchboard/features/resources/data/models/resource.dart';
+
+abstract interface class ResourceDatasource {
+  Future<List<Resource>> listByCategoryId(int id);
+}

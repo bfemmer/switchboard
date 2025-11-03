@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:switchboard/dependencies.dart';
 import 'package:switchboard/features/resources/data/models/category.dart';
 import 'package:switchboard/features/resources/data/models/resource.dart';
@@ -6,7 +7,6 @@ import 'package:switchboard/features/search/data/models/suggestion.dart';
 import 'package:switchboard/features/units/presentation/viewmodels/unit_viewmodel.dart';
 
 import '../../features/resources/presentation/views/resource_detail_page.dart';
-import '../../features/resources/presentation/views/resource_list_cat_page.dart';
 import '../../features/units/presentation/views/unit_list_page.dart';
 import '../../repository/resource_repository.dart';
 import '../../repository/sqlite/sqlite_resource_repository.dart';
@@ -16,15 +16,6 @@ class ResilienceSearchDelegate extends SearchDelegate {
 
   @override
   String get searchFieldLabel => 'Search for...';
-
-  // @override
-  // ThemeData appBarTheme(BuildContext context) {
-  //   return Theme.of(context).copyWith(
-  //     primaryColor:
-  //         MaterialHelper.getMaterialColorForColor(Colors.blue.shade800),
-  //     accentColor: Colors.white,
-  //   );
-  // }
 
   // Clear search text
   @override
@@ -113,13 +104,11 @@ class ResilienceSearchDelegate extends SearchDelegate {
 
     // Check if category
     if (category != null) {
-      navigator.push(
-        MaterialPageRoute(
-          builder: (context) {
-            return ResourceListCatPage(category: category);
-          },
-        ),
-      );
+      if (context.mounted) {
+        context.push(
+          '/resourcesbycategory/${category.id!.toString()}/${category.name!}',
+        );
+      }
     }
 
     // Check if resource

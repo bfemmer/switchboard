@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:switchboard/core/utils/fa_helper.dart';
 import 'package:switchboard/core/utils/loader.dart';
 import 'package:switchboard/features/resources/presentation/viewmodels/category_viewmodel.dart';
-import 'package:switchboard/features/resources/presentation/views/resource_list_cat_page.dart';
 
 class CategoryListPage extends StatefulWidget {
   const CategoryListPage({super.key, required this.viewmodel});
@@ -73,13 +73,8 @@ class CategoryListPageState extends State<CategoryListPage> {
                 color: Theme.of(context).primaryColor,
               ),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return ResourceListCatPage(category: category);
-                    },
-                  ),
+                context.push(
+                  '/resourcesbycategory/${category.id!.toString()}/${category.name!}',
                 );
               },
             ),
