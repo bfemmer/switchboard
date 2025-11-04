@@ -1,22 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:switchboard/features/resources/data/models/resource.dart';
+import 'package:switchboard/features/resources/presentation/viewmodels/resource_viewmodel.dart';
 
 import '../../../../constants.dart';
-import '../../../../repository/resource_repository.dart';
-import '../../../../repository/sqlite/sqlite_resource_repository.dart';
 import 'resource_list_desktop_view.dart';
 import 'resource_list_mobile_view.dart';
 import 'resource_list_tablet_view.dart';
 
 class ResourceListPage extends StatefulWidget {
-  const ResourceListPage({super.key});
+  const ResourceListPage({super.key, required this.viewmodel});
+  final ResourceViewModel viewmodel;
+  static String route() => "/resources";
 
   @override
   ResourceListPageState createState() => ResourceListPageState();
 }
 
 class ResourceListPageState extends State<ResourceListPage> {
-  late List<Resource> resources;
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    widget.viewmodel.load.execute();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,28 +33,16 @@ class ResourceListPageState extends State<ResourceListPage> {
 
     return Scaffold(
       appBar: AppBar(title: const Text('Browse Resources')),
-      body: FutureBuilder<List<Resource>>(
-        future: getResources(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (screenSize.width < breakpointSmall) {
-            return ResourceListMobileView(resources: resources);
-          } else if (screenSize.width < breakpointMedium) {
-            return ResourceListTabletView(resources: resources);
-          } else {
-            return ResourceListDesktopView(resources: resources);
-          }
+      body: ListenableBuilder(
+        listenable: widget.viewmodel.load,
+        builder: (context, _) {
+          return screenSize.width < breakpointSmall
+              ? ResourceListMobileView(resources: widget.viewmodel.resources)
+              : screenSize.width < breakpointMedium
+              ? ResourceListTabletView(resources: widget.viewmodel.resources)
+              : ResourceListDesktopView(resources: widget.viewmodel.resources);
         },
       ),
     );
-  }
-
-  Future<List<Resource>> getResources() async {
-    ResourceRepository repository = SqliteResourceRepository();
-
-    resources = await repository.getResources();
-    return resources;
   }
 }

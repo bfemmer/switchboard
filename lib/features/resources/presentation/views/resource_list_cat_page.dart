@@ -38,7 +38,7 @@ class ResourceListCatPageState extends State<ResourceListCatPage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    widget.viewmodel.load.execute(_id);
+    widget.viewmodel.loadForCategory.execute(_id);
   }
 
   @override
@@ -51,7 +51,7 @@ class ResourceListCatPageState extends State<ResourceListCatPage> {
         actions: [_buildActionButton()],
       ),
       body: ListenableBuilder(
-        listenable: widget.viewmodel.load,
+        listenable: widget.viewmodel.loadForCategory,
         builder: (context, _) {
           return screenSize.width < breakpointSmall
               ? ResourceListMobileView(resources: widget.viewmodel.resources)

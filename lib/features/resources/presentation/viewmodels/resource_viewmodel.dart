@@ -10,13 +10,33 @@ class ResourceViewModel extends ChangeNotifier {
   List<Resource> _resources = [];
   List<Resource> get resources => _resources;
 
-  late Command1<void, int> load;
+  late Command0<void> load;
+  late Command1<void, int> loadForCategory;
 
   ResourceViewModel(this._resourceRepository) {
-    load = Command1(_load);
+    load = Command0(_load);
+    loadForCategory = Command1(_loadForCategory);
   }
 
-  Future<Result> _load(int id) async {
+  Future<Result> _load() async {
+    try {
+      Result<List<Resource>> fetchedDataResult = await _resourceRepository
+          .list();
+
+      switch (fetchedDataResult) {
+        case Ok<List<Resource>>():
+          _resources = fetchedDataResult.value;
+
+        case Error<List<Resource>>():
+      }
+
+      return fetchedDataResult;
+    } finally {
+      notifyListeners();
+    }
+  }
+
+  Future<Result> _loadForCategory(int id) async {
     try {
       Result<List<Resource>> fetchedDataResult = await _resourceRepository
           .listByCategoryId(id);

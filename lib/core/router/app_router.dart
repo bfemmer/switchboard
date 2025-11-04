@@ -15,6 +15,7 @@ import 'package:switchboard/features/resources/presentation/viewmodels/resource_
 import 'package:switchboard/features/resources/presentation/views/category_list_page.dart';
 import 'package:switchboard/features/resources/presentation/views/hotline_list_page.dart';
 import 'package:switchboard/features/resources/presentation/views/resource_list_cat_page.dart';
+import 'package:switchboard/features/resources/presentation/views/resource_list_page.dart';
 import 'package:switchboard/features/skills/presentation/viewmodels/skill_viewmodel.dart';
 import 'package:switchboard/features/skills/presentation/views/skill_list_page.dart';
 import 'package:switchboard/features/units/presentation/viewmodels/unit_viewmodel.dart';
@@ -54,6 +55,11 @@ class AppRouter {
         path: GuidesListPage.route(),
         builder: (context, _) =>
             GuidesListPage(viewmodel: serviceLocator<GuideViewModel>()),
+      ),
+      GoRoute(
+        path: ResourceListPage.route(),
+        builder: (context, _) =>
+            ResourceListPage(viewmodel: serviceLocator<ResourceViewModel>()),
       ),
       GoRoute(
         path: ResourceListCatPage.route(),

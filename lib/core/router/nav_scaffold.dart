@@ -68,6 +68,7 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
                       color: Theme.of(context).primaryColor,
                     ),
                     onTap: () {
+                      context.push('/resources');
                       // Navigator.push(
                       //   context,
                       //   MaterialPageRoute(

@@ -13,9 +13,9 @@ abstract class ResourceRepository {
 
   Future<Resource?> getResourceByName(String name);
 
-  Future<List<Resource>> getResources();
+  // Future<List<Resource>> getResources();
 
-  Future<List<Resource>> getResourcesByCategoryId(int id);
+  // Future<List<Resource>> getResourcesByCategoryId(int id);
 
   // Future<List<Resource>> getResourcesByCategoryName(String name);
 
