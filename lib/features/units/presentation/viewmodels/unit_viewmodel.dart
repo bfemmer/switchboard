@@ -9,10 +9,7 @@ class UnitViewModel extends ChangeNotifier {
 
   // State for the selected filter chip
   String _selectedFilter = 'All';
-  String get selectedCategory => _selectedFilter;
-
-  // List of available categories for the filter chips
-  List<String> get filters => ['All', '10'];
+  String get selectedFilter => _selectedFilter;
 
   List<Unit> _units = [];
   List<Unit> get units => _units;
@@ -23,11 +20,24 @@ class UnitViewModel extends ChangeNotifier {
     load = Command0(_load);
   }
 
+  List<String> get filters {
+    final uniqueParents = _units
+        .where((unit) => unit.parent != null)
+        .map((unit) => unit.parent!)
+        .toSet() // Get only unique parents
+        .toList();
+
+    // Sort the list of parents alphabetically/numerically
+    uniqueParents.sort();
+
+    return ['All', ...uniqueParents];
+  }
+
   List<Unit> get filteredUnits {
     if (_selectedFilter == 'All') {
       return _units;
     }
-    return _units.where((n) => n.parent == '10').toList();
+    return _units.where((n) => n.parent == _selectedFilter).toList();
   }
 
   // Fetching data
@@ -52,6 +62,8 @@ class UnitViewModel extends ChangeNotifier {
   void selectFilter(String category) {
     if (_selectedFilter != category) {
       _selectedFilter = category;
+
+      // This triggers the UI to re-read 'filteredUnits'
       notifyListeners();
     }
   }

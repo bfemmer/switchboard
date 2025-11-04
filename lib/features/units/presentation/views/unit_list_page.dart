@@ -45,10 +45,10 @@ class UnitListPageState extends State<UnitListPage> {
       ),
       body: SafeArea(
         child: ListenableBuilder(
-          listenable: widget.viewmodel.load,
+          listenable: widget.viewmodel,
           builder: (context, _) {
             return screenSize.width < breakpointSmall
-                ? UnitListMobileView(units: widget.viewmodel.units)
+                ? UnitListMobileView(viewmodel: widget.viewmodel)
                 : screenSize.width < breakpointMedium
                 ? UnitListTabletView(units: widget.viewmodel.units)
                 : UnitListDesktopView(units: widget.viewmodel.units);
