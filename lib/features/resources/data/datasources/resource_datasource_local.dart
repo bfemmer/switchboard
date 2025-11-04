@@ -1,6 +1,8 @@
 import 'package:switchboard/core/sqlite/database_helper.dart';
 import 'package:switchboard/features/resources/data/datasources/resource_datasource.dart';
+import 'package:switchboard/features/resources/data/models/category.dart';
 import 'package:switchboard/features/resources/data/models/resource.dart';
+import 'package:switchboard/features/search/data/models/suggestion.dart';
 
 class ResourceDatasourceLocal implements ResourceDatasource {
   final DatabaseHelper dbHelper = DatabaseHelper.instance;
@@ -39,6 +41,52 @@ class ResourceDatasourceLocal implements ResourceDatasource {
     List<Resource> list = result.isNotEmpty
         ? result.map((c) => Resource.fromJson(c)).toList()
         : [];
+    return list;
+  }
+
+  @override
+  Future<Category?> getCategoryByName(String name) async {
+    var db = await dbHelper.database;
+    var result = await db.query(
+      "categories",
+      where: "name = ?",
+      whereArgs: [name],
+    );
+
+    if (result.isNotEmpty) {
+      return Category.fromJson(result.first);
+    }
+
+    return null;
+  }
+
+  @override
+  Future<Resource?> getResourceByName(String name) async {
+    var db = await dbHelper.database;
+    var result = await db.query(
+      "resources",
+      where: "name = ?",
+      whereArgs: [name],
+    );
+
+    if (result.isNotEmpty) {
+      return Resource.fromJson(result.first);
+    }
+
+    return null;
+  }
+
+  @override
+  Future<List<Suggestion>> getResourceAndCategoryNames() async {
+    var db = await dbHelper.database;
+    var result = await db.rawQuery(
+      'select name from categories union select name from resources ORDER BY name COLLATE NOCASE ASC;',
+    );
+
+    List<Suggestion> list = result.isNotEmpty
+        ? result.map((c) => Suggestion.fromJson(c)).toList()
+        : [];
+
     return list;
   }
 }

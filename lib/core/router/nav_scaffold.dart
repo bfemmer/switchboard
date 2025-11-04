@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:switchboard/core/app_theme.dart';
+import 'package:switchboard/dependencies.dart';
 import 'package:switchboard/features/search/presentation/widgets/resilience_search_delegate.dart';
 import 'package:switchboard/core/utils/url_helper.dart';
 
@@ -36,7 +37,9 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
                   showSearch(
                     context: context,
                     // delegate to customize the search bar
-                    delegate: ResilienceSearchDelegate(),
+                    delegate: ResilienceSearchDelegate(
+                      serviceLocator: serviceLocator,
+                    ),
                   );
                 },
                 icon: const Icon(Icons.search),

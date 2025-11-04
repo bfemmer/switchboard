@@ -1,15 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
+import 'package:switchboard/core/utils/result.dart';
 import 'package:switchboard/features/resources/data/models/category.dart';
 import 'package:switchboard/features/resources/data/models/resource.dart';
+import 'package:switchboard/features/resources/domain/repositories/resource_repository.dart';
 import 'package:switchboard/features/search/data/models/suggestion.dart';
 
 import '../../../resources/presentation/views/resource_detail_page.dart';
-import '../../../../repository/resource_repository.dart';
-import '../../../../repository/sqlite/sqlite_resource_repository.dart';
 
 class ResilienceSearchDelegate extends SearchDelegate {
   List<String> searchTerms = [];
+  final GetIt serviceLocator;
+
+  ResilienceSearchDelegate({
+    super.searchFieldLabel,
+    super.searchFieldStyle,
+    super.searchFieldDecorationTheme,
+    super.keyboardType,
+    super.textInputAction,
+    super.autocorrect,
+    super.enableSuggestions,
+    required this.serviceLocator,
+  });
 
   @override
   String get searchFieldLabel => 'Search for...';
@@ -136,29 +149,66 @@ class ResilienceSearchDelegate extends SearchDelegate {
   }
 
   Future<Category?> _getCategoryByName(String name) async {
-    ResourceRepository repository = SqliteResourceRepository();
+    ResourceRepository repository = serviceLocator<ResourceRepository>();
+    Category? category;
 
-    return await repository.getCategoryByName(name);
+    try {
+      final result = await repository.getCategoryByName(name);
+      switch (result) {
+        case Ok<Category?>():
+          category = result.value;
+        case Error<Category?>():
+          throw Exception(result);
+      }
+    } on Exception catch (e) {
+      Exception(e);
+    }
+
+    return category;
   }
 
   Future<Resource?> _getResourceByName(String name) async {
-    ResourceRepository repository = SqliteResourceRepository();
+    ResourceRepository repository = serviceLocator<ResourceRepository>();
+    Resource? category;
 
-    return await repository.getResourceByName(name);
+    try {
+      final result = await repository.getResourceByName(name);
+      switch (result) {
+        case Ok<Resource?>():
+          category = result.value;
+        case Error<Resource?>():
+          throw Exception(result);
+      }
+    } on Exception catch (e) {
+      Exception(e);
+    }
+
+    return category;
   }
 
   Future<List<String>> _getSearchSuggestions() async {
-    ResourceRepository repository = SqliteResourceRepository();
+    ResourceRepository repository = serviceLocator<ResourceRepository>();
     List<String> suggestions = [];
-    List<Suggestion> suggestionList = await repository
-        .getResourceAndCategoryNames();
+    List<Suggestion> suggestionList = [];
 
-    for (var suggestion in suggestionList) {
-      suggestions.add(suggestion.name!);
+    try {
+      final result = await repository.getResourceAndCategoryNames();
+      switch (result) {
+        case Ok<List<Suggestion>>():
+          suggestionList = result.value;
+
+          for (var suggestion in suggestionList) {
+            suggestions.add(suggestion.name!);
+          }
+
+          suggestions.add("AFRC Units");
+          suggestions.add("Mobile Apps");
+        case Error<List<Suggestion>>():
+          throw Exception(result);
+      }
+    } on Exception catch (e) {
+      Exception(e);
     }
-
-    suggestions.add("AFRC Units");
-    suggestions.add("Mobile Apps");
 
     return suggestions;
   }
