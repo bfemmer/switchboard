@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:switchboard/dependencies.dart';
 import 'package:switchboard/features/resources/data/models/category.dart';
 import 'package:switchboard/features/resources/data/models/resource.dart';
 import 'package:switchboard/features/search/data/models/suggestion.dart';
-import 'package:switchboard/features/units/presentation/viewmodels/unit_viewmodel.dart';
 
-import '../../features/resources/presentation/views/resource_detail_page.dart';
-import '../../features/units/presentation/views/unit_list_page.dart';
-import '../../repository/resource_repository.dart';
-import '../../repository/sqlite/sqlite_resource_repository.dart';
+import '../../../resources/presentation/views/resource_detail_page.dart';
+import '../../../../repository/resource_repository.dart';
+import '../../../../repository/sqlite/sqlite_resource_repository.dart';
 
 class ResilienceSearchDelegate extends SearchDelegate {
   List<String> searchTerms = [];
@@ -125,24 +122,16 @@ class ResilienceSearchDelegate extends SearchDelegate {
 
     // Check if AFRC
     if (result == "AFRC Units") {
-      navigator.push(
-        MaterialPageRoute(
-          builder: (context) {
-            return UnitListPage(viewmodel: serviceLocator<UnitViewModel>());
-          },
-        ),
-      );
+      if (context.mounted) {
+        context.push('/units');
+      }
     }
 
     // Check if Mobile Apps
     if (result == "Mobile Apps") {
-      // navigator.push(
-      //   MaterialPageRoute(
-      //     builder: (context) {
-      //       return const AppListPage();
-      //     },
-      //   ),
-      // );
+      if (context.mounted) {
+        context.push('/apps');
+      }
     }
   }
 

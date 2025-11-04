@@ -70,7 +70,9 @@ class CategoryListPageState extends State<CategoryListPage> {
               title: Text(category.name!),
               leading: FaIcon(
                 FaHelper.getIconFromName(category.icon!),
-                color: Theme.of(context).primaryColor,
+                color: Theme.of(context).brightness == Brightness.light
+                    ? Theme.of(context).primaryColor
+                    : Theme.of(context).primaryColorLight,
               ),
               onTap: () {
                 context.push(

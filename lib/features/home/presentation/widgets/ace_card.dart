@@ -18,7 +18,7 @@ class AceCard extends StatelessWidget {
               child: Image.asset(
                 'assets/images/resilience.png',
                 color: Theme.of(context).brightness == Brightness.dark
-                    ? Theme.of(context).primaryColor
+                    ? Colors.white
                     : null,
               ),
             ),

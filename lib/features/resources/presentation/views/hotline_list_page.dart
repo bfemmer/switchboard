@@ -1,49 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:switchboard/features/resources/data/models/resource.dart';
+import 'package:switchboard/features/resources/presentation/viewmodels/resource_viewmodel.dart';
 
 import '../../../../constants.dart';
-import '../../../../repository/resource_repository.dart';
-import '../../../../repository/sqlite/sqlite_resource_repository.dart';
 import 'hotline_list_desktop_view.dart';
 import 'hotline_list_mobile_view.dart';
 import 'hotline_list_tablet_view.dart';
 
 class HotlineListPage extends StatefulWidget {
-  const HotlineListPage({super.key});
+  const HotlineListPage({super.key, required this.viewmodel});
+  final ResourceViewModel viewmodel;
+  static String route() => "/hotlines";
 
   @override
   HotlineListPageState createState() => HotlineListPageState();
 }
 
 class HotlineListPageState extends State<HotlineListPage> {
-  late List<Resource> hotlines;
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    widget.viewmodel.loadHotlines.execute();
+  }
 
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      body: FutureBuilder<List<Resource>>(
-        future: _getHotlines(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (screenSize.width < breakpointSmall) {
-            return HotlineListMobileView(resources: hotlines);
-          } else if (screenSize.width < breakpointMedium) {
-            return HotlineListTabletView(resources: hotlines);
-          } else {
-            return HotlineListDesktopView(resources: hotlines);
-          }
+      body: ListenableBuilder(
+        listenable: widget.viewmodel.loadHotlines,
+        builder: (context, _) {
+          return screenSize.width < breakpointSmall
+              ? HotlineListMobileView(resources: widget.viewmodel.resources)
+              : screenSize.width < breakpointMedium
+              ? HotlineListTabletView(resources: widget.viewmodel.resources)
+              : HotlineListDesktopView(resources: widget.viewmodel.resources);
         },
       ),
     );
-  }
-
-  Future<List<Resource>> _getHotlines() async {
-    ResourceRepository repository = SqliteResourceRepository();
-
-    hotlines = await repository.getHotlines();
-    return hotlines;
   }
 }

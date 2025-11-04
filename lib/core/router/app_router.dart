@@ -97,7 +97,9 @@ class AppRouter {
             routes: [
               GoRoute(
                 path: '/hotlines',
-                builder: (context, _) => const HotlineListPage(),
+                builder: (context, _) => HotlineListPage(
+                  viewmodel: serviceLocator<ResourceViewModel>(),
+                ),
               ),
             ],
           ),

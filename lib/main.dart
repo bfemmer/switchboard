@@ -22,8 +22,8 @@ class SwitchboardApp extends StatelessWidget {
           return MaterialApp.router(
             debugShowCheckedModeBanner: false,
             title: 'Switchboard',
-            theme: FlexThemeData.light(scheme: FlexScheme.blueM3),
-            darkTheme: FlexThemeData.dark(scheme: FlexScheme.blueM3),
+            theme: FlexThemeData.light(scheme: FlexScheme.bahamaBlue),
+            darkTheme: FlexThemeData.dark(scheme: FlexScheme.bahamaBlue),
             themeMode: themeNotifier.isDark ? ThemeMode.dark : ThemeMode.light,
             routerConfig: AppRouter.router,
           );

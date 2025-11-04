@@ -18,6 +18,18 @@ class ResourceDatasourceLocal implements ResourceDatasource {
   }
 
   @override
+  Future<List<Resource>> listHotlines() async {
+    var db = await dbHelper.database;
+    var result = await db.rawQuery(
+      'SELECT * FROM resources WHERE voice <> "" ORDER BY name COLLATE NOCASE ASC;',
+    );
+    List<Resource> list = result.isNotEmpty
+        ? result.map((c) => Resource.fromJson(c)).toList()
+        : [];
+    return list;
+  }
+
+  @override
   Future<List<Resource>> listByCategoryId(int id) async {
     var db = await dbHelper.database;
     var query =

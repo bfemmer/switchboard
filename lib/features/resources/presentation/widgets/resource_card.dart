@@ -22,7 +22,15 @@ class _ResourceCardState extends State<ResourceCard> {
       child: Column(
         children: [
           ListTile(
-            leading: const CircleAvatar(child: Icon(Icons.cable)),
+            leading: CircleAvatar(
+              backgroundColor: Theme.of(context).primaryColor,
+              child: Icon(
+                Icons.cable,
+                color: Theme.of(context).brightness == Brightness.light
+                    ? Colors.white
+                    : Colors.black,
+              ),
+            ),
             title: Text(widget.resource.name!),
             subtitle: Text(widget.resource.type!),
           ),

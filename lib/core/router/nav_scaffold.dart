@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:switchboard/core/app_theme.dart';
-import 'package:switchboard/core/utils/resilience_search_delegate.dart';
+import 'package:switchboard/features/search/presentation/widgets/resilience_search_delegate.dart';
 import 'package:switchboard/core/utils/url_helper.dart';
 
 class ScaffoldWithNestedNavigation extends StatelessWidget {
@@ -69,14 +69,6 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
                     ),
                     onTap: () {
                       context.push('/resources');
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) {
-                      //       return const ResourceListPage();
-                      //     },
-                      //   ),
-                      // );
                     },
                   ),
                   ListTile(

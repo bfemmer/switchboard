@@ -19,6 +19,16 @@ class ResourceRepositoryImpl implements ResourceRepository {
   }
 
   @override
+  Future<Result<List<Resource>>> listHotlines() async {
+    try {
+      final result = await datasource.listHotlines();
+      return Result.ok(result);
+    } on Exception catch (e) {
+      return Result.error(e);
+    }
+  }
+
+  @override
   Future<Result<List<Resource>>> listByCategoryId(int id) async {
     try {
       final result = await datasource.listByCategoryId(id);

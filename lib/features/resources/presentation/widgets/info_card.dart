@@ -4,11 +4,7 @@ class InfoCard extends StatefulWidget {
   final String title;
   final String description;
 
-  const InfoCard({
-    super.key,
-    required this.title,
-    required this.description,
-  });
+  const InfoCard({super.key, required this.title, required this.description});
 
   @override
   State<InfoCard> createState() => _InfoCardState();
@@ -24,13 +20,14 @@ class _InfoCardState extends State<InfoCard> {
         children: [
           ListTile(
             leading: CircleAvatar(
-                backgroundColor: Colors.transparent,
-                child: Image.asset(
-                  'assets/images/resilience.png',
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? Theme.of(context).primaryColor
-                      : null,
-                )),
+              backgroundColor: Colors.transparent,
+              child: Image.asset(
+                'assets/images/resilience.png',
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Theme.of(context).primaryColor
+                    : null,
+              ),
+            ),
             title: Text(widget.title),
           ),
           Row(
@@ -38,9 +35,7 @@ class _InfoCardState extends State<InfoCard> {
               Flexible(
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    widget.description,
-                  ),
+                  child: Text(widget.description),
                 ),
               ),
             ],
