@@ -2,6 +2,7 @@ import 'package:switchboard/core/sqlite/database_helper.dart';
 import 'package:switchboard/features/resources/data/datasources/resource_datasource.dart';
 import 'package:switchboard/features/resources/data/models/category.dart';
 import 'package:switchboard/features/resources/data/models/resource.dart';
+import 'package:switchboard/features/resources/data/models/video.dart';
 import 'package:switchboard/features/search/data/models/suggestion.dart';
 
 class ResourceDatasourceLocal implements ResourceDatasource {
@@ -27,6 +28,18 @@ class ResourceDatasourceLocal implements ResourceDatasource {
     );
     List<Resource> list = result.isNotEmpty
         ? result.map((c) => Resource.fromJson(c)).toList()
+        : [];
+    return list;
+  }
+
+  @override
+  Future<List<Video>> listVideos() async {
+    var db = await dbHelper.database;
+    var result = await db.rawQuery(
+      'SELECT * FROM videos ORDER BY title COLLATE NOCASE ASC;',
+    );
+    List<Video> list = result.isNotEmpty
+        ? result.map((c) => Video.fromJson(c)).toList()
         : [];
     return list;
   }

@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:switchboard/core/app_theme.dart';
 import 'package:switchboard/dependencies.dart';
 import 'package:switchboard/features/search/presentation/widgets/resilience_search_delegate.dart';
-import 'package:switchboard/core/utils/url_helper.dart';
 
 class ScaffoldWithNestedNavigation extends StatelessWidget {
   const ScaffoldWithNestedNavigation({
@@ -92,38 +91,6 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
                     ),
                     onTap: () {
                       context.push('/skills');
-                    },
-                  ),
-                  ListTile(
-                    title: const Text('Quick Guides'),
-                    leading: Icon(
-                      Icons.collections_bookmark,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                    onTap: () {
-                      context.push('/guides');
-                    },
-                  ),
-                  ListTile(
-                    title: const Text('AFRC Units'),
-                    leading: Icon(
-                      Icons.map,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                    onTap: () {
-                      context.push('/units');
-                    },
-                  ),
-                  ListTile(
-                    title: const Text('Connect the Network Guide'),
-                    leading: Icon(
-                      Icons.download,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                    onTap: () {
-                      UrlHelper.launchBrowser(
-                        'https://billfemmer.gitlab.io/switchboard-support/Connect_the_Network_Guide_March2025.pdf',
-                      );
                     },
                   ),
                   ListTile(

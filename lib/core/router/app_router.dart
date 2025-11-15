@@ -78,8 +78,10 @@ class AppRouter {
             routes: [
               GoRoute(
                 path: '/home',
-                builder: (context, _) =>
-                    HomePage(viewmodel: serviceLocator<FeedViewModel>()),
+                builder: (context, _) => HomePage(
+                  feedviewmodel: serviceLocator<FeedViewModel>(),
+                  resourceviewmodel: serviceLocator<ResourceViewModel>(),
+                ),
               ),
             ],
           ),

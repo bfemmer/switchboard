@@ -2,6 +2,7 @@ import 'package:switchboard/core/utils/result.dart';
 import 'package:switchboard/features/resources/data/datasources/resource_datasource.dart';
 import 'package:switchboard/features/resources/data/models/category.dart';
 import 'package:switchboard/features/resources/data/models/resource.dart';
+import 'package:switchboard/features/resources/data/models/video.dart';
 import 'package:switchboard/features/resources/domain/repositories/resource_repository.dart';
 import 'package:switchboard/features/search/data/models/suggestion.dart';
 
@@ -24,6 +25,16 @@ class ResourceRepositoryImpl implements ResourceRepository {
   Future<Result<List<Resource>>> listHotlines() async {
     try {
       final result = await datasource.listHotlines();
+      return Result.ok(result);
+    } on Exception catch (e) {
+      return Result.error(e);
+    }
+  }
+
+  @override
+  Future<Result<List<Video>>> listVideos() async {
+    try {
+      final result = await datasource.listVideos();
       return Result.ok(result);
     } on Exception catch (e) {
       return Result.error(e);
