@@ -9,7 +9,7 @@ class VideoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 220, // Fixed width for each video card
+      width: 250, // Fixed width for each video card
       margin: const EdgeInsets.all(8.0),
       child: Card(
         elevation: 4,
@@ -21,7 +21,12 @@ class VideoCard extends StatelessWidget {
                 alignment: Alignment.center, // Centers the play icon
                 children: [
                   // Base image
-                  Image.asset('assets/images/${video.image}'),
+                  Image.asset(
+                    'assets/images/${video.image}',
+                    height: 100, // <-- Set this height!
+                    width: 250,
+                    fit: BoxFit.cover,
+                  ),
 
                   // Play icon
                   Icon(
@@ -49,7 +54,7 @@ class VideoCard extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 8.0),
               child: Text(
                 video.description!,
-                style: TextStyle(fontSize: 12, color: Colors.black),
+                style: Theme.of(context).textTheme.bodySmall,
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
               ),

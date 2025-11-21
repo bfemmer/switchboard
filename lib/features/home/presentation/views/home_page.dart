@@ -51,6 +51,7 @@ class _HomePageState extends State<HomePage> {
                   fapVideos: widget.resourceviewmodel.fapVideos,
                   canVideos: widget.resourceviewmodel.canVideos,
                   readyVideos: widget.resourceviewmodel.readyVideos,
+                  toolsVideos: widget.resourceviewmodel.toolsVideos,
                 )
               : screenSize.width < breakpointMedium
               ? HomeTabletView(feed: widget.feedviewmodel.feed)

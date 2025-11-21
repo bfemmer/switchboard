@@ -19,6 +19,8 @@ class ResourceViewModel extends ChangeNotifier {
       videos.where((video) => video.series == 'Reserve Ready').toList();
   List<Video> get fapVideos =>
       videos.where((video) => video.series == 'FAP').toList();
+  List<Video> get toolsVideos =>
+      videos.where((video) => video.series == 'Tools').toList();
 
   late Command0<void> load;
   late Command0<void> loadHotlines;

@@ -13,12 +13,14 @@ class HomeMobileView extends StatefulWidget {
     required this.canVideos,
     required this.readyVideos,
     required this.fapVideos,
+    required this.toolsVideos,
   });
 
   final List<Feed> feed;
   final List<Video> fapVideos;
   final List<Video> canVideos;
   final List<Video> readyVideos;
+  final List<Video> toolsVideos;
 
   @override
   State<HomeMobileView> createState() => _HomeMobileViewState();
@@ -94,54 +96,13 @@ class _HomeMobileViewState extends State<HomeMobileView> {
               flex: 5,
             ),
           ),
-
-          // const Padding(
-          //   padding: EdgeInsets.only(left: 16, right: 16),
-          //   child: Align(
-          //     alignment: AlignmentGeometry.centerLeft,
-          //     child: Text(
-          //       'Highlights',
-          //       style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          //     ),
-          //   ),
-          // ),
-          // SizedBox(
-          //   height: 200, // Set a fixed height for the horizontal list
-          //   child: ListView.builder(
-          //     scrollDirection: Axis.horizontal, // Key for horizontal scrolling
-          //     itemCount: widget.feed.length,
-          //     itemBuilder: (context, index) {
-          //       return VideoCard(feed: widget.feed[index]);
-          //     },
-          //   ),
-          // ),
-          // SizedBox(height: 25),
-          // const Padding(
-          //   padding: EdgeInsets.only(left: 16, right: 16),
-          //   child: Align(
-          //     alignment: AlignmentGeometry.centerLeft,
-          //     child: Text(
-          //       'Unit of the Week',
-          //       style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          //     ),
-          //   ),
-          // ),
-          // LeftImageCard(
-          //   imageUrl: 'assets/images/b52.jpeg',
-          //   title: '919th Special Operations Wing',
-          //   subtitle: 'Duke Field, FL',
-          //   description:
-          //       'The Quiet Professionals at Duke Field serve as the nation\'s only Air Cmmandos in AFRC.',
-          //   onCallToAction: null,
-          //   callToActionText: '',
-          // ),
           SizedBox(height: 25),
           const Padding(
             padding: EdgeInsets.only(left: 16, right: 16),
             child: Align(
               alignment: AlignmentGeometry.centerLeft,
               child: Text(
-                'Reserve Ready (Video Series)',
+                'Reserve Ready',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
@@ -217,30 +178,36 @@ class _HomeMobileViewState extends State<HomeMobileView> {
               flex: 2,
             ),
           ),
+          SizedBox(height: 25),
+          Padding(
+            padding: EdgeInsets.only(left: 16, right: 16),
+            child: Align(
+              alignment: AlignmentGeometry.centerLeft,
+              child: Text(
+                'Helpful Tools',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 230, // Set a fixed height for the horizontal list
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal, // Key for horizontal scrolling
+              itemCount: widget.toolsVideos.length,
+              itemBuilder: (context, index) {
+                return InkWell(
+                  onTap: () {
+                    UrlHelper.launchBrowser(
+                      'https://www.youtube.com/watch?v=${widget.toolsVideos[index].url!}',
+                    );
+                  },
+                  child: VideoCard(video: widget.toolsVideos[index]),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
-
-    // return Scaffold(
-    //   body: SafeArea(
-    //     child: ListView.builder(
-    //       itemCount: widget.feed.length,
-    //       itemBuilder: (context, index) {
-    //         return Padding(
-    //           padding: const EdgeInsets.only(left: 10, right: 10),
-    //           child: MediaCard(
-    //             title: widget.feed[index].title!,
-    //             subTitle: widget.feed[index].subtitle!,
-    //             description: widget.feed[index].description!,
-    //             linkUrl: null,
-    //             imageUrl: 'assets/images/operators.png',
-    //             // linkUrl: widget.feed[index].linkUrl,
-    //             // imageUrl: widget.feed[index].imageUrl!,
-    //           ),
-    //         );
-    //       },
-    //     ),
-    //   ),
-    // );
   }
 }
