@@ -7,6 +7,10 @@ import 'package:switchboard/features/guides/domain/repositories/guide_repository
 class GuideViewModel extends ChangeNotifier {
   final GuideRepository _guideRepository;
 
+  // State for the selected filter chip
+  String _selectedFilter = 'All';
+  String get selectedFilter => _selectedFilter;
+
   List<Guide> _guides = [];
   List<Guide> get guides => _guides;
 
@@ -14,6 +18,26 @@ class GuideViewModel extends ChangeNotifier {
 
   GuideViewModel(this._guideRepository) {
     load = Command0(_load);
+  }
+
+  List<String> get filters {
+    final uniqueCategories = _guides
+        .where((guide) => guide.subtitle != null)
+        .map((guide) => guide.subtitle!)
+        .toSet() // Get only unique parents
+        .toList();
+
+    // Sort the list of parents alphabetically/numerically
+    uniqueCategories.sort();
+
+    return ['All', ...uniqueCategories];
+  }
+
+  List<Guide> get filteredGuides {
+    if (_selectedFilter == 'All') {
+      return _guides;
+    }
+    return _guides.where((n) => n.subtitle == _selectedFilter).toList();
   }
 
   Future<Result> _load() async {
@@ -29,6 +53,16 @@ class GuideViewModel extends ChangeNotifier {
 
       return fetchedDataResult;
     } finally {
+      notifyListeners();
+    }
+  }
+
+  // Update the selected category and notify listeners
+  void selectFilter(String category) {
+    if (_selectedFilter != category) {
+      _selectedFilter = category;
+
+      // This triggers the UI to re-read 'filteredUnits'
       notifyListeners();
     }
   }
