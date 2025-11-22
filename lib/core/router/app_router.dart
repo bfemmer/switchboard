@@ -5,7 +5,6 @@ import 'package:switchboard/features/apps/presentation/viewmodels/app_viewmodel.
 import 'package:switchboard/features/apps/presentation/views/app_list_page.dart';
 import 'package:switchboard/features/faq/presentation/viewmodels/faq_viewmodel.dart';
 import 'package:switchboard/features/faq/presentation/views/faq_page.dart';
-import 'package:switchboard/features/home/presentation/viewmodels/feed_viewmodel.dart';
 import 'package:switchboard/features/guides/presentation/viewmodels/guide_viewmodel.dart';
 import 'package:switchboard/features/guides/presentation/views/guides_list_page.dart';
 import 'package:switchboard/features/home/presentation/views/emergency_page.dart';
@@ -78,10 +77,8 @@ class AppRouter {
             routes: [
               GoRoute(
                 path: '/home',
-                builder: (context, _) => HomePage(
-                  feedviewmodel: serviceLocator<FeedViewModel>(),
-                  resourceviewmodel: serviceLocator<ResourceViewModel>(),
-                ),
+                builder: (context, _) =>
+                    HomePage(viewmodel: serviceLocator<ResourceViewModel>()),
               ),
             ],
           ),

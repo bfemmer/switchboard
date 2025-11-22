@@ -1,20 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:switchboard/features/home/presentation/viewmodels/feed_viewmodel.dart';
-import 'package:switchboard/features/home/presentation/views/home_mobile_view.dart';
+import 'package:switchboard/features/home/presentation/widgets/responsive_home_body.dart';
 import 'package:switchboard/features/resources/presentation/viewmodels/resource_viewmodel.dart';
 
-import '../../../../constants.dart';
-import 'home_desktop_view.dart';
-import 'home_tablet_view.dart';
-
 class HomePage extends StatefulWidget {
-  const HomePage({
-    super.key,
-    required this.feedviewmodel,
-    required this.resourceviewmodel,
-  });
-  final FeedViewModel feedviewmodel;
-  final ResourceViewModel resourceviewmodel;
+  const HomePage({super.key, required this.viewmodel});
+
+  final ResourceViewModel viewmodel;
   static String route() => "/home";
 
   @override
@@ -25,38 +16,20 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-  }
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    widget.feedviewmodel.load.execute();
-    widget.resourceviewmodel.loadVideos.execute();
+    widget.viewmodel.loadVideos.execute();
   }
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-
     return Scaffold(
-      body: ListenableBuilder(
-        listenable: Listenable.merge([
-          widget.feedviewmodel.load,
-          widget.resourceviewmodel.loadVideos,
-        ]),
-        builder: (context, _) {
-          return screenSize.width < breakpointSmall
-              ? HomeMobileView(
-                  feed: widget.feedviewmodel.feed,
-                  fapVideos: widget.resourceviewmodel.fapVideos,
-                  canVideos: widget.resourceviewmodel.canVideos,
-                  readyVideos: widget.resourceviewmodel.readyVideos,
-                  toolsVideos: widget.resourceviewmodel.toolsVideos,
-                )
-              : screenSize.width < breakpointMedium
-              ? HomeTabletView(feed: widget.feedviewmodel.feed)
-              : HomeDesktopView(feed: widget.feedviewmodel.feed);
-        },
+      body: SafeArea(
+        child: ListenableBuilder(
+          listenable: widget.viewmodel.loadVideos,
+          builder: (context, _) {
+            return ResponsiveHomeBody(viewModel: widget.viewmodel);
+          },
+        ),
       ),
     );
   }
