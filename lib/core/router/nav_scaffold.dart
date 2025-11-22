@@ -45,68 +45,68 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
               ),
             ],
           ),
-          drawer: SafeArea(
-            child: Drawer(
-              child: ListView(
-                padding: EdgeInsets.zero,
-                children: <Widget>[
-                  DrawerHeader(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/operators.png'),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    child: Text(
-                      'Switchboard',
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                  ),
-                  ListTile(
-                    title: const Text('Browse Resources'),
-                    leading: Icon(
-                      FontAwesomeIcons.arrowDownAZ,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                    onTap: () {
-                      context.push('/resources');
-                    },
-                  ),
-                  ListTile(
-                    title: const Text('Helpful Apps'),
-                    leading: Icon(
-                      Icons.apps,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                    onTap: () {
-                      context.push('/apps');
-                    },
-                  ),
-                  ListTile(
-                    title: const Text('Resilience Skills'),
-                    leading: Icon(
-                      Icons.business_center,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                    onTap: () {
-                      context.push('/skills');
-                    },
-                  ),
-                  ListTile(
-                    title: const Text('Frequently Asked Questions'),
-                    leading: Icon(
-                      Icons.question_mark,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                    onTap: () {
-                      context.push('/faqs');
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
+          // drawer: SafeArea(
+          //   child: Drawer(
+          //     child: ListView(
+          //       padding: EdgeInsets.zero,
+          //       children: <Widget>[
+          //         DrawerHeader(
+          //           decoration: BoxDecoration(
+          //             color: Colors.white,
+          //             image: DecorationImage(
+          //               image: AssetImage('assets/images/operators.png'),
+          //               fit: BoxFit.cover,
+          //             ),
+          //           ),
+          //           child: Text(
+          //             'Switchboard',
+          //             style: Theme.of(context).textTheme.titleMedium,
+          //           ),
+          //         ),
+          //         ListTile(
+          //           title: const Text('Browse Resources'),
+          //           leading: Icon(
+          //             FontAwesomeIcons.arrowDownAZ,
+          //             color: Theme.of(context).primaryColor,
+          //           ),
+          //           onTap: () {
+          //             context.push('/resources');
+          //           },
+          //         ),
+          //         ListTile(
+          //           title: const Text('Helpful Apps'),
+          //           leading: Icon(
+          //             Icons.apps,
+          //             color: Theme.of(context).primaryColor,
+          //           ),
+          //           onTap: () {
+          //             context.push('/apps');
+          //           },
+          //         ),
+          //         ListTile(
+          //           title: const Text('Resilience Skills'),
+          //           leading: Icon(
+          //             Icons.business_center,
+          //             color: Theme.of(context).primaryColor,
+          //           ),
+          //           onTap: () {
+          //             context.push('/skills');
+          //           },
+          //         ),
+          //         ListTile(
+          //           title: const Text('Frequently Asked Questions'),
+          //           leading: Icon(
+          //             Icons.question_mark,
+          //             color: Theme.of(context).primaryColor,
+          //           ),
+          //           onTap: () {
+          //             context.push('/faqs');
+          //           },
+          //         ),
+          //       ],
+          //     ),
+          //   ),
+          // ),
           body: navigationShell,
           bottomNavigationBar: BottomNavigationBar(
             selectedItemColor: Theme.of(context).primaryColor,
