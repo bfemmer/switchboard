@@ -9,7 +9,7 @@ class VideoCard extends StatelessWidget {
     super.key,
     required this.video,
     this.width =
-        250.0, // Default width ensures it works in Horizontal Lists & Grids
+        270.0, // Default width ensures it works in Horizontal Lists & Grids
   });
 
   @override
@@ -69,7 +69,7 @@ class VideoCard extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleSmall?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
-                    maxLines: 2,
+                    maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 4),

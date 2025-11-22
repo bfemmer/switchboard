@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:switchboard/features/resources/presentation/viewmodels/resource_viewmodel.dart';
-import 'package:switchboard/features/resources/presentation/views/resource_list_desktop_view.dart';
+import 'package:switchboard/features/resources/presentation/widgets/responsive_resource_body.dart';
 
-import '../../../../constants.dart';
 import '../../../../core/utils/url_helper.dart';
-import 'resource_list_mobile_view.dart';
-import 'resource_list_tablet_view.dart';
 
 class ResourceListCatPage extends StatefulWidget {
   final String categoryId;
@@ -43,8 +40,6 @@ class ResourceListCatPageState extends State<ResourceListCatPage> {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.categoryName),
@@ -53,15 +48,33 @@ class ResourceListCatPageState extends State<ResourceListCatPage> {
       body: ListenableBuilder(
         listenable: widget.viewmodel.loadForCategory,
         builder: (context, _) {
-          return screenSize.width < breakpointSmall
-              ? ResourceListMobileView(resources: widget.viewmodel.resources)
-              : screenSize.width < breakpointMedium
-              ? ResourceListTabletView(resources: widget.viewmodel.resources)
-              : ResourceListDesktopView(resources: widget.viewmodel.resources);
+          return ResponsiveResourceBody(resources: widget.viewmodel.resources);
         },
       ),
     );
   }
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   var screenSize = MediaQuery.of(context).size;
+
+  //   return Scaffold(
+  //     appBar: AppBar(
+  //       title: Text(widget.categoryName),
+  //       actions: [_buildActionButton()],
+  //     ),
+  //     body: ListenableBuilder(
+  //       listenable: widget.viewmodel.loadForCategory,
+  //       builder: (context, _) {
+  //         return screenSize.width < breakpointSmall
+  //             ? ResourceListMobileView(resources: widget.viewmodel.resources)
+  //             : screenSize.width < breakpointMedium
+  //             ? ResourceListTabletView(resources: widget.viewmodel.resources)
+  //             : ResourceListDesktopView(resources: widget.viewmodel.resources);
+  //       },
+  //     ),
+  //   );
+  // }
 
   Widget _buildActionButton() {
     return IconButton(
