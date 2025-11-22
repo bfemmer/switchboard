@@ -28,7 +28,7 @@ class UnitViewModel extends ChangeNotifier {
         .toList();
 
     // Sort the list of parents alphabetically/numerically
-    uniqueParents.sort();
+    uniqueParents.sort((a, b) => b.compareTo(a));
 
     return ['All', ...uniqueParents];
   }
