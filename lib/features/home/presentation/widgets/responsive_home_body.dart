@@ -22,11 +22,14 @@ class ResponsiveHomeBody extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 40),
           children: [
             // Header Image
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-              child: Image.asset('assets/images/a10.png'),
+            SizedBox(
+              height: 300,
+              child: Image.asset(
+                'assets/images/a10.png',
+                fit: BoxFit
+                    .contain, // Optional: Adjusts how the image fits within the SizedBox
+              ),
             ),
-
             // Network Guide Link
             _buildLinkCard(
               context,
@@ -47,6 +50,8 @@ class ResponsiveHomeBody extends StatelessWidget {
               videos: viewModel.fapVideos,
             ),
 
+            const SizedBox(height: 25),
+
             // DAVA Link
             _buildLinkCard(
               context,
@@ -63,6 +68,8 @@ class ResponsiveHomeBody extends StatelessWidget {
 
             // Reserve Ready Section
             VideoSection(title: 'Reserve Ready', videos: viewModel.readyVideos),
+
+            const SizedBox(height: 25),
 
             // Units Link
             _buildLinkCard(
@@ -83,6 +90,8 @@ class ResponsiveHomeBody extends StatelessWidget {
               videos: viewModel.canVideos,
             ),
 
+            const SizedBox(height: 25),
+
             // Quick Guides
             _buildLinkCard(
               context,
@@ -93,6 +102,8 @@ class ResponsiveHomeBody extends StatelessWidget {
               image: 'assets/images/resilience.png',
               onTap: () => context.push('/guides'),
             ),
+
+            const SizedBox(height: 25),
 
             // Chill drill tools
             VideoSection(title: 'Tools', videos: viewModel.toolsVideos),
