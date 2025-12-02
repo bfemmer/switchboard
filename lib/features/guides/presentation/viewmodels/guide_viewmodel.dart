@@ -62,7 +62,7 @@ class GuideViewModel extends ChangeNotifier {
     if (_selectedFilter != category) {
       _selectedFilter = category;
 
-      // This triggers the UI to re-read 'filteredUnits'
+      // This triggers the UI to re-read 'filtered guides'
       notifyListeners();
     }
   }

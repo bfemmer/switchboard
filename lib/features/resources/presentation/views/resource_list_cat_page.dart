@@ -54,28 +54,6 @@ class ResourceListCatPageState extends State<ResourceListCatPage> {
     );
   }
 
-  // @override
-  // Widget build(BuildContext context) {
-  //   var screenSize = MediaQuery.of(context).size;
-
-  //   return Scaffold(
-  //     appBar: AppBar(
-  //       title: Text(widget.categoryName),
-  //       actions: [_buildActionButton()],
-  //     ),
-  //     body: ListenableBuilder(
-  //       listenable: widget.viewmodel.loadForCategory,
-  //       builder: (context, _) {
-  //         return screenSize.width < breakpointSmall
-  //             ? ResourceListMobileView(resources: widget.viewmodel.resources)
-  //             : screenSize.width < breakpointMedium
-  //             ? ResourceListTabletView(resources: widget.viewmodel.resources)
-  //             : ResourceListDesktopView(resources: widget.viewmodel.resources);
-  //       },
-  //     ),
-  //   );
-  // }
-
   Widget _buildActionButton() {
     return IconButton(
       icon: Icon(

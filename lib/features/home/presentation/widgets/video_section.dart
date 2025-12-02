@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:switchboard/core/utils/url_helper.dart';
 import 'package:switchboard/features/home/presentation/widgets/video_card.dart';
 import 'package:switchboard/features/resources/data/models/video.dart';
 
@@ -53,7 +54,7 @@ class VideoSection extends StatelessWidget {
             padding: const EdgeInsets.only(left: 10),
             child: InkWell(
               onTap: () => _launchUrl(videos[index].url),
-              child: VideoCard(video: videos[index]), // Your existing card
+              child: VideoCard(video: videos[index]),
             ),
           );
         },
@@ -79,6 +80,7 @@ class VideoSection extends StatelessWidget {
   }
 
   void _launchUrl(String? url) {
-    // Your UrlHelper logic
+    String link = 'https://www.youtube.com/watch?v=${url!}';
+    UrlHelper.launchBrowser(link);
   }
 }

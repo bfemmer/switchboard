@@ -13,7 +13,7 @@ class ResponsiveGuideBody extends StatelessWidget {
     return Column(
       children: [
         // ---------------------------------------------------------
-        // 1. THE FILTER BAR (Ported from UnitListMobileView)
+        // 1. THE FILTER BAR
         // ---------------------------------------------------------
         Container(
           height: 50,
