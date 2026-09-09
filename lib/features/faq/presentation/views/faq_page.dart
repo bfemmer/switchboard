@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:switchboard/core/utils/loader.dart';
 import 'package:switchboard/features/faq/presentation/viewmodels/faq_viewmodel.dart';
+import 'package:switchboard/features/faq/presentation/widgets/faq_card.dart';
 
 class FaqPage extends StatefulWidget {
   const FaqPage({super.key, required this.viewmodel});
@@ -13,11 +14,6 @@ class FaqPage extends StatefulWidget {
 
 class FaqPageState extends State<FaqPage> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     widget.viewmodel.load.execute();
@@ -25,59 +21,70 @@ class FaqPageState extends State<FaqPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Frequently Asked Questions')),
-      body: SafeArea(
-        child: ListenableBuilder(
-          listenable: widget.viewmodel.load,
-          builder: (context, _) {
-            return Column(
-              children: [
-                Expanded(
-                  child: widget.viewmodel.load.running
-                      ? Loader()
-                      : widget.viewmodel.faqs.isEmpty
-                      ? Center(
-                          child: Text(
-                            'No frequently asked questions found',
-                            style: TextStyle(fontSize: 16, color: Colors.grey),
-                          ),
-                        )
-                      : _buildFaqList(),
-                ),
-              ],
-            );
-          },
-        ),
-      ),
-    );
-  }
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
 
-  Widget _buildFaqList() {
-    return ListView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-      itemCount: widget.viewmodel.faqs.length,
-      itemBuilder: (context, index) {
-        final faq = widget.viewmodel.faqs[index];
-        return Padding(
-          padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-          child: Card(
-            elevation: 3.0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: ExpansionTile(
-              title: Text(faq.question!),
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text(faq.response!),
-                ),
-              ],
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Frequently Asked Questions'),
+        elevation: 0,
+      ),
+      body: SafeArea(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 1000),
+            child: ListenableBuilder(
+              listenable: widget.viewmodel.load,
+              builder: (context, _) {
+                if (widget.viewmodel.load.running) {
+                  return const Loader();
+                }
+
+                if (widget.viewmodel.faqs.isEmpty) {
+                  return Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.help_outline,
+                          size: 64,
+                          color: colorScheme.onSurfaceVariant.withAlpha(100),
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          'No frequently asked questions found',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: colorScheme.onSurfaceVariant,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+
+                return ListView.builder(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0,
+                    vertical: 16.0,
+                  ),
+                  itemCount: widget.viewmodel.faqs.length,
+                  itemBuilder: (context, index) {
+                    final faq = widget.viewmodel.faqs[index];
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 12.0),
+                      child: FaqCard(
+                        faq: faq,
+                        index: index,
+                      ),
+                    );
+                  },
+                );
+              },
             ),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }
