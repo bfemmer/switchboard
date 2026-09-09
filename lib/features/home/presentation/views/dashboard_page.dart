@@ -25,7 +25,6 @@ class DashboardPage extends StatelessWidget {
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 1000),
             child: ListView(
-
               padding: const EdgeInsets.symmetric(
                 horizontal: 16.0,
                 vertical: 20.0,
@@ -385,13 +384,6 @@ class DashboardPage extends StatelessWidget {
 
   Widget _buildQuickNavGrid(BuildContext context, ColorScheme colorScheme) {
     final items = [
-      _QuickNavItem(
-        title: 'Emergency',
-        subtitle: 'Immediate Crisis Support',
-        icon: Icons.emergency,
-        iconColor: Colors.red,
-        onTap: () => context.push('/emergency'),
-      ),
       _QuickNavItem(
         title: 'Hotlines',
         subtitle: 'Confidential Support Lines',
