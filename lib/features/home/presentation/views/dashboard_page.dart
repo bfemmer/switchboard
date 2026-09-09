@@ -222,7 +222,7 @@ class DashboardPage extends StatelessWidget {
               icon: Icons.no_accounts_outlined,
               title: 'Zero Data Collection or User Logging',
               description:
-                  'We do NOT log, capture, track, or store any personal data, searches, phone calls, or usage statistics.',
+                  'Switchboard does NOT log, capture, track, or store any personal data, searches, phone calls, or usage statistics.',
             ),
             const SizedBox(height: 12),
             _buildPrivacyFeatureRow(
