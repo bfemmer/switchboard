@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:switchboard/core/router/nav_scaffold.dart';
+import 'package:switchboard/core/utils/loader.dart';
 import 'package:switchboard/features/resources/presentation/viewmodels/category_viewmodel.dart';
 import 'package:switchboard/features/resources/presentation/widgets/responsive_category_body.dart';
 
@@ -32,15 +33,20 @@ class CategoryListPageState extends State<CategoryListPage> {
         elevation: 0,
         actions: buildAppBarActions(context),
       ),
-
-      body: ListenableBuilder(
-        listenable: widget.viewmodel.load,
-        builder: (context, _) {
-          return ResponsiveCategoryBody(
-            categories: widget.viewmodel.categories,
-          );
-        },
+      body: SafeArea(
+        child: ListenableBuilder(
+          listenable: widget.viewmodel.load,
+          builder: (context, _) {
+            if (widget.viewmodel.load.running) {
+              return const Loader();
+            }
+            return ResponsiveCategoryBody(
+              categories: widget.viewmodel.categories,
+            );
+          },
+        ),
       ),
     );
   }
 }
+
