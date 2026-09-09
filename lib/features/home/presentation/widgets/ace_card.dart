@@ -28,11 +28,11 @@ class AceCard extends StatelessWidget {
           Row(
             children: [
               Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 child: CircleAvatar(
                   backgroundColor: Colors.transparent,
                   foregroundColor: Theme.of(context).primaryColor,
-                  child: Icon(FontAwesomeIcons.question),
+                  child: const FaIcon(FontAwesomeIcons.question),
                 ),
               ),
               Column(
@@ -55,12 +55,12 @@ class AceCard extends StatelessWidget {
           const Divider(),
           Row(
             children: [
-              const Padding(
-                padding: EdgeInsets.all(16.0),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
                 child: CircleAvatar(
                   backgroundColor: Colors.transparent,
                   foregroundColor: Colors.red,
-                  child: Icon(FontAwesomeIcons.handHoldingHeart),
+                  child: const FaIcon(FontAwesomeIcons.handHoldingHeart),
                 ),
               ),
               Column(
@@ -85,12 +85,12 @@ class AceCard extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 16.0),
             child: Row(
               children: [
-                const Padding(
-                  padding: EdgeInsets.all(16.0),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
                   child: CircleAvatar(
                     backgroundColor: Colors.transparent,
                     foregroundColor: Colors.green,
-                    child: Icon(FontAwesomeIcons.peoplePulling),
+                    child: const FaIcon(FontAwesomeIcons.peoplePulling),
                   ),
                 ),
                 Column(

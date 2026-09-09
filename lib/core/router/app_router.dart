@@ -9,6 +9,7 @@ import 'package:switchboard/features/guides/presentation/viewmodels/guide_viewmo
 import 'package:switchboard/features/guides/presentation/views/guides_list_page.dart';
 import 'package:switchboard/features/home/presentation/views/emergency_page.dart';
 import 'package:switchboard/features/home/presentation/views/home_page.dart';
+import 'package:switchboard/features/home/presentation/views/videos_page.dart';
 import 'package:switchboard/features/resources/presentation/viewmodels/category_viewmodel.dart';
 import 'package:switchboard/features/resources/presentation/viewmodels/resource_viewmodel.dart';
 import 'package:switchboard/features/resources/presentation/views/category_list_page.dart';
@@ -77,8 +78,16 @@ class AppRouter {
             routes: [
               GoRoute(
                 path: '/home',
+                builder: (context, _) => const HomePage(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: VideosPage.route(),
                 builder: (context, _) =>
-                    HomePage(viewmodel: serviceLocator<ResourceViewModel>()),
+                    VideosPage(viewmodel: serviceLocator<ResourceViewModel>()),
               ),
             ],
           ),
@@ -106,7 +115,7 @@ class AppRouter {
             routes: [
               GoRoute(
                 path: '/emergency',
-                builder: (context, _) => EmergencyPage(),
+                builder: (context, _) => const EmergencyPage(),
               ),
             ],
           ),

@@ -109,15 +109,26 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
           // ),
           body: navigationShell,
           bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
             selectedItemColor: Theme.of(context).primaryColor,
             unselectedItemColor: Theme.of(context).primaryColorLight,
             currentIndex: navigationShell.currentIndex,
             showUnselectedLabels: true,
             onTap: (index) => navigationShell.goBranch(index),
             items: [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
               BottomNavigationBarItem(
-                icon: Icon(Icons.category),
+                icon: Icon(Icons.dashboard_outlined),
+                activeIcon: Icon(Icons.dashboard),
+                label: 'Dashboard',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.play_circle_outline),
+                activeIcon: Icon(Icons.play_circle_fill),
+                label: 'Videos',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.category_outlined),
+                activeIcon: Icon(Icons.category),
                 label: 'Categories',
               ),
               BottomNavigationBarItem(
@@ -125,7 +136,8 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
                 label: 'Hotlines',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.emergency),
+                icon: Icon(Icons.emergency_outlined),
+                activeIcon: Icon(Icons.emergency),
                 label: 'Emergency',
               ),
             ],
