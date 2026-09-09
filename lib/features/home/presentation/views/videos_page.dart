@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:switchboard/core/router/nav_scaffold.dart';
+import 'package:switchboard/core/utils/loader.dart';
 import 'package:switchboard/features/home/presentation/widgets/responsive_home_body.dart';
 import 'package:switchboard/features/resources/presentation/viewmodels/resource_viewmodel.dart';
 
@@ -28,11 +29,13 @@ class _VideosPageState extends State<VideosPage> {
         elevation: 0,
         actions: buildAppBarActions(context),
       ),
-
       body: SafeArea(
         child: ListenableBuilder(
           listenable: widget.viewmodel.loadVideos,
           builder: (context, _) {
+            if (widget.viewmodel.loadVideos.running) {
+              return const Loader();
+            }
             return ResponsiveHomeBody(viewModel: widget.viewmodel);
           },
         ),
@@ -40,3 +43,4 @@ class _VideosPageState extends State<VideosPage> {
     );
   }
 }
+
