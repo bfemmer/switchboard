@@ -10,24 +10,28 @@ class ResponsiveUnitBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
     return Column(
       children: [
         // ---------------------------------------------------------
-        // 1. THE FILTER BAR (Ported from UnitListMobileView)
+        // 1. THE FILTER BAR
         // ---------------------------------------------------------
         Container(
-          height: 50,
+          height: 54,
           decoration: BoxDecoration(
-            color: Theme.of(
-              context,
-            ).appBarTheme.backgroundColor?.withValues(alpha: .05),
-            border: const Border(
-              bottom: BorderSide(color: Colors.black12, width: 0.5),
+            color: colorScheme.surfaceContainerHigh.withAlpha(80),
+            border: Border(
+              bottom: BorderSide(
+                color: colorScheme.outlineVariant.withAlpha(60),
+                width: 1,
+              ),
             ),
           ),
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
             itemCount: viewmodel.filters.length,
             itemBuilder: (context, index) {
               final category = viewmodel.filters[index];
@@ -43,23 +47,21 @@ class ResponsiveUnitBody extends StatelessWidget {
                       viewmodel.selectFilter(category);
                     }
                   },
-                  selectedColor: Theme.of(context).primaryColor,
+                  selectedColor: colorScheme.primary,
                   labelStyle: TextStyle(
                     color: isSelected
-                        ? Colors.white
-                        : Theme.of(context).primaryColor,
-                    fontWeight: isSelected
-                        ? FontWeight.bold
-                        : FontWeight.normal,
+                        ? colorScheme.onPrimary
+                        : colorScheme.onSurfaceVariant,
+                    fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
+                    fontSize: 13,
                   ),
-                  // Ensure visual consistency
-                  backgroundColor: Theme.of(context).cardColor,
+                  backgroundColor: colorScheme.surface,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                     side: BorderSide(
                       color: isSelected
                           ? Colors.transparent
-                          : Theme.of(context).dividerColor,
+                          : colorScheme.outlineVariant,
                     ),
                   ),
                 ),
@@ -73,7 +75,26 @@ class ResponsiveUnitBody extends StatelessWidget {
         // ---------------------------------------------------------
         Expanded(
           child: viewmodel.filteredUnits.isEmpty && viewmodel.load.completed
-              ? const Center(child: Text("No units found for this category."))
+              ? Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.search_off_rounded,
+                        size: 56,
+                        color: colorScheme.onSurfaceVariant.withAlpha(100),
+                      ),
+                      const SizedBox(height: 12),
+                      Text(
+                        'No units found for this category.',
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: colorScheme.onSurfaceVariant,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
               : Center(
                   child: ConstrainedBox(
                     constraints: const BoxConstraints(maxWidth: 1200),
@@ -92,7 +113,6 @@ class ResponsiveUnitBody extends StatelessWidget {
                           mainAxisSpacing: 12,
                           crossAxisSpacing: 12,
                           padding: const EdgeInsets.all(16),
-                          // IMPORTANT: Use filteredUnits here!
                           itemCount: viewmodel.filteredUnits.length,
                           itemBuilder: (context, index) {
                             return UnitCard(
