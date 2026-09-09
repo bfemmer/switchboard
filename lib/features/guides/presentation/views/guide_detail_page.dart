@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:switchboard/core/router/nav_scaffold.dart';
 import 'package:switchboard/core/utils/url_helper.dart';
 import 'package:switchboard/features/guides/data/models/guide.dart';
 
@@ -22,6 +23,7 @@ class _GuideDetailPageState extends State<GuideDetailPage> {
         title: const Text('Quick Guide'),
         elevation: 0,
         actions: [
+          ...buildAppBarActions(context),
           if (widget.guide.urlLink != null &&
               widget.guide.urlLink!.isNotEmpty)
             IconButton(
@@ -42,6 +44,7 @@ class _GuideDetailPageState extends State<GuideDetailPage> {
           ),
         ],
       ),
+
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(

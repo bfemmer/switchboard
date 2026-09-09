@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:switchboard/core/router/nav_scaffold.dart';
 import 'package:switchboard/core/utils/loader.dart';
 import 'package:switchboard/features/faq/presentation/viewmodels/faq_viewmodel.dart';
 import 'package:switchboard/features/faq/presentation/widgets/faq_card.dart';
@@ -26,9 +27,11 @@ class FaqPageState extends State<FaqPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Frequently Asked Questions'),
+        title: const Text('FAQs'),
         elevation: 0,
+        actions: buildAppBarActions(context),
       ),
+
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
@@ -73,10 +76,7 @@ class FaqPageState extends State<FaqPage> {
                     final faq = widget.viewmodel.faqs[index];
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 12.0),
-                      child: FaqCard(
-                        faq: faq,
-                        index: index,
-                      ),
+                      child: FaqCard(faq: faq, index: index),
                     );
                   },
                 );

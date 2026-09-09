@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:switchboard/constants.dart';
+import 'package:switchboard/core/router/nav_scaffold.dart';
 import 'package:switchboard/features/skills/presentation/viewmodels/skill_viewmodel.dart';
 import 'package:switchboard/features/skills/presentation/views/skill_list_desktop_view.dart';
 import 'package:switchboard/features/skills/presentation/views/skill_list_mobile_view.dart';
@@ -31,7 +32,12 @@ class SkillListPageState extends State<SkillListPage> {
     var screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Resilience Skills')),
+      appBar: AppBar(
+        title: const Text('Resilience Skills'),
+        elevation: 0,
+        actions: buildAppBarActions(context),
+      ),
+
       body: SafeArea(
         child: ListenableBuilder(
           listenable: widget.viewmodel.load,

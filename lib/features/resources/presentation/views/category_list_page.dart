@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:switchboard/core/router/nav_scaffold.dart';
 import 'package:switchboard/features/resources/presentation/viewmodels/category_viewmodel.dart';
 import 'package:switchboard/features/resources/presentation/widgets/responsive_category_body.dart';
 
@@ -26,6 +27,12 @@ class CategoryListPageState extends State<CategoryListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Categories'),
+        elevation: 0,
+        actions: buildAppBarActions(context),
+      ),
+
       body: ListenableBuilder(
         listenable: widget.viewmodel.load,
         builder: (context, _) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:switchboard/core/router/nav_scaffold.dart';
 import 'package:switchboard/core/utils/loader.dart';
 import 'package:switchboard/features/apps/presentation/viewmodels/app_viewmodel.dart';
 import 'package:switchboard/features/apps/presentation/widgets/app_card.dart';
@@ -27,9 +28,11 @@ class AppListPageState extends State<AppListPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Helpful Mobile Apps'),
+        title: const Text('Helpful Apps'),
         elevation: 0,
+        actions: buildAppBarActions(context),
       ),
+
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
@@ -81,9 +84,7 @@ class AppListPageState extends State<AppListPage> {
                       padding: const EdgeInsets.all(16),
                       itemCount: widget.viewmodel.apps.length,
                       itemBuilder: (context, index) {
-                        return AppCard(
-                          app: widget.viewmodel.apps[index],
-                        );
+                        return AppCard(app: widget.viewmodel.apps[index]);
                       },
                     );
                   },

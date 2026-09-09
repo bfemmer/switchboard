@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:switchboard/core/router/nav_scaffold.dart';
 
 import '../../../../core/utils/fa_helper.dart';
 import '../../../../core/utils/url_helper.dart';
@@ -16,6 +17,12 @@ class _EmergencyPageState extends State<EmergencyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Emergency Assistance'),
+        elevation: 0,
+        actions: buildAppBarActions(context, showEmergency: false),
+      ),
+
       body: SafeArea(
         child: ListView(
           children: [

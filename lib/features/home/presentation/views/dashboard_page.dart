@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:switchboard/core/router/nav_scaffold.dart';
 import 'package:switchboard/core/utils/url_helper.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -14,11 +15,17 @@ class DashboardPage extends StatelessWidget {
     final colorScheme = theme.colorScheme;
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Switchboard'),
+        elevation: 0,
+        actions: buildAppBarActions(context),
+      ),
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 1000),
             child: ListView(
+
               padding: const EdgeInsets.symmetric(
                 horizontal: 16.0,
                 vertical: 20.0,
@@ -383,28 +390,28 @@ class DashboardPage extends StatelessWidget {
         subtitle: 'Immediate Crisis Support',
         icon: Icons.emergency,
         iconColor: Colors.red,
-        onTap: () => context.go('/emergency'),
+        onTap: () => context.push('/emergency'),
       ),
       _QuickNavItem(
         title: 'Hotlines',
         subtitle: 'Confidential Support Lines',
         faIcon: FontAwesomeIcons.phone,
         iconColor: Colors.teal,
-        onTap: () => context.go('/hotlines'),
+        onTap: () => context.push('/hotlines'),
       ),
       _QuickNavItem(
         title: 'Categories',
         subtitle: 'Browse by Subject',
         icon: Icons.category,
         iconColor: Colors.indigo,
-        onTap: () => context.go('/categories'),
+        onTap: () => context.push('/categories'),
       ),
       _QuickNavItem(
         title: 'Videos',
         subtitle: 'FAP & Resilience Media',
         icon: Icons.play_circle_fill,
         iconColor: Colors.amber.shade800,
-        onTap: () => context.go('/videos'),
+        onTap: () => context.push('/videos'),
       ),
       _QuickNavItem(
         title: 'Leadership Guides',

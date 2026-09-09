@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:switchboard/core/router/nav_scaffold.dart';
 import 'package:switchboard/features/home/presentation/widgets/responsive_home_body.dart';
 import 'package:switchboard/features/resources/presentation/viewmodels/resource_viewmodel.dart';
 
@@ -22,6 +23,12 @@ class _VideosPageState extends State<VideosPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Videos'),
+        elevation: 0,
+        actions: buildAppBarActions(context),
+      ),
+
       body: SafeArea(
         child: ListenableBuilder(
           listenable: widget.viewmodel.loadVideos,
