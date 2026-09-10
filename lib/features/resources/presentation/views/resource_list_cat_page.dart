@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:switchboard/core/router/nav_scaffold.dart';
 import 'package:switchboard/features/resources/presentation/viewmodels/resource_viewmodel.dart';
 import 'package:switchboard/features/resources/presentation/widgets/responsive_resource_body.dart';
 
@@ -43,8 +44,13 @@ class ResourceListCatPageState extends State<ResourceListCatPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.categoryName),
-        actions: [_buildActionButton()],
+        elevation: 0,
+        actions: [
+          ...buildAppBarActions(context),
+          _buildActionButton(),
+        ],
       ),
+
       body: ListenableBuilder(
         listenable: widget.viewmodel.loadForCategory,
         builder: (context, _) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:switchboard/core/router/nav_scaffold.dart';
 import 'package:switchboard/features/resources/presentation/viewmodels/resource_viewmodel.dart';
 import 'package:switchboard/features/resources/presentation/widgets/responsive_resource_body.dart';
 
@@ -26,6 +27,12 @@ class HotlineListPageState extends State<HotlineListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Hotlines'),
+        elevation: 0,
+        actions: buildAppBarActions(context),
+      ),
+
       body: ListenableBuilder(
         listenable: widget.viewmodel.loadHotlines,
         builder: (context, _) {

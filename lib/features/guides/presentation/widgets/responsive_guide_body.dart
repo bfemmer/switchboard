@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:switchboard/features/guides/presentation/viewmodels/guide_viewmodel.dart';
-import 'package:switchboard/features/guides/presentation/views/guide_detail_page.dart';
+import 'package:switchboard/features/guides/presentation/widgets/guide_card.dart';
 
 class ResponsiveGuideBody extends StatelessWidget {
   final GuideViewModel viewmodel;
@@ -10,24 +10,28 @@ class ResponsiveGuideBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
     return Column(
       children: [
         // ---------------------------------------------------------
         // 1. THE FILTER BAR
         // ---------------------------------------------------------
         Container(
-          height: 50,
+          height: 54,
           decoration: BoxDecoration(
-            color: Theme.of(
-              context,
-            ).appBarTheme.backgroundColor?.withValues(alpha: .05),
-            border: const Border(
-              bottom: BorderSide(color: Colors.black12, width: 0.5),
+            color: colorScheme.surfaceContainerHigh.withAlpha(80),
+            border: Border(
+              bottom: BorderSide(
+                color: colorScheme.outlineVariant.withAlpha(60),
+                width: 1,
+              ),
             ),
           ),
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
             itemCount: viewmodel.filters.length,
             itemBuilder: (context, index) {
               final category = viewmodel.filters[index];
@@ -43,23 +47,21 @@ class ResponsiveGuideBody extends StatelessWidget {
                       viewmodel.selectFilter(category);
                     }
                   },
-                  selectedColor: Theme.of(context).primaryColor,
+                  selectedColor: colorScheme.primary,
                   labelStyle: TextStyle(
                     color: isSelected
-                        ? Colors.white
-                        : Theme.of(context).primaryColor,
-                    fontWeight: isSelected
-                        ? FontWeight.bold
-                        : FontWeight.normal,
+                        ? colorScheme.onPrimary
+                        : colorScheme.onSurfaceVariant,
+                    fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
+                    fontSize: 13,
                   ),
-                  // Ensure visual consistency
-                  backgroundColor: Theme.of(context).cardColor,
+                  backgroundColor: colorScheme.surface,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                     side: BorderSide(
                       color: isSelected
                           ? Colors.transparent
-                          : Theme.of(context).dividerColor,
+                          : colorScheme.outlineVariant,
                     ),
                   ),
                 ),
@@ -73,13 +75,32 @@ class ResponsiveGuideBody extends StatelessWidget {
         // ---------------------------------------------------------
         Expanded(
           child: viewmodel.filteredGuides.isEmpty && viewmodel.load.completed
-              ? const Center(child: Text("No guides found for this category."))
+              ? Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.search_off_rounded,
+                        size: 56,
+                        color: colorScheme.onSurfaceVariant.withAlpha(100),
+                      ),
+                      const SizedBox(height: 12),
+                      Text(
+                        'No guides found for this category.',
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: colorScheme.onSurfaceVariant,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
               : Center(
                   child: ConstrainedBox(
                     constraints: const BoxConstraints(maxWidth: 1200),
                     child: LayoutBuilder(
                       builder: (context, constraints) {
-                        // Responsive Logic
+                        // Responsive Grid Columns
                         int crossAxisCount = 1;
                         if (constraints.maxWidth >= 1000) {
                           crossAxisCount = 3;
@@ -94,43 +115,8 @@ class ResponsiveGuideBody extends StatelessWidget {
                           padding: const EdgeInsets.all(16),
                           itemCount: viewmodel.filteredGuides.length,
                           itemBuilder: (context, index) {
-                            return Card(
-                              elevation: 3.0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: ListTile(
-                                title: Text(
-                                  viewmodel.filteredGuides[index].name!,
-                                ),
-                                subtitle: Text(
-                                  viewmodel.filteredGuides[index].subtitle!,
-                                ),
-                                leading: CircleAvatar(
-                                  backgroundColor: Colors.transparent,
-                                  child: Image.asset(
-                                    'assets/images/resilience.png',
-                                    color:
-                                        Theme.of(context).brightness ==
-                                            Brightness.dark
-                                        ? Colors.white
-                                        : null,
-                                  ),
-                                ),
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) {
-                                        return GuideDetailPage(
-                                          guide:
-                                              viewmodel.filteredGuides[index],
-                                        );
-                                      },
-                                    ),
-                                  );
-                                },
-                              ),
+                            return GuideCard(
+                              guide: viewmodel.filteredGuides[index],
                             );
                           },
                         );

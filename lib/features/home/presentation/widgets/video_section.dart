@@ -1,86 +1,103 @@
 import 'package:flutter/material.dart';
-import 'package:switchboard/core/utils/url_helper.dart';
 import 'package:switchboard/features/home/presentation/widgets/video_card.dart';
 import 'package:switchboard/features/resources/data/models/video.dart';
 
 class VideoSection extends StatelessWidget {
   final String title;
   final List<Video> videos;
+  final IconData icon;
+  final Color iconColor;
 
-  const VideoSection({super.key, required this.title, required this.videos});
+  const VideoSection({
+    super.key,
+    required this.title,
+    required this.videos,
+    this.icon = Icons.play_circle_outline,
+    this.iconColor = Colors.teal,
+  });
 
   @override
   Widget build(BuildContext context) {
     if (videos.isEmpty) return const SizedBox.shrink();
 
-    // Use LayoutBuilder to decide layout at the section level
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        // If we have less than 600px (Mobile), use horizontal scroll.
-        // If we have more (Tablet/Desktop), use a Wrap/Grid.
-        final isMobile = constraints.maxWidth < 600;
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
 
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-              child: Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Section Header
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: iconColor.withAlpha(25),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Icon(
+                  icon,
+                  size: 20,
+                  color: iconColor,
                 ),
               ),
-            ),
-            if (isMobile)
-              _buildHorizontalList()
-            else
-              _buildResponsiveGrid(constraints.maxWidth),
-          ],
-        );
-      },
-    );
-  }
+              const SizedBox(width: 12),
+              Expanded(
+                child: Text(
+                  title,
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 17,
+                  ),
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                decoration: BoxDecoration(
+                  color: colorScheme.surfaceContainerHigh,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Text(
+                  '${videos.length} ${videos.length == 1 ? 'Video' : 'Videos'}',
+                  style: TextStyle(
+                    fontSize: 11.5,
+                    fontWeight: FontWeight.w600,
+                    color: colorScheme.onSurfaceVariant,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
 
-  Widget _buildHorizontalList() {
-    return SizedBox(
-      height: 250,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: videos.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: InkWell(
-              onTap: () => _launchUrl(videos[index].url),
-              child: VideoCard(video: videos[index]),
-            ),
-          );
-        },
-      ),
-    );
-  }
+        const SizedBox(height: 6),
 
-  Widget _buildResponsiveGrid(double width) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Wrap(
-        spacing: 16,
-        runSpacing: 16,
-        // On Tablet/Desktop, items wrap naturally
-        children: videos.map((video) {
-          return InkWell(
-            onTap: () => _launchUrl(video.url),
-            child: VideoCard(video: video),
-          );
-        }).toList(),
-      ),
-    );
-  }
+        // Smooth Horizontal Scroll List
+        SizedBox(
+          height: 285,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            itemCount: videos.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: EdgeInsets.only(
+                  right: index == videos.length - 1 ? 0 : 14,
+                ),
+                child: VideoCard(
+                  video: videos[index],
+                  width: 265,
+                ),
+              );
+            },
+          ),
+        ),
 
-  void _launchUrl(String? url) {
-    String link = 'https://www.youtube.com/watch?v=${url!}';
-    UrlHelper.launchBrowser(link);
+      ],
+    );
   }
 }
+

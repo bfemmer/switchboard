@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:switchboard/core/router/nav_scaffold.dart';
 import 'package:switchboard/core/utils/loader.dart';
-import 'package:switchboard/core/utils/url_helper.dart';
 import 'package:switchboard/features/apps/presentation/viewmodels/app_viewmodel.dart';
+import 'package:switchboard/features/apps/presentation/widgets/app_card.dart';
 
 class AppListPage extends StatefulWidget {
   const AppListPage({super.key, required this.viewmodel});
@@ -14,11 +16,6 @@ class AppListPage extends StatefulWidget {
 
 class AppListPageState extends State<AppListPage> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     widget.viewmodel.load.execute();
@@ -26,84 +23,77 @@ class AppListPageState extends State<AppListPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Apps')),
-      body: SafeArea(
-        child: ListenableBuilder(
-          listenable: widget.viewmodel.load,
-          builder: (context, _) {
-            return Column(
-              children: [
-                Expanded(
-                  child: widget.viewmodel.load.running
-                      ? Loader()
-                      : widget.viewmodel.apps.isEmpty
-                      ? Center(
-                          child: Text(
-                            'No apps found',
-                            style: TextStyle(fontSize: 16, color: Colors.grey),
-                          ),
-                        )
-                      : _buildAppList(),
-                ),
-              ],
-            );
-          },
-        ),
-      ),
-    );
-  }
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
 
-  Widget _buildAppList() {
-    return ListView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-      itemCount: widget.viewmodel.apps.length,
-      itemBuilder: (context, index) {
-        final app = widget.viewmodel.apps[index];
-        return Padding(
-          padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-          child: Card(
-            elevation: 3,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Column(
-              children: [
-                ExpansionTile(
-                  title: Text(app.name!),
-                  subtitle: Text(app.organization!),
-                  leading: CircleAvatar(
-                    backgroundColor: Colors.transparent,
-                    child: Image.asset('assets/images/${app.icon!}'),
-                  ),
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(app.description!),
-                    ),
-                    OverflowBar(
-                      alignment: MainAxisAlignment.start,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Helpful Apps'),
+        elevation: 0,
+        actions: buildAppBarActions(context),
+      ),
+
+      body: SafeArea(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 1200),
+            child: ListenableBuilder(
+              listenable: widget.viewmodel.load,
+              builder: (context, _) {
+                if (widget.viewmodel.load.running) {
+                  return const Loader();
+                }
+
+                if (widget.viewmodel.apps.isEmpty) {
+                  return Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        TextButton(
-                          onPressed: () {
-                            Theme.of(context).platform == TargetPlatform.iOS
-                                ? UrlHelper.launchBrowser(app.applestore!)
-                                : UrlHelper.launchBrowser(app.playstore!);
-                          },
-                          child:
-                              Theme.of(context).platform == TargetPlatform.iOS
-                              ? const Text('Visit Apple Store')
-                              : const Text('Visit Google Play Store'),
+                        Icon(
+                          Icons.apps_outage,
+                          size: 64,
+                          color: colorScheme.onSurfaceVariant.withAlpha(100),
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          'No mobile apps found',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: colorScheme.onSurfaceVariant,
+                          ),
                         ),
                       ],
                     ),
-                  ],
-                ),
-              ],
+                  );
+                }
+
+                return LayoutBuilder(
+                  builder: (context, constraints) {
+                    // Responsive Grid Columns
+                    int crossAxisCount = 1;
+                    if (constraints.maxWidth >= 1000) {
+                      crossAxisCount = 3;
+                    } else if (constraints.maxWidth >= 600) {
+                      crossAxisCount = 2;
+                    }
+
+                    return MasonryGridView.count(
+                      crossAxisCount: crossAxisCount,
+                      mainAxisSpacing: 12,
+                      crossAxisSpacing: 12,
+                      padding: const EdgeInsets.all(16),
+                      itemCount: widget.viewmodel.apps.length,
+                      itemBuilder: (context, index) {
+                        return AppCard(app: widget.viewmodel.apps[index]);
+                      },
+                    );
+                  },
+                );
+              },
             ),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }
