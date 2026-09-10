@@ -58,6 +58,27 @@ class _EmergencyPageState extends State<EmergencyPage> {
 
                 const SizedBox(height: 16),
 
+                // RAINN (National Sexual Assault Hotline - Non-DoD)
+                _buildEmergencyHelplineCard(
+                  context,
+                  title: 'RAINN',
+                  subtitle: 'National Sexual Assault Hotline (Non-DoD)',
+                  description:
+                      '24/7, confidential support for sexual assault victims and survivors, completely independent of DoD reporting channels.',
+                  badgeIcon: FontAwesomeIcons.shieldHeart,
+                  badgeColor: Colors.deepPurple.shade700,
+                  phone: '8006564673',
+                  phoneLabel: 'Call 800-656-4673',
+                  sms: '8006564673',
+                  smsLabel: 'Text 800-656-4673',
+                  webUrl: 'https://rainn.org/help-and-healing/hotline/',
+                  webLabel: 'RAINN.org',
+                  signalUrl: 'https://signal.me/#p/+18006564673',
+                  signalLabel: 'Signal Chat',
+                ),
+
+                const SizedBox(height: 16),
+
                 // DoD Safe Helpline (Sexual Assault Help)
                 _buildEmergencyHelplineCard(
                   context,
@@ -74,6 +95,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
                   webUrl: 'https://www.safehelpline.org',
                   webLabel: 'SafeHelpline.org',
                 ),
+
 
                 const SizedBox(height: 20),
 
@@ -153,6 +175,8 @@ class _EmergencyPageState extends State<EmergencyPage> {
     String? smsLabel,
     String? webUrl,
     String? webLabel,
+    String? signalUrl,
+    String? signalLabel,
   }) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
@@ -207,7 +231,6 @@ class _EmergencyPageState extends State<EmergencyPage> {
               ],
             ),
 
-
             const SizedBox(height: 12),
 
             Text(
@@ -223,7 +246,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
             const Divider(height: 1),
             const SizedBox(height: 14),
 
-            // Action Buttons Row (Call, SMS, Web)
+            // Action Buttons Row (Call, SMS, Web, Signal)
             Wrap(
               spacing: 10,
               runSpacing: 10,
@@ -268,6 +291,20 @@ class _EmergencyPageState extends State<EmergencyPage> {
                       ),
                     ),
                   ),
+                if (signalUrl != null)
+                  OutlinedButton.icon(
+                    onPressed: () => UrlHelper.launchBrowser(signalUrl),
+                    icon: const Icon(Icons.chat_bubble_outline, size: 18),
+                    label: Text(signalLabel ?? 'Signal Chat'),
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: badgeColor,
+                      side: BorderSide(color: badgeColor),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 14,
+                        vertical: 10,
+                      ),
+                    ),
+                  ),
               ],
             ),
           ],
@@ -275,6 +312,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
       ),
     );
   }
+
 
   Widget _buildBadgeIcon(dynamic icon, Color color, double size) {
     if (icon is IconData) {
