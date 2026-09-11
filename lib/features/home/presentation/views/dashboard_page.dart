@@ -534,7 +534,7 @@ class DashboardPage extends StatelessWidget {
           title: 'Connect the Network Guide',
           subtitle: 'AFRC / A1Z Printable Guide',
           description:
-              'Printable comprehensive guide of resources (the original source and inspiration for this app).',
+              'Download a printable comprehensive guide of resources that largely encompasses the content in this app.',
           image: 'assets/images/network_alpha.png',
           onTap: () => UrlHelper.launchBrowser(
             'https://billfemmer.gitlab.io/switchboard-support/Connect_the_Network_Guide_March2025.pdf',
@@ -550,6 +550,18 @@ class DashboardPage extends StatelessWidget {
           image: 'assets/images/dava.png',
           onTap: () => UrlHelper.launchBrowser(
             'https://www.militaryonesource.mil/resources/tools/domestic-abuse-victim-advocate-locator',
+          ),
+        ),
+        const SizedBox(height: 12),
+        _buildFeaturedCard(
+          context,
+          title: 'How to Freeze Your Credit',
+          subtitle: 'Experian, TransUnion and Equifax',
+          description:
+              'Freeze and unfreeze your credit reports at Experian, TransUnion and Equifax online, by phone or by mail.',
+          image: 'assets/images/experian.png',
+          onTap: () => UrlHelper.launchBrowser(
+            'https://www.experian.com/blogs/ask-experian/credit-education/preventing-fraud/security-freeze/',
           ),
         ),
       ],
