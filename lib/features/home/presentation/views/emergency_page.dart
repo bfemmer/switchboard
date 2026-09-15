@@ -96,6 +96,25 @@ class _EmergencyPageState extends State<EmergencyPage> {
                   webLabel: 'SafeHelpline.org',
                 ),
 
+                const SizedBox(height: 16),
+
+                // National Domestic Violence Hotline
+                _buildEmergencyHelplineCard(
+                  context,
+                  title: 'National Domestic Violence Hotline',
+                  subtitle: '24/7 Support & Safety Planning',
+                  description:
+                      '24/7, confidential support, crisis intervention, safety planning, and resources for anyone affected by domestic violence or intimate partner abuse.',
+                  badgeIcon: FontAwesomeIcons.houseUser,
+                  badgeColor: Colors.indigo.shade700,
+                  phone: '8007997233',
+                  phoneLabel: 'Call 800-799-7233',
+                  sms: '88788',
+                  smsLabel: 'Text 88788',
+                  webUrl: 'https://www.thehotline.org/',
+                  webLabel: 'TheHotline.org',
+                ),
+
 
                 const SizedBox(height: 20),
 
