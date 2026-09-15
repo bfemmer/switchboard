@@ -137,7 +137,7 @@ class DashboardPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  'Quick, confidential access to support services, crisis hotlines, guides, and unit resources.',
+                  'Quick, confidential access to support services, crisis hotlines, guides, and information resources.',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: colorScheme.onSurfaceVariant,
                   ),
@@ -329,8 +329,9 @@ class DashboardPage extends StatelessWidget {
                 _buildTagChip(context, 'Military Crisis Line', Colors.red),
                 _buildTagChip(context, 'Sexual Assault Helpline', Colors.teal),
                 _buildTagChip(context, 'Family Advocacy Program', Colors.blue),
-                _buildTagChip(context, 'Reserve Units', Colors.indigo),
                 _buildTagChip(context, 'Resilience Guides', Colors.purple),
+                _buildTagChip(context, 'Financial Health', Colors.green),
+                _buildTagChip(context, 'Coping Skills', Colors.indigo),
               ],
             ),
           ],
@@ -386,7 +387,7 @@ class DashboardPage extends StatelessWidget {
     final items = [
       _QuickNavItem(
         title: 'Hotlines',
-        subtitle: 'Confidential Support Lines',
+        subtitle: 'One-click dialing',
         faIcon: FontAwesomeIcons.phone,
         iconColor: Colors.teal,
         onTap: () => context.push('/hotlines'),
@@ -400,27 +401,27 @@ class DashboardPage extends StatelessWidget {
       ),
       _QuickNavItem(
         title: 'Videos',
-        subtitle: 'FAP & Resilience Media',
+        subtitle: 'Resilience Media',
         icon: Icons.play_circle_fill,
         iconColor: Colors.amber.shade800,
         onTap: () => context.push('/videos'),
       ),
       _QuickNavItem(
-        title: 'Leadership Guides',
-        subtitle: 'Resilience Quick Guides',
+        title: 'Quick Guides',
+        subtitle: 'Leadership tools',
         icon: Icons.menu_book,
         iconColor: Colors.purple,
         onTap: () => context.push('/guides'),
       ),
       _QuickNavItem(
         title: 'Helpful Apps',
-        subtitle: 'Recommended Mobile Apps',
+        subtitle: 'Mobile Apps',
         icon: Icons.apps,
         iconColor: Colors.blue,
         onTap: () => context.push('/apps'),
       ),
       _QuickNavItem(
-        title: 'Resilience Skills',
+        title: 'Skills',
         subtitle: 'Coping Strategies',
         icon: Icons.psychology,
         iconColor: Colors.deepOrange,
@@ -428,14 +429,14 @@ class DashboardPage extends StatelessWidget {
       ),
       _QuickNavItem(
         title: 'Reserve Units',
-        subtitle: 'AFRC Units Directory',
+        subtitle: 'AFRC Directory',
         icon: Icons.account_balance,
         iconColor: Colors.teal.shade700,
         onTap: () => context.push('/units'),
       ),
       _QuickNavItem(
         title: 'FAQs',
-        subtitle: 'Frequently Asked Questions',
+        subtitle: 'Frequent Questions',
         icon: Icons.help_outline,
         iconColor: Colors.blueGrey,
         onTap: () => context.push('/faqs'),
@@ -531,13 +532,13 @@ class DashboardPage extends StatelessWidget {
       children: [
         _buildFeaturedCard(
           context,
-          title: 'Connect the Network Guide',
-          subtitle: 'AFRC / A1Z Printable Guide',
+          title: 'How to Freeze Your Credit',
+          subtitle: 'Experian, TransUnion, and Equifax',
           description:
-              'Download a printable comprehensive guide of resources that largely encompasses the content in this app.',
-          image: 'assets/images/network_alpha.png',
+              'Freeze and unfreeze your credit reports at Experian, TransUnion and Equifax online, by phone or by mail.',
+          image: 'assets/images/experian.png',
           onTap: () => UrlHelper.launchBrowser(
-            'https://billfemmer.gitlab.io/switchboard-support/Connect_the_Network_Guide_March2025.pdf',
+            'https://www.experian.com/blogs/ask-experian/credit-education/preventing-fraud/security-freeze/',
           ),
         ),
         const SizedBox(height: 12),
@@ -555,13 +556,13 @@ class DashboardPage extends StatelessWidget {
         const SizedBox(height: 12),
         _buildFeaturedCard(
           context,
-          title: 'How to Freeze Your Credit',
-          subtitle: 'Experian, TransUnion and Equifax',
+          title: 'Connect the Network Guide',
+          subtitle: 'AFRC / A1Z Printable Guide',
           description:
-              'Freeze and unfreeze your credit reports at Experian, TransUnion and Equifax online, by phone or by mail.',
-          image: 'assets/images/experian.png',
+              'Download a printable comprehensive guide of resources that largely encompasses the content in this app.',
+          image: 'assets/images/network_alpha.png',
           onTap: () => UrlHelper.launchBrowser(
-            'https://www.experian.com/blogs/ask-experian/credit-education/preventing-fraud/security-freeze/',
+            'https://billfemmer.gitlab.io/switchboard-support/Connect_the_Network_Guide_March2025.pdf',
           ),
         ),
       ],

@@ -12,7 +12,8 @@ class ResponsiveHomeBody extends StatelessWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
-    final hasVideos = viewModel.fapVideos.isNotEmpty ||
+    final hasVideos =
+        viewModel.fapVideos.isNotEmpty ||
         viewModel.readyVideos.isNotEmpty ||
         viewModel.canVideos.isNotEmpty ||
         viewModel.toolsVideos.isNotEmpty;
@@ -180,4 +181,3 @@ class ResponsiveHomeBody extends StatelessWidget {
     );
   }
 }
-
