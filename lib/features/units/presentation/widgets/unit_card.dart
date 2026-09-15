@@ -21,6 +21,8 @@ class _UnitCardState extends State<UnitCard> {
     final hasLink = widget.unit.link != null && widget.unit.link!.isNotEmpty;
     final hasFacebook =
         widget.unit.facebook != null && widget.unit.facebook!.isNotEmpty;
+    final hasCmdpost =
+        widget.unit.cmdpost != null && widget.unit.cmdpost!.isNotEmpty;
 
     return Card(
       elevation: 1.5,
@@ -152,16 +154,62 @@ class _UnitCardState extends State<UnitCard> {
               ),
             ],
 
+            // Command Post Phone Section
+            if (hasCmdpost) ...[
+              const SizedBox(height: 6),
+              Row(
+                children: [
+                  Icon(
+                    Icons.phone_in_talk_outlined,
+                    size: 16,
+                    color: Colors.teal.shade700,
+                  ),
+                  const SizedBox(width: 6),
+                  Expanded(
+                    child: Text(
+                      'Command Post: ${_formatPhone(widget.unit.cmdpost!)}',
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: colorScheme.onSurface,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+
             const SizedBox(height: 14),
-            Divider(
-              height: 1,
-              color: colorScheme.outlineVariant.withAlpha(60),
-            ),
+            Divider(height: 1, color: colorScheme.outlineVariant.withAlpha(60)),
             const SizedBox(height: 8),
 
             // Action Buttons Row
-            Row(
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
+                if (hasCmdpost)
+                  FilledButton.icon(
+                    onPressed: () {
+                      UrlHelper.makePhoneCall(widget.unit.cmdpost!);
+                    },
+                    icon: const Icon(Icons.phone, size: 15),
+                    label: const Text('Call Command Post'),
+                    style: FilledButton.styleFrom(
+                      backgroundColor: Colors.teal.shade700,
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
+                      textStyle: const TextStyle(
+                        fontSize: 12.5,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      visualDensity: VisualDensity.compact,
+                    ),
+                  ),
+
                 if (hasLink)
                   FilledButton.tonalIcon(
                     onPressed: () {
@@ -180,17 +228,15 @@ class _UnitCardState extends State<UnitCard> {
                       ),
                       visualDensity: VisualDensity.compact,
                     ),
-                  )
-                else
-                  const Spacer(),
-
-                if (hasLink) const Spacer(),
+                  ),
 
                 if (hasFacebook)
                   IconButton(
                     tooltip: 'Facebook Page',
                     onPressed: () {
-                      UrlHelper.launchBrowser(widget.unit.facebook!);
+                      UrlHelper.launchBrowser(
+                        "https://www.facebook.com/${widget.unit.facebook!}",
+                      );
                     },
                     icon: const FaIcon(FontAwesomeIcons.facebook, size: 18),
                     color: const Color(0xFF1877F2), // Official Facebook Blue
@@ -213,12 +259,26 @@ class _UnitCardState extends State<UnitCard> {
     );
   }
 
+  String _formatPhone(String phone) {
+    final digits = phone.replaceAll(RegExp(r'\D'), '');
+    if (digits.length == 10) {
+      return '(${digits.substring(0, 3)}) ${digits.substring(3, 6)}-${digits.substring(6)}';
+    } else if (digits.length == 11 && digits.startsWith('1')) {
+      return '1 (${digits.substring(1, 4)}) ${digits.substring(4, 7)}-${digits.substring(7)}';
+    }
+    return phone;
+  }
+
   void _shareUnit() {
     String subject = 'AFRC Unit - ${widget.unit.name ?? ''}';
     String body = '${widget.unit.name ?? ''}\n';
 
     if (widget.unit.base != null && widget.unit.base!.isNotEmpty) {
       body += 'Location: ${widget.unit.base!}\n';
+    }
+
+    if (widget.unit.cmdpost != null && widget.unit.cmdpost!.isNotEmpty) {
+      body += 'Command Post: ${_formatPhone(widget.unit.cmdpost!)}\n';
     }
 
     if (widget.unit.parent != null && widget.unit.parent!.isNotEmpty) {

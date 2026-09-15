@@ -17,6 +17,7 @@ abstract class Unit with _$Unit {
     String? facebook,
     double? lat,
     double? long,
+    String? cmdpost,
   }) = _Unit;
 
   factory Unit.fromJson(Map<String, dynamic> json) => _$UnitFromJson(json);
