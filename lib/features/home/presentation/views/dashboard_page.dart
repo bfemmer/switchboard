@@ -72,6 +72,17 @@ class DashboardPage extends StatelessWidget {
                 const SizedBox(height: 12),
                 _buildStatsSummary(context, colorScheme),
 
+                const SizedBox(height: 28),
+
+                // History of Switchboard Section
+                _buildSectionTitle(
+                  context,
+                  'The Story Behind Switchboard',
+                  Icons.history_edu_outlined,
+                ),
+                const SizedBox(height: 12),
+                _buildHistoryCard(context, theme, colorScheme),
+
                 const SizedBox(height: 32),
               ],
             ),
@@ -688,6 +699,100 @@ class DashboardPage extends StatelessWidget {
               );
             }).toList(),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHistoryCard(
+    BuildContext context,
+    ThemeData theme,
+    ColorScheme colorScheme,
+  ) {
+    return Card(
+      elevation: 1.5,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      child: Padding(
+        padding: const EdgeInsets.all(18.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: colorScheme.primary.withAlpha(30),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(
+                    Icons.settings_phone_outlined,
+                    color: colorScheme.primary,
+                    size: 24,
+                  ),
+                ),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Connecting People to Support',
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16.5,
+                        ),
+                      ),
+                      Text(
+                        'The legacy of switchboard operators',
+                        style: TextStyle(
+                          fontSize: 12.5,
+                          fontWeight: FontWeight.w600,
+                          color: colorScheme.primary,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image.asset(
+                'assets/images/operators_feed.png',
+                fit: BoxFit.cover,
+                width: double.infinity,
+                errorBuilder: (context, error, stackTrace) => Container(
+                  height: 180,
+                  color: colorScheme.surfaceContainerHigh,
+                  child: Center(
+                    child: Icon(
+                      Icons.image_not_supported_outlined,
+                      color: colorScheme.onSurfaceVariant,
+                      size: 40,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+            Text(
+              'Historically, telephone switchboard operators served as the vital heartbeat of telecommunications. Sitting before massive jack panels, operators manually routed calls by plugging patch cords into specific lines—rapidly connecting individuals to family, emergency aid, and military command posts.',
+              style: theme.textTheme.bodyMedium?.copyWith(
+                height: 1.45,
+                color: colorScheme.onSurface,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              'This application carries that legacy into the modern era. Just as switchboards bridged the gap between callers and essential services, Switchboard acts as a single, central hub—instantly routing service members, reservists, leaders, and military families directly to the helplines, resilience guides, and local unit resources they need, when they need them most.',
+              style: theme.textTheme.bodyMedium?.copyWith(
+                height: 1.45,
+                color: colorScheme.onSurfaceVariant,
+              ),
+            ),
+          ],
         ),
       ),
     );
