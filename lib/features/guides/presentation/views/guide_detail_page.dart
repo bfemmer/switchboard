@@ -22,27 +22,7 @@ class _GuideDetailPageState extends State<GuideDetailPage> {
       appBar: AppBar(
         title: const Text('Quick Guide'),
         elevation: 0,
-        actions: [
-          ...buildAppBarActions(context),
-          if (widget.guide.urlLink != null &&
-              widget.guide.urlLink!.isNotEmpty)
-            IconButton(
-              tooltip: 'Open PDF Guide',
-              onPressed: () {
-                UrlHelper.launchBrowser(widget.guide.urlLink!);
-              },
-              icon: const Icon(Icons.picture_as_pdf_outlined),
-            ),
-          IconButton(
-            tooltip: 'Share Guide',
-            icon: Icon(
-              theme.platform == TargetPlatform.iOS
-                  ? Icons.ios_share
-                  : Icons.share_outlined,
-            ),
-            onPressed: _shareGuide,
-          ),
-        ],
+        actions: [...buildAppBarActions(context)],
       ),
 
       body: SafeArea(
@@ -238,12 +218,7 @@ class _GuideDetailPageState extends State<GuideDetailPage> {
       decoration: BoxDecoration(
         color: colorScheme.primaryContainer.withAlpha(70),
         borderRadius: BorderRadius.circular(16),
-        border: Border(
-          left: BorderSide(
-            color: colorScheme.primary,
-            width: 4,
-          ),
-        ),
+        border: Border(left: BorderSide(color: colorScheme.primary, width: 4)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -331,11 +306,7 @@ class _GuideDetailPageState extends State<GuideDetailPage> {
                 color: iconColor.withAlpha(25),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Icon(
-                icon,
-                size: 20,
-                color: iconColor,
-              ),
+              child: Icon(icon, size: 20, color: iconColor),
             ),
             const SizedBox(width: 12),
             Expanded(
@@ -379,10 +350,7 @@ class _GuideDetailPageState extends State<GuideDetailPage> {
       decoration: BoxDecoration(
         color: Colors.red.withAlpha(20),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: Colors.red.withAlpha(120),
-          width: 1.5,
-        ),
+        border: Border.all(color: Colors.red.withAlpha(120), width: 1.5),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -439,8 +407,7 @@ class _GuideDetailPageState extends State<GuideDetailPage> {
     }
 
     if (widget.guide.signs != null && widget.guide.signs!.isNotEmpty) {
-      body +=
-          '\n\nSigns Wingmen Should Know/Look For:\n${widget.guide.signs!}';
+      body += '\n\nSigns Wingmen Should Know/Look For:\n${widget.guide.signs!}';
     }
 
     if (widget.guide.deployment != null &&
@@ -464,14 +431,12 @@ class _GuideDetailPageState extends State<GuideDetailPage> {
 
     if (widget.guide.assistance != null &&
         widget.guide.assistance!.isNotEmpty) {
-      body +=
-          '\n\nSeek Immediate Assistance:\n${widget.guide.assistance!}';
+      body += '\n\nSeek Immediate Assistance:\n${widget.guide.assistance!}';
     }
 
     if (widget.guide.considerations != null &&
         widget.guide.considerations!.isNotEmpty) {
-      body +=
-          '\n\nLeadership Considerations:\n${widget.guide.considerations!}';
+      body += '\n\nLeadership Considerations:\n${widget.guide.considerations!}';
     }
 
     if (widget.guide.urlLink != null && widget.guide.urlLink!.isNotEmpty) {

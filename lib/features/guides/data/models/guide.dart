@@ -12,7 +12,7 @@ abstract class Guide with _$Guide {
     String? name,
     String? subtitle,
     String? description,
-    String? stress,
+    @JsonKey(name: 'stress_sources') String? stress,
     String? signs,
     String? deployment,
     String? riskFactors,
@@ -20,7 +20,7 @@ abstract class Guide with _$Guide {
     String? action,
     String? assistance,
     String? considerations,
-    String? urlLink,
+    @JsonKey(name: 'urlLink') String? urlLink,
   }) = _Guide;
 
   factory Guide.fromJson(Map<String, dynamic> json) => _$GuideFromJson(json);
