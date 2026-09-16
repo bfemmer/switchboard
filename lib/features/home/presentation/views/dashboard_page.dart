@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:switchboard/core/router/nav_scaffold.dart';
 import 'package:switchboard/core/utils/url_helper.dart';
+import 'package:switchboard/features/home/presentation/widgets/resilience_tip_card.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -60,6 +61,17 @@ class DashboardPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 _buildFeaturedTools(context, colorScheme),
+
+                const SizedBox(height: 28),
+
+                // Resilience Tip of the Week
+                _buildSectionTitle(
+                  context,
+                  'Resilience Tip of the Week',
+                  Icons.lightbulb_outline,
+                ),
+                const SizedBox(height: 12),
+                const ResilienceTipCard(),
 
                 const SizedBox(height: 28),
 
@@ -425,7 +437,7 @@ class DashboardPage extends StatelessWidget {
         onTap: () => context.push('/guides'),
       ),
       _QuickNavItem(
-        title: 'Helpful Apps',
+        title: 'Apps',
         subtitle: 'Mobile Apps',
         icon: Icons.apps,
         iconColor: Colors.blue,
@@ -439,7 +451,7 @@ class DashboardPage extends StatelessWidget {
         onTap: () => context.push('/skills'),
       ),
       _QuickNavItem(
-        title: 'Reserve Units',
+        title: 'Units',
         subtitle: 'AFRC Directory',
         icon: Icons.account_balance,
         iconColor: Colors.teal.shade700,
