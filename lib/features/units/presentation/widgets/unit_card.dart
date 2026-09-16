@@ -23,6 +23,7 @@ class _UnitCardState extends State<UnitCard> {
         widget.unit.facebook != null && widget.unit.facebook!.isNotEmpty;
     final hasCmdpost =
         widget.unit.cmdpost != null && widget.unit.cmdpost!.isNotEmpty;
+    final hasMfrc = widget.unit.mfrc != null && widget.unit.mfrc!.isNotEmpty;
 
     return Card(
       elevation: 1.5,
@@ -178,6 +179,30 @@ class _UnitCardState extends State<UnitCard> {
               ),
             ],
 
+            // MFRC Phone Section
+            if (hasMfrc) ...[
+              const SizedBox(height: 6),
+              Row(
+                children: [
+                  Icon(
+                    Icons.people_outline,
+                    size: 16,
+                    color: Colors.blue.shade700,
+                  ),
+                  const SizedBox(width: 6),
+                  Expanded(
+                    child: Text(
+                      'M&FRC: ${_formatPhone(widget.unit.mfrc!)}',
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: colorScheme.onSurface,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+
             const SizedBox(height: 14),
             Divider(height: 1, color: colorScheme.outlineVariant.withAlpha(60)),
             const SizedBox(height: 8),
@@ -197,6 +222,28 @@ class _UnitCardState extends State<UnitCard> {
                     label: const Text('Call Command Post'),
                     style: FilledButton.styleFrom(
                       backgroundColor: Colors.teal.shade700,
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
+                      textStyle: const TextStyle(
+                        fontSize: 12.5,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      visualDensity: VisualDensity.compact,
+                    ),
+                  ),
+
+                if (hasMfrc)
+                  FilledButton.icon(
+                    onPressed: () {
+                      UrlHelper.makePhoneCall(widget.unit.mfrc!);
+                    },
+                    icon: const Icon(Icons.phone, size: 15),
+                    label: const Text('Call M&FRC'),
+                    style: FilledButton.styleFrom(
+                      backgroundColor: Colors.blue.shade700,
                       foregroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 12,
@@ -281,6 +328,10 @@ class _UnitCardState extends State<UnitCard> {
       body += 'Command Post: ${_formatPhone(widget.unit.cmdpost!)}\n';
     }
 
+    if (widget.unit.mfrc != null && widget.unit.mfrc!.isNotEmpty) {
+      body += 'MFRC: ${_formatPhone(widget.unit.mfrc!)}\n';
+    }
+
     if (widget.unit.parent != null && widget.unit.parent!.isNotEmpty) {
       body += 'Organization: ${widget.unit.parent!}\n';
     }
@@ -290,7 +341,7 @@ class _UnitCardState extends State<UnitCard> {
     }
 
     if (widget.unit.facebook != null && widget.unit.facebook!.isNotEmpty) {
-      body += '\nFacebook: ${widget.unit.facebook!}';
+      body += '\nFacebook: https://www.facebook.com/${widget.unit.facebook!}';
     }
 
     UrlHelper.sendEmail(subject, body);
