@@ -21,6 +21,8 @@ import 'package:switchboard/features/skills/presentation/views/skill_list_page.d
 import 'package:switchboard/features/units/presentation/viewmodels/unit_viewmodel.dart';
 import 'package:switchboard/features/units/presentation/views/unit_list_page.dart';
 
+import 'package:switchboard/features/onboarding/presentation/views/onboarding_page.dart';
+
 class AppRouter {
   // final _rootNavigatorKey = GlobalKey<NavigatorState>();
   // final _shellNavigatorKey = GlobalKey<NavigatorState>();
@@ -31,6 +33,10 @@ class AppRouter {
     // redirect: _redirect,
     // refreshListenable: ,
     routes: [
+      GoRoute(
+        path: OnboardingPage.route(),
+        builder: (context, _) => const OnboardingPage(),
+      ),
       GoRoute(
         path: UnitListPage.route(),
         builder: (context, _) =>

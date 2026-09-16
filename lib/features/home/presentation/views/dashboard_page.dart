@@ -4,11 +4,37 @@ import 'package:go_router/go_router.dart';
 import 'package:switchboard/core/router/nav_scaffold.dart';
 import 'package:switchboard/core/utils/url_helper.dart';
 import 'package:switchboard/features/home/presentation/widgets/resilience_tip_card.dart';
+import 'package:switchboard/features/onboarding/data/onboarding_preferences.dart';
+import 'package:switchboard/features/onboarding/presentation/views/onboarding_page.dart';
 
-class DashboardPage extends StatelessWidget {
+class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
 
   static String route() => "/home";
+
+  @override
+  State<DashboardPage> createState() => _DashboardPageState();
+}
+
+class _DashboardPageState extends State<DashboardPage> {
+  bool _hasSeenOnboarding = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkFirstLaunch();
+  }
+
+  Future<void> _checkFirstLaunch() async {
+    final hasSeen = await OnboardingPreferences.getHasSeenOnboarding();
+    if (!mounted) return;
+    setState(() {
+      _hasSeenOnboarding = hasSeen;
+    });
+    if (!hasSeen && mounted) {
+      context.go(OnboardingPage.route());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,31 +62,20 @@ class DashboardPage extends StatelessWidget {
 
                 const SizedBox(height: 20),
 
-                // Privacy & Safety Shield Card
-                _buildPrivacySafetyCard(context, colorScheme),
+                // // Privacy & Safety Shield Card
+                // _buildPrivacySafetyCard(context, colorScheme),
 
-                const SizedBox(height: 24),
+                // const SizedBox(height: 24),
 
-                // Introduction & About Card
-                _buildIntroCard(context, theme, colorScheme),
+                // // Introduction & About Card
+                // _buildIntroCard(context, theme, colorScheme),
 
-                const SizedBox(height: 24),
+                // const SizedBox(height: 24),
 
                 // Quick Navigation Grid
                 _buildQuickNavigationHeader(context, theme),
                 const SizedBox(height: 12),
                 _buildQuickNavGrid(context, colorScheme),
-
-                const SizedBox(height: 28),
-
-                // Featured Quick Tools
-                _buildSectionTitle(
-                  context,
-                  'Featured Resources',
-                  Icons.star_outline,
-                ),
-                const SizedBox(height: 12),
-                _buildFeaturedTools(context, colorScheme),
 
                 const SizedBox(height: 28),
 
@@ -72,6 +87,17 @@ class DashboardPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 const ResilienceTipCard(),
+
+                const SizedBox(height: 28),
+
+                // Featured Quick Tools
+                _buildSectionTitle(
+                  context,
+                  'Featured Resources',
+                  Icons.star_outline,
+                ),
+                const SizedBox(height: 12),
+                _buildFeaturedTools(context, colorScheme),
 
                 const SizedBox(height: 28),
 
@@ -94,6 +120,17 @@ class DashboardPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 _buildHistoryCard(context, theme, colorScheme),
+
+                const SizedBox(height: 28),
+
+                // Developer Testing Controls (Reset Onboarding Flag)
+                _buildSectionTitle(
+                  context,
+                  'Developer Testing Controls',
+                  Icons.bug_report_outlined,
+                ),
+                const SizedBox(height: 12),
+                _buildDevTestingCard(context, theme, colorScheme),
 
                 const SizedBox(height: 32),
               ],
@@ -803,6 +840,161 @@ class DashboardPage extends StatelessWidget {
                 height: 1.45,
                 color: colorScheme.onSurfaceVariant,
               ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDevTestingCard(
+    BuildContext context,
+    ThemeData theme,
+    ColorScheme colorScheme,
+  ) {
+    return Card(
+      elevation: 1.5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: BorderSide(
+          color: Colors.amber.shade700.withAlpha(100),
+          width: 1.2,
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(18.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 3,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.amber.shade700.withAlpha(30),
+                    borderRadius: BorderRadius.circular(6),
+                    border: Border.all(
+                      color: Colors.amber.shade700.withAlpha(80),
+                    ),
+                  ),
+                  child: Text(
+                    'DEV / TEST TOOL',
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.amber.shade900,
+                      letterSpacing: 0.5,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Text(
+                  'Onboarding Reset Toggle',
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Text(
+              'Use this testing control to toggle or reset the first-time onboarding flag. Resetting the flag allows you to test the onboarding walkthrough experience again.',
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: colorScheme.onSurfaceVariant,
+                fontSize: 13,
+                height: 1.35,
+              ),
+            ),
+            const SizedBox(height: 14),
+            SwitchListTile(
+              contentPadding: EdgeInsets.zero,
+              title: const Text(
+                'First-Time Onboarding Flag',
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
+              ),
+              subtitle: Text(
+                _hasSeenOnboarding
+                    ? 'State: COMPLETED (has_seen_onboarding = true)'
+                    : 'State: RESET / NOT SEEN (has_seen_onboarding = false)',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: _hasSeenOnboarding
+                      ? Colors.green.shade700
+                      : Colors.red.shade700,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              value: _hasSeenOnboarding,
+              onChanged: (bool value) async {
+                await OnboardingPreferences.setHasSeenOnboarding(value);
+                if (!context.mounted) return;
+                setState(() {
+                  _hasSeenOnboarding = value;
+                });
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      value
+                          ? 'Onboarding flag set to COMPLETED (true).'
+                          : 'Onboarding flag RESET to FIRST LAUNCH (false).',
+                    ),
+                    duration: const Duration(seconds: 2),
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: 10),
+            Wrap(
+              spacing: 10,
+              runSpacing: 8,
+              children: [
+                ElevatedButton.icon(
+                  onPressed: () async {
+                    await OnboardingPreferences.resetOnboarding();
+                    if (!context.mounted) return;
+                    setState(() {
+                      _hasSeenOnboarding = false;
+                    });
+                    context.push(OnboardingPage.route());
+                  },
+                  icon: const Icon(Icons.refresh, size: 16),
+                  label: const Text('Reset Flag & Launch Onboarding Now'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.amber.shade800,
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 8,
+                    ),
+                    textStyle: const TextStyle(
+                      fontSize: 12.5,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    visualDensity: VisualDensity.compact,
+                  ),
+                ),
+                OutlinedButton.icon(
+                  onPressed: () {
+                    context.push(OnboardingPage.route());
+                  },
+                  icon: const Icon(Icons.remove_red_eye_outlined, size: 16),
+                  label: const Text('Preview Onboarding Walkthrough'),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 8,
+                    ),
+                    textStyle: const TextStyle(
+                      fontSize: 12.5,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    visualDensity: VisualDensity.compact,
+                  ),
+                ),
+              ],
             ),
           ],
         ),
