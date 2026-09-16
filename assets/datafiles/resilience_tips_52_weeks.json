@@ -1,0 +1,418 @@
+[
+  {
+    "weekNumber": 1,
+    "domain": "Mental",
+    "title": "Focus on the Controllables",
+    "actionText": "When a task or mission shift feels overwhelming, take two minutes to write down two columns: 'What I Can Control' (effort, preparation, attitude) and 'What I Cannot Control' (weather, leadership tasking, timeline shifts). Intentionally drop energy from the second column.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 2,
+    "domain": "Physical",
+    "title": "The 20-Minute Wind-Down",
+    "actionText": "Sleep hygiene directly drives operational decision-making. Set an alarm 30 minutes before sleep: dim all overhead lights, stash your phone in another room or do-not-disturb mode, and let your core body temperature drop to prompt melatonin production.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 3,
+    "domain": "Mental",
+    "title": "Box Breathing for Acute Stress",
+    "actionText": "Under acute pressure, use tactical box breathing: Inhale 4 seconds, hold 4 seconds, exhale 4 seconds, hold 4 seconds. Complete 4 continuous cycles to stimulate the vagus nerve and down-regulate heart rate.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 4,
+    "domain": "General",
+    "title": "Inventory Your Micro-Habits",
+    "actionText": "High-friction goals fail under fatigue. Pick one critical routine you want to establish this week and tie it directly to an existing anchor habit (e.g., 'After I pour my first morning coffee, I will drink 16 oz of water before sitting down').",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 5,
+    "domain": "Physical",
+    "title": "Hydration and Cognitive Drop-off",
+    "actionText": "A fluid deficit of just 1–2% body weight impairs working memory, motor coordination, and mood. Keep a refillable canteen at your workstation and aim to finish half your daily target before lunch.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 6,
+    "domain": "Mental",
+    "title": "Check Your Self-Talk",
+    "actionText": "Notice the inner narrative during unexpected challenges. Shift catastrophic phrasing ('This completely ruins the timeline') to objective assessment ('This shifts the sequence; what is the immediate critical path?').",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 7,
+    "domain": "General",
+    "title": "Reclaim Your Off-Duty Boundaries",
+    "actionText": "Chronic availability degrades vigilance. Establish a concrete hard stop on administrative email checks after duty hours unless you are on designated standby.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 8,
+    "domain": "Physical",
+    "title": "Fuel for Sustained Output",
+    "actionText": "Avoid energy crashes caused by high-glycemic snacks during long shifts. Swap refined sugar or high-carb snacks for sustained energy sources: nuts, seeds, jerky, or Greek yogurt paired with fruit.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 9,
+    "domain": "Spiritual",
+    "title": "The 3-Good-Things Debrief",
+    "actionText": "Negativity bias makes our brains fixate on anomalies and friction points. Before logging off today, jot down three specific operational or personal moments that went smoothly.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 10,
+    "domain": "Physical",
+    "title": "Pre-Hab Your Posture",
+    "actionText": "Sitting at a console or standing in gear creates anterior load. Spend 5 minutes today doing doorway chest stretches and band pull-aparts to reset shoulder posture and prevent neck strain.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 11,
+    "domain": "Mental",
+    "title": "Cognitive Reframing",
+    "actionText": "Reframe a recurring frustration from a personal grievance into a technical problem to be solved: 'What system flaw is making this fail repeatedly, and how do I address the system?'",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 12,
+    "domain": "Social",
+    "title": "Explore M&FRC Resources",
+    "actionText": "The Military & Family Readiness Center offers financial planning, relocation assistance, and deployment support before problems compound. Bookmark your installation's M&FRC page or schedule a proactive consultation.",
+    "linkUrl": "https://www.militaryonesource.mil/leaders-service-providers/sp-es-readiness/military-and-family-readiness-centers/",
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 13,
+    "domain": "General",
+    "title": "Conduct an Energy Audit",
+    "actionText": "Review your calendar from the past two weeks. Identify one recurring activity that drains outsized cognitive energy without delivering mission value, and propose a streamlined alternative.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 14,
+    "domain": "Social",
+    "title": "The Wingman Spot Check",
+    "actionText": "Ask a teammate a direct, open-ended question that goes past routine banter: 'How is your workload tracking right now, realistically?' Listen without offering an immediate fix.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 15,
+    "domain": "Social",
+    "title": "Active Constructive Responding",
+    "actionText": "When a colleague or partner shares positive news, respond with authentic engagement rather than passive acknowledgment. Ask a follow-up question that invites them to elaborate on how they pulled it off.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 16,
+    "domain": "Mental",
+    "title": "Clarify Unspoken Expectations",
+    "actionText": "Most interpersonal conflict stems from mismatched, unstated assumptions. If a task is dragging or friction exists with a colleague, schedule a 5-minute alignment chat to clarify definition of done and deadlines.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 17,
+    "domain": "Social",
+    "title": "Step Away for Lunch",
+    "actionText": "Avoid eating solo at your desk or workstation. Take 20 minutes to sit in a common area or outdoors with peers to reset cognitive focus and build unit rapport.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 18,
+    "domain": "General",
+    "title": "Tap Military OneSource for Proactive Counsel",
+    "actionText": "Military OneSource provides up to 12 free, non-medical counseling sessions per issue for service members and families. Keep their 24/7 hotline saved for confidential support.",
+    "linkUrl": "https://www.militaryonesource.mil",
+    "contactPhone": "1-800-342-9647"
+  },
+  {
+    "weekNumber": 19,
+    "domain": "Social",
+    "title": "Set Clear Interpersonal Boundaries",
+    "actionText": "Practice a firm, respectful decline for non-essential collateral duties if your primary mission bandwidth is saturated: 'I cannot take that on while maintaining our current project timeline.'",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 20,
+    "domain": "Social",
+    "title": "Recognize Invisible Effort",
+    "actionText": "Identify someone in your shop who routinely handles low-visibility administrative, logistical, or support maintenance. Offer a specific, direct word of appreciation for their reliability.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 21,
+    "domain": "Social",
+    "title": "Identify High-Trust Sounding Boards",
+    "actionText": "Maintain a list of two people—one inside your unit, one completely outside of it—with whom you can safely pressure-test complex challenges without posturing.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 22,
+    "domain": "Social",
+    "title": "Practice Empathetic Listening",
+    "actionText": "In your next difficult conversation, resist the urge to formulate your rebuttal while the other person is speaking. Rephrase their core point to confirm alignment before stating your perspective.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 23,
+    "domain": "Social",
+    "title": "Family and Household Check-in",
+    "actionText": "Schedule a recurring 15-minute weekly planning check-in with your partner, family, or support base to synchronize calendars, balance chores, and preempt domestic friction.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 24,
+    "domain": "Social",
+    "title": "Resolve Lingering Friction",
+    "actionText": "Lingering tension drains background cognitive bandwidth. Reach out to the individual involved and ask: 'Can we sit down for 10 minutes to clear the air on how we handled that project?'",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 25,
+    "domain": "Social",
+    "title": "Support a Deployed Family",
+    "actionText": "Reach out to the spouse or family of a deployed squadron member. Offer a concrete favor ('I'm picking up groceries Saturday, what can I drop off?') rather than an open-ended 'let me know if you need anything.'",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 26,
+    "domain": "Social",
+    "title": "Evaluate Your Social Circle",
+    "actionText": "Notice whether the informal groups you spend off-duty time with fuel cynicism or promote mutual growth and accountability. Spend more time around people pursuing constructive goals.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 27,
+    "domain": "Spiritual",
+    "title": "Anchor to Personal Core Values",
+    "actionText": "Write down the three values you refuse to compromise on under stress (e.g., Integrity, Courage, Dependability). Review this week’s decisions against those three anchors.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 28,
+    "domain": "Spiritual",
+    "title": "Consult the Chaplain Corps Confidentially",
+    "actionText": "Military chaplains maintain 100% privileged communication—they cannot report conversations to command or medical. Save your base chapel's on-call dispatch for confidential personal counsel regardless of religious background.",
+    "linkUrl": "https://www.chaplaincorps.af.mil",
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 29,
+    "domain": "Physical",
+    "title": "Spend Time in Nature",
+    "actionText": "Spending 20–30 minutes in an outdoor green space measurably lowers salivary cortisol and resets mental fatigue. Schedule a weekend walk or trail run with zero headphones or screens.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 30,
+    "domain": "Spiritual",
+    "title": "Define Your Personal 'Why'",
+    "actionText": "Connect mundane daily tasks to their downstream impact on the broader mission or the safety of your team. Purpose is built by recognizing whose security depends on your diligence.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 31,
+    "domain": "Mental",
+    "title": "Schedule Deliberate Solitude",
+    "actionText": "Constant operational noise erodes reflection. Reserve 15 unbroken minutes this week for quiet reading, journaling, or sitting with a notebook to process current pressures.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 32,
+    "domain": "Mental",
+    "title": "Practice Perspective-Taking",
+    "actionText": "When a leader, peer, or subordinate makes a decision you disagree with, spend two minutes steel-manning their stance: 'What pressures, blind spots, or guidance might they be responding to?'",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 33,
+    "domain": "Spiritual",
+    "title": "Cultivate Moral Courage",
+    "actionText": "If you see a standard slipping or someone being marginalized in your work environment, intervene early while the correction is small and easily resolved.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 34,
+    "domain": "Mental",
+    "title": "Audit Your Digital Intake",
+    "actionText": "Doomscrolling elevates background stress without providing actionable information. Delete or silence notifications for news and high-conflict social feeds for 72 hours.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 35,
+    "domain": "Spiritual",
+    "title": "Accept What Has Passed",
+    "actionText": "Once an after-action review is complete, archive the failure as data and drop the emotional baggage. You cannot change historical data; you can only alter next-action execution.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 36,
+    "domain": "Social",
+    "title": "Connect with a Mentor",
+    "actionText": "Reach out to someone who is 2–3 steps ahead on the professional or personal path you aspire to walk. Ask for one specific insight on navigating mid-career transitions.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 37,
+    "domain": "Spiritual",
+    "title": "Perform an Anonymous Act of Service",
+    "actionText": "Do something that improves the physical workspace or eases a peer's load without attaching your name to it. Detaching action from public recognition strengthens intrinsic integrity.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 38,
+    "domain": "Spiritual",
+    "title": "The Gratitude Quick-Audit",
+    "actionText": "Send a brief text or email to a previous supervisor, teacher, or family member who helped you through a rough patch in years past, acknowledging their impact.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 39,
+    "domain": "General",
+    "title": "Establish an Off-Duty Passion",
+    "actionText": "Identity over-specialization leaves you vulnerable to burnout. Invest 2 hours this week in an independent craft, trade, sport, or hobby unrelated to military service.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 40,
+    "domain": "Mental",
+    "title": "Know the Lifeline by Heart",
+    "actionText": "The 988 Suicide & Crisis Lifeline connects callers to dedicated military support. Dial 988 and press 1, or text 838255 for confidential, free crisis support available 24/7.",
+    "linkUrl": "https://988lifeline.org",
+    "contactPhone": "988"
+  },
+  {
+    "weekNumber": 41,
+    "domain": "Physical",
+    "title": "Controlled Exposure to Discomfort",
+    "actionText": "Build voluntary stress tolerance through physical conditioning—finish a workout with a high-exertion sprint interval, or complete a difficult technical drill under a strict, self-imposed countdown.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 42,
+    "domain": "Mental",
+    "title": "Rehearse an Emergency Action Plan",
+    "actionText": "Mental preparation reduces latency during emergencies. Mentally walk through the exact steps you would take if a crisis occurred on duty: alarms, notifications, immediate actions, checklists.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 43,
+    "domain": "Social",
+    "title": "Recognize Warning Signs in Others",
+    "actionText": "Watch for ACE indicators (Ask, Care, Escort): sudden withdrawal, uncharacteristic carelessness, giving away possessions, or drastic mood changes. Intervene directly rather than waiting for someone else to step in.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 44,
+    "domain": "Mental",
+    "title": "Break Down Cognitive Load",
+    "actionText": "When faced with an enormous strategic deliverable, apply the rule of 1: identify the single task that makes the remaining steps easier or unnecessary, and finish that first.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 45,
+    "domain": "Physical",
+    "title": "Optimize Joint Mobility",
+    "actionText": "Joint stiffness from prolonged sitting, lifting, or ruck marching impedes performance. Dedicate 10 minutes tonight to hip flexor, thoracic spine, and ankle mobility work.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 46,
+    "domain": "General",
+    "title": "Financial Resilience Check",
+    "actionText": "Financial emergencies compound workplace stress. Review your emergency savings fund and set up an automated allotment to fund at least one month of basic expenses over time.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 47,
+    "domain": "Mental",
+    "title": "Tackle the Hardest Task Early",
+    "actionText": "Willpower and executive function deplete over the course of a duty day. Tackle your highest-friction operational item within the first 90 minutes of your shift.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 48,
+    "domain": "Social",
+    "title": "Leverage Peer Support Networks",
+    "actionText": "Find out who your unit’s Master Resilience Trainers (MRTs) or True North providers are. Introduce yourself so you know their faces before an acute unit crisis arises.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 49,
+    "domain": "Mental",
+    "title": "Conduct a Personal After-Action Review",
+    "actionText": "At the close of each week, run a quick 3-question operational debrief on yourself: What was planned? What actually happened? What will I adapt next week?",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 50,
+    "domain": "Physical",
+    "title": "Maintain Physical Cadence",
+    "actionText": "Even during high-tempo TDYs, exercises, or shift rotations, protect a bare minimum physical anchor: 20 minutes of bodyweight movement or brisk walking preserves momentum.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 51,
+    "domain": "Social",
+    "title": "Support Without Problem-Solving",
+    "actionText": "When a colleague vents, ask upfront: 'Do you need a sounding board to vent, or do you want me to help brainstorm solutions?' Calibrate your support to what they actually need.",
+    "linkUrl": null,
+    "contactPhone": null
+  },
+  {
+    "weekNumber": 52,
+    "domain": "Spiritual",
+    "title": "Review Your Yearly Growth",
+    "actionText": "Look back over the past 12 months. Note down the major obstacles, surprise assignments, or personal challenges you survived and adapted through. Resilience is an accrued track record.",
+    "linkUrl": null,
+    "contactPhone": null
+  }
+]
