@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:switchboard/features/home/presentation/widgets/video_section.dart';
 import 'package:switchboard/features/resources/presentation/viewmodels/resource_viewmodel.dart';
 
@@ -87,6 +88,24 @@ class ResponsiveHomeBody extends StatelessWidget {
                               color: colorScheme.onSurfaceVariant,
                               height: 1.35,
                             ),
+                          ),
+                          const SizedBox(height: 12),
+                          ActionChip(
+                            avatar: const Icon(Icons.description_outlined, size: 16, color: Colors.teal),
+                            label: const Text(
+                              'Read DAVA Offline Transcripts & FAQs',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.teal,
+                              ),
+                            ),
+                            backgroundColor: Colors.teal.withAlpha(25),
+                            side: BorderSide(color: Colors.teal.withAlpha(80)),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            onPressed: () => context.push('/dava-transcripts'),
                           ),
                         ],
                       ),

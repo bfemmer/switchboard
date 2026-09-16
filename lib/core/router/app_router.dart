@@ -3,6 +3,7 @@ import 'package:switchboard/dependencies.dart';
 import 'package:switchboard/features/apps/presentation/viewmodels/app_viewmodel.dart';
 import 'package:switchboard/features/apps/presentation/views/app_list_page.dart';
 import 'package:switchboard/features/faq/presentation/viewmodels/faq_viewmodel.dart';
+import 'package:switchboard/features/faq/presentation/views/dava_transcripts_page.dart';
 import 'package:switchboard/features/faq/presentation/views/faq_page.dart';
 import 'package:switchboard/features/guides/presentation/viewmodels/guide_viewmodel.dart';
 import 'package:switchboard/features/guides/presentation/views/guides_list_page.dart';
@@ -44,6 +45,10 @@ class AppRouter {
         path: FaqPage.route(),
         builder: (context, _) =>
             FaqPage(viewmodel: serviceLocator<FaqViewModel>()),
+      ),
+      GoRoute(
+        path: DavaTranscriptsPage.route(),
+        builder: (context, _) => const DavaTranscriptsPage(),
       ),
       GoRoute(
         path: SkillListPage.route(),
