@@ -123,6 +123,54 @@ class _ResourceCardState extends State<ResourceCard> {
               ),
             ],
 
+            // Voice Phone Section
+            if (hasVoice) ...[
+              const SizedBox(height: 8),
+              Row(
+                children: [
+                  Icon(
+                    Icons.phone_in_talk_outlined,
+                    size: 16,
+                    color: Colors.teal.shade700,
+                  ),
+                  const SizedBox(width: 6),
+                  Expanded(
+                    child: Text(
+                      'Phone: ${_formatPhone(widget.resource.voice!)}',
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: colorScheme.onSurface,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+
+            // SMS Text Support Section
+            if (hasSms) ...[
+              const SizedBox(height: 6),
+              Row(
+                children: [
+                  Icon(
+                    Icons.sms_outlined,
+                    size: 16,
+                    color: Colors.blue.shade700,
+                  ),
+                  const SizedBox(width: 6),
+                  Expanded(
+                    child: Text(
+                      'Text Support: ${_formatPhone(widget.resource.sms!)}',
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: colorScheme.onSurface,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+
             const SizedBox(height: 16),
             Divider(height: 1, color: colorScheme.outlineVariant.withAlpha(60)),
             const SizedBox(height: 8),
@@ -201,6 +249,16 @@ class _ResourceCardState extends State<ResourceCard> {
     );
   }
 
+  String _formatPhone(String phone) {
+    final digits = phone.replaceAll(RegExp(r'\D'), '');
+    if (digits.length == 10) {
+      return '(${digits.substring(0, 3)}) ${digits.substring(3, 6)}-${digits.substring(6)}';
+    } else if (digits.length == 11 && digits.startsWith('1')) {
+      return '1 (${digits.substring(1, 4)}) ${digits.substring(4, 7)}-${digits.substring(7)}';
+    }
+    return phone;
+  }
+
   void _shareResource() {
     String subject = 'Resilience Resource - ${widget.resource.name ?? ''}';
     String body = '${widget.resource.description ?? ''}\n';
@@ -214,11 +272,11 @@ class _ResourceCardState extends State<ResourceCard> {
     }
 
     if (widget.resource.voice != null && widget.resource.voice!.isNotEmpty) {
-      body += '\nPhone: ${widget.resource.voice!}';
+      body += '\nPhone: ${_formatPhone(widget.resource.voice!)}';
     }
 
     if (widget.resource.sms != null && widget.resource.sms!.isNotEmpty) {
-      body += '\nText Message: ${widget.resource.sms!}';
+      body += '\nText Message: ${_formatPhone(widget.resource.sms!)}';
     }
 
     UrlHelper.sendEmail(subject, body);
