@@ -101,16 +101,16 @@ class _DashboardPageState extends State<DashboardPage> {
 
                 const SizedBox(height: 28),
 
-                // Switchboard By The Numbers
-                _buildSectionTitle(
-                  context,
-                  'Switchboard At A Glance',
-                  Icons.analytics_outlined,
-                ),
-                const SizedBox(height: 12),
-                _buildStatsSummary(context, colorScheme),
+                // // Switchboard By The Numbers
+                // _buildSectionTitle(
+                //   context,
+                //   'Switchboard At A Glance',
+                //   Icons.analytics_outlined,
+                // ),
+                // const SizedBox(height: 12),
+                // _buildStatsSummary(context, colorScheme),
 
-                const SizedBox(height: 28),
+                // const SizedBox(height: 28),
 
                 // History of Switchboard Section
                 _buildSectionTitle(
@@ -227,197 +227,197 @@ class _DashboardPageState extends State<DashboardPage> {
     );
   }
 
-  Widget _buildPrivacySafetyCard(
-    BuildContext context,
-    ColorScheme colorScheme,
-  ) {
-    return Card(
-      elevation: 2,
-      // shape: RoundedRectangleBorder(
-      //   borderRadius: BorderRadius.circular(16),
-      //   side: BorderSide(color: Colors.teal.withAlpha(120), width: 1.5),
-      // ),
-      // color: Colors.teal.withAlpha(15),
-      child: Padding(
-        padding: const EdgeInsets.all(18.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.teal.withAlpha(40),
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(
-                    Icons.security_outlined,
-                    color: Colors.teal,
-                    size: 26,
-                  ),
-                ),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        '100% Private & Anonymous',
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.teal,
-                        ),
-                      ),
-                      Text(
-                        'Your safety and privacy are strictly guaranteed.',
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: colorScheme.onSurfaceVariant,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            const Divider(height: 24, thickness: 1),
-            _buildPrivacyFeatureRow(
-              context,
-              icon: Icons.no_accounts_outlined,
-              title: 'Zero Data Collection or User Logging',
-              description:
-                  'Switchboard does NOT log, capture, track, or store any personal data, searches, phone calls, or usage statistics.',
-            ),
-            const SizedBox(height: 12),
-            _buildPrivacyFeatureRow(
-              context,
-              icon: Icons.lock_outline,
-              title: 'No Sign-In or Accounts Required',
-              description:
-                  'Access all emergency helplines, support guides, and unit directories completely anonymously.',
-            ),
-            const SizedBox(height: 12),
-            _buildPrivacyFeatureRow(
-              context,
-              icon: Icons.phonelink_setup_outlined,
-              title: 'Local & Offline First Architecture',
-              description:
-                  'Resource directories are stored locally on your device for instant access even without cellular connectivity.',
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  // Widget _buildPrivacySafetyCard(
+  //   BuildContext context,
+  //   ColorScheme colorScheme,
+  // ) {
+  //   return Card(
+  //     elevation: 2,
+  //     // shape: RoundedRectangleBorder(
+  //     //   borderRadius: BorderRadius.circular(16),
+  //     //   side: BorderSide(color: Colors.teal.withAlpha(120), width: 1.5),
+  //     // ),
+  //     // color: Colors.teal.withAlpha(15),
+  //     child: Padding(
+  //       padding: const EdgeInsets.all(18.0),
+  //       child: Column(
+  //         crossAxisAlignment: CrossAxisAlignment.start,
+  //         children: [
+  //           Row(
+  //             children: [
+  //               Container(
+  //                 padding: const EdgeInsets.all(10),
+  //                 decoration: BoxDecoration(
+  //                   color: Colors.teal.withAlpha(40),
+  //                   shape: BoxShape.circle,
+  //                 ),
+  //                 child: const Icon(
+  //                   Icons.security_outlined,
+  //                   color: Colors.teal,
+  //                   size: 26,
+  //                 ),
+  //               ),
+  //               const SizedBox(width: 14),
+  //               Expanded(
+  //                 child: Column(
+  //                   crossAxisAlignment: CrossAxisAlignment.start,
+  //                   children: [
+  //                     const Text(
+  //                       '100% Private & Anonymous',
+  //                       style: TextStyle(
+  //                         fontSize: 17,
+  //                         fontWeight: FontWeight.bold,
+  //                         color: Colors.teal,
+  //                       ),
+  //                     ),
+  //                     Text(
+  //                       'Your safety and privacy are strictly guaranteed.',
+  //                       style: TextStyle(
+  //                         fontSize: 13,
+  //                         color: colorScheme.onSurfaceVariant,
+  //                       ),
+  //                     ),
+  //                   ],
+  //                 ),
+  //               ),
+  //             ],
+  //           ),
+  //           const Divider(height: 24, thickness: 1),
+  //           _buildPrivacyFeatureRow(
+  //             context,
+  //             icon: Icons.no_accounts_outlined,
+  //             title: 'Zero Data Collection or User Logging',
+  //             description:
+  //                 'Switchboard does NOT log, capture, track, or store any personal data, searches, phone calls, or usage statistics.',
+  //           ),
+  //           const SizedBox(height: 12),
+  //           _buildPrivacyFeatureRow(
+  //             context,
+  //             icon: Icons.lock_outline,
+  //             title: 'No Sign-In or Accounts Required',
+  //             description:
+  //                 'Access all emergency helplines, support guides, and unit directories completely anonymously.',
+  //           ),
+  //           const SizedBox(height: 12),
+  //           _buildPrivacyFeatureRow(
+  //             context,
+  //             icon: Icons.phonelink_setup_outlined,
+  //             title: 'Local & Offline First Architecture',
+  //             description:
+  //                 'Resource directories are stored locally on your device for instant access even without cellular connectivity.',
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 
-  Widget _buildPrivacyFeatureRow(
-    BuildContext context, {
-    required IconData icon,
-    required String title,
-    required String description,
-  }) {
-    final colorScheme = Theme.of(context).colorScheme;
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Icon(icon, size: 20, color: Colors.teal),
-        const SizedBox(width: 12),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 14,
-                ),
-              ),
-              const SizedBox(height: 2),
-              Text(
-                description,
-                style: TextStyle(
-                  fontSize: 12.5,
-                  color: colorScheme.onSurfaceVariant,
-                  height: 1.3,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
+  // Widget _buildPrivacyFeatureRow(
+  //   BuildContext context, {
+  //   required IconData icon,
+  //   required String title,
+  //   required String description,
+  // }) {
+  //   final colorScheme = Theme.of(context).colorScheme;
+  //   return Row(
+  //     crossAxisAlignment: CrossAxisAlignment.start,
+  //     children: [
+  //       Icon(icon, size: 20, color: Colors.teal),
+  //       const SizedBox(width: 12),
+  //       Expanded(
+  //         child: Column(
+  //           crossAxisAlignment: CrossAxisAlignment.start,
+  //           children: [
+  //             Text(
+  //               title,
+  //               style: const TextStyle(
+  //                 fontWeight: FontWeight.w600,
+  //                 fontSize: 14,
+  //               ),
+  //             ),
+  //             const SizedBox(height: 2),
+  //             Text(
+  //               description,
+  //               style: TextStyle(
+  //                 fontSize: 12.5,
+  //                 color: colorScheme.onSurfaceVariant,
+  //                 height: 1.3,
+  //               ),
+  //             ),
+  //           ],
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
 
-  Widget _buildIntroCard(
-    BuildContext context,
-    ThemeData theme,
-    ColorScheme colorScheme,
-  ) {
-    return Card(
-      elevation: 1.5,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      child: Padding(
-        padding: const EdgeInsets.all(18.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Icon(Icons.info_outline, color: colorScheme.primary),
-                const SizedBox(width: 10),
-                Text(
-                  'What is Switchboard?',
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 10),
-            Text(
-              'Switchboard provides service members, reservists, military families, and leaders with a single, easy-to-navigate resilience reference library.',
-              style: theme.textTheme.bodyMedium?.copyWith(height: 1.4),
-            ),
-            const SizedBox(height: 12),
-            Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: [
-                _buildTagChip(context, 'Military Crisis Line', Colors.red),
-                _buildTagChip(context, 'Sexual Assault Helpline', Colors.teal),
-                _buildTagChip(context, 'Family Advocacy Program', Colors.blue),
-                _buildTagChip(context, 'Resilience Guides', Colors.purple),
-                _buildTagChip(context, 'Financial Health', Colors.green),
-                _buildTagChip(context, 'Coping Skills', Colors.indigo),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  // Widget _buildIntroCard(
+  //   BuildContext context,
+  //   ThemeData theme,
+  //   ColorScheme colorScheme,
+  // ) {
+  //   return Card(
+  //     elevation: 1.5,
+  //     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+  //     child: Padding(
+  //       padding: const EdgeInsets.all(18.0),
+  //       child: Column(
+  //         crossAxisAlignment: CrossAxisAlignment.start,
+  //         children: [
+  //           Row(
+  //             children: [
+  //               Icon(Icons.info_outline, color: colorScheme.primary),
+  //               const SizedBox(width: 10),
+  //               Text(
+  //                 'What is Switchboard?',
+  //                 style: theme.textTheme.titleMedium?.copyWith(
+  //                   fontWeight: FontWeight.bold,
+  //                 ),
+  //               ),
+  //             ],
+  //           ),
+  //           const SizedBox(height: 10),
+  //           Text(
+  //             'Switchboard provides service members, reservists, military families, and leaders with a single, easy-to-navigate resilience reference library.',
+  //             style: theme.textTheme.bodyMedium?.copyWith(height: 1.4),
+  //           ),
+  //           const SizedBox(height: 12),
+  //           Wrap(
+  //             spacing: 8,
+  //             runSpacing: 8,
+  //             children: [
+  //               _buildTagChip(context, 'Military Crisis Line', Colors.red),
+  //               _buildTagChip(context, 'Sexual Assault Helpline', Colors.teal),
+  //               _buildTagChip(context, 'Family Advocacy Program', Colors.blue),
+  //               _buildTagChip(context, 'Resilience Guides', Colors.purple),
+  //               _buildTagChip(context, 'Financial Health', Colors.green),
+  //               _buildTagChip(context, 'Coping Skills', Colors.indigo),
+  //             ],
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 
-  Widget _buildTagChip(BuildContext context, String label, Color color) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-      decoration: BoxDecoration(
-        color: color.withAlpha(25),
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: color.withAlpha(70)),
-      ),
-      child: Text(
-        label,
-        style: TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.w600,
-          color: color,
-        ),
-      ),
-    );
-  }
+  // Widget _buildTagChip(BuildContext context, String label, Color color) {
+  //   return Container(
+  //     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+  //     decoration: BoxDecoration(
+  //       color: color.withAlpha(25),
+  //       borderRadius: BorderRadius.circular(12),
+  //       border: Border.all(color: color.withAlpha(70)),
+  //     ),
+  //     child: Text(
+  //       label,
+  //       style: TextStyle(
+  //         fontSize: 12,
+  //         fontWeight: FontWeight.w600,
+  //         color: color,
+  //       ),
+  //     ),
+  //   );
+  // }
 
   Widget _buildQuickNavigationHeader(BuildContext context, ThemeData theme) {
     return _buildSectionTitle(
@@ -601,18 +601,18 @@ class _DashboardPageState extends State<DashboardPage> {
             'https://www.experian.com/blogs/ask-experian/credit-education/preventing-fraud/security-freeze/',
           ),
         ),
-        const SizedBox(height: 12),
-        _buildFeaturedCard(
-          context,
-          title: 'DAVA Locator',
-          subtitle: 'Domestic Abuse Victim Advocate',
-          description:
-              'Locate your nearest DAVA who can help explain options, assess risk, and develop safety plans.',
-          image: 'assets/images/dava.png',
-          onTap: () => UrlHelper.launchBrowser(
-            'https://www.militaryonesource.mil/resources/tools/domestic-abuse-victim-advocate-locator',
-          ),
-        ),
+        // const SizedBox(height: 12),
+        // _buildFeaturedCard(
+        //   context,
+        //   title: 'DAVA Locator',
+        //   subtitle: 'Domestic Abuse Victim Advocate',
+        //   description:
+        //       'Locate your nearest DAVA who can help explain options, assess risk, and develop safety plans.',
+        //   image: 'assets/images/dava.png',
+        //   onTap: () => UrlHelper.launchBrowser(
+        //     'https://www.militaryonesource.mil/resources/tools/domestic-abuse-victim-advocate-locator',
+        //   ),
+        // ),
         const SizedBox(height: 12),
         _buildFeaturedCard(
           context,
