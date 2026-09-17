@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:switchboard/core/router/nav_scaffold.dart';
 import 'package:switchboard/core/utils/url_helper.dart';
+import 'package:switchboard/core/services/notification_service.dart';
 import 'package:switchboard/features/home/presentation/widgets/resilience_tip_card.dart';
 import 'package:switchboard/features/onboarding/data/onboarding_preferences.dart';
 import 'package:switchboard/features/onboarding/presentation/views/onboarding_page.dart';
@@ -703,6 +704,7 @@ class _DashboardPageState extends State<DashboardPage> {
     );
   }
 
+  // ignore: unused_element
   Widget _buildStatsSummary(BuildContext context, ColorScheme colorScheme) {
     final stats = [
       _StatItem('100+', 'Resources'),
@@ -982,6 +984,33 @@ class _DashboardPageState extends State<DashboardPage> {
                   },
                   icon: const Icon(Icons.remove_red_eye_outlined, size: 16),
                   label: const Text('Preview Onboarding Walkthrough'),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 8,
+                    ),
+                    textStyle: const TextStyle(
+                      fontSize: 12.5,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    visualDensity: VisualDensity.compact,
+                  ),
+                ),
+                OutlinedButton.icon(
+                  onPressed: () async {
+                    await NotificationService.instance.showInstantTestNotification();
+                    if (!context.mounted) return;
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text(
+                          'Test notification triggered! Check your notification shade.',
+                        ),
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
+                  },
+                  icon: const Icon(Icons.notifications_active_outlined, size: 16),
+                  label: const Text('Test Notification Now'),
                   style: OutlinedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 14,

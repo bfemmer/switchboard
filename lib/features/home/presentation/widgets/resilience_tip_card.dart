@@ -138,10 +138,7 @@ class _ResilienceTipCardState extends State<ResilienceTipCard> {
       elevation: 2,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(18),
-        side: BorderSide(
-          color: domainColor.withAlpha(60),
-          width: 1.2,
-        ),
+        side: BorderSide(color: domainColor.withAlpha(60), width: 1.2),
       ),
       child: Padding(
         padding: const EdgeInsets.all(18.0),
@@ -175,11 +172,7 @@ class _ResilienceTipCardState extends State<ResilienceTipCard> {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(
-                            domainIcon,
-                            size: 15,
-                            color: domainColor,
-                          ),
+                          Icon(domainIcon, size: 15, color: domainColor),
                           const SizedBox(width: 6),
                           Text(
                             (tip.domain ?? 'GENERAL').toUpperCase(),
@@ -206,8 +199,8 @@ class _ResilienceTipCardState extends State<ResilienceTipCard> {
                       ),
                       child: Text(
                         isCurrentWeek
-                            ? 'WEEK $_selectedWeek (THIS WEEK)'
-                            : 'WEEK $_selectedWeek OF 52',
+                            ? 'WEEK $_selectedWeek' // (THIS WEEK)'
+                            : 'WEEK $_selectedWeek',
                         style: TextStyle(
                           fontSize: 10.5,
                           fontWeight: FontWeight.w700,
@@ -286,8 +279,7 @@ class _ResilienceTipCardState extends State<ResilienceTipCard> {
                 spacing: 10,
                 runSpacing: 8,
                 children: [
-                  if (tip.contactPhone != null &&
-                      tip.contactPhone!.isNotEmpty)
+                  if (tip.contactPhone != null && tip.contactPhone!.isNotEmpty)
                     FilledButton.icon(
                       onPressed: () {
                         UrlHelper.makePhoneCall(tip.contactPhone!);
@@ -524,9 +516,7 @@ class _AllTipsBottomSheetState extends State<_AllTipsBottomSheet> {
                 isDense: true,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(
-                    color: colorScheme.outlineVariant,
-                  ),
+                  borderSide: BorderSide(color: colorScheme.outlineVariant),
                 ),
                 contentPadding: const EdgeInsets.symmetric(
                   horizontal: 14,
@@ -638,9 +628,7 @@ class _AllTipsBottomSheetState extends State<_AllTipsBottomSheet> {
                       ),
                     ),
                     trailing: Icon(
-                      isSelectedWeek
-                          ? Icons.check_circle
-                          : Icons.chevron_right,
+                      isSelectedWeek ? Icons.check_circle : Icons.chevron_right,
                       color: isSelectedWeek
                           ? colorScheme.primary
                           : colorScheme.onSurfaceVariant,
