@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:switchboard/core/router/nav_scaffold.dart';
 import 'package:switchboard/core/utils/url_helper.dart';
-import 'package:switchboard/core/services/notification_service.dart';
+// import 'package:switchboard/core/services/notification_service.dart';
 import 'package:switchboard/features/home/presentation/widgets/resilience_tip_card.dart';
 import 'package:switchboard/features/onboarding/data/onboarding_preferences.dart';
 import 'package:switchboard/features/onboarding/presentation/views/onboarding_page.dart';
@@ -18,7 +18,7 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
-  bool _hasSeenOnboarding = true;
+  // bool _hasSeenOnboarding = true;
 
   @override
   void initState() {
@@ -30,7 +30,7 @@ class _DashboardPageState extends State<DashboardPage> {
     final hasSeen = await OnboardingPreferences.getHasSeenOnboarding();
     if (!mounted) return;
     setState(() {
-      _hasSeenOnboarding = hasSeen;
+      // _hasSeenOnboarding = hasSeen;
     });
     if (!hasSeen && mounted) {
       context.go(OnboardingPage.route());
@@ -124,7 +124,7 @@ class _DashboardPageState extends State<DashboardPage> {
 
                 // const SizedBox(height: 28),
 
-                // Developer Testing Controls (Reset Onboarding Flag)
+                // //Developer Testing Controls (Reset Onboarding Flag)
                 // _buildSectionTitle(
                 //   context,
                 //   'Developer Testing Controls',
@@ -602,18 +602,6 @@ class _DashboardPageState extends State<DashboardPage> {
             'https://www.experian.com/blogs/ask-experian/credit-education/preventing-fraud/security-freeze/',
           ),
         ),
-        // const SizedBox(height: 12),
-        // _buildFeaturedCard(
-        //   context,
-        //   title: 'DAVA Locator',
-        //   subtitle: 'Domestic Abuse Victim Advocate',
-        //   description:
-        //       'Locate your nearest DAVA who can help explain options, assess risk, and develop safety plans.',
-        //   image: 'assets/images/dava.png',
-        //   onTap: () => UrlHelper.launchBrowser(
-        //     'https://www.militaryonesource.mil/resources/tools/domestic-abuse-victim-advocate-locator',
-        //   ),
-        // ),
         const SizedBox(height: 12),
         _buildFeaturedCard(
           context,
@@ -998,7 +986,8 @@ class _DashboardPageState extends State<DashboardPage> {
   //               ),
   //               OutlinedButton.icon(
   //                 onPressed: () async {
-  //                   await NotificationService.instance.showInstantTestNotification();
+  //                   await NotificationService.instance
+  //                       .showInstantTestNotification();
   //                   if (!context.mounted) return;
   //                   ScaffoldMessenger.of(context).showSnackBar(
   //                     const SnackBar(
@@ -1009,7 +998,10 @@ class _DashboardPageState extends State<DashboardPage> {
   //                     ),
   //                   );
   //                 },
-  //                 icon: const Icon(Icons.notifications_active_outlined, size: 16),
+  //                 icon: const Icon(
+  //                   Icons.notifications_active_outlined,
+  //                   size: 16,
+  //                 ),
   //                 label: const Text('Test Notification Now'),
   //                 style: OutlinedButton.styleFrom(
   //                   padding: const EdgeInsets.symmetric(
