@@ -1,38 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:switchboard/features/skills/data/models/skill.dart';
-import 'package:switchboard/features/skills/presentation/widgets/skill_card.dart';
+import 'package:switchboard/features/skills/presentation/widgets/responsive_skill_body.dart';
 
-class SkillListTabletView extends StatefulWidget {
+class SkillListTabletView extends StatelessWidget {
   const SkillListTabletView({required this.skills, super.key});
 
   final List<Skill> skills;
 
   @override
-  State<SkillListTabletView> createState() => _SkillListTabletViewState();
-}
-
-class _SkillListTabletViewState extends State<SkillListTabletView> {
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 1000),
-            child: MasonryGridView.count(
-              crossAxisCount: 2,
-              mainAxisSpacing: 12,
-              crossAxisSpacing: 12,
-              padding: const EdgeInsets.all(16.0),
-              itemCount: widget.skills.length,
-              itemBuilder: (context, index) {
-                return SkillCard(skill: widget.skills[index]);
-              },
-            ),
-          ),
-        ),
-      ),
-    );
+    return ResponsiveSkillBody(skills: skills);
   }
 }

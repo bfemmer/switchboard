@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:switchboard/constants.dart';
 import 'package:switchboard/core/router/nav_scaffold.dart';
+import 'package:switchboard/core/utils/loader.dart';
 import 'package:switchboard/features/skills/presentation/viewmodels/skill_viewmodel.dart';
-import 'package:switchboard/features/skills/presentation/views/skill_list_desktop_view.dart';
-import 'package:switchboard/features/skills/presentation/views/skill_list_mobile_view.dart';
-import 'package:switchboard/features/skills/presentation/views/skill_list_tablet_view.dart';
+import 'package:switchboard/features/skills/presentation/widgets/responsive_skill_body.dart';
 
 class SkillListPage extends StatefulWidget {
   const SkillListPage({super.key, required this.viewmodel});
@@ -17,11 +15,6 @@ class SkillListPage extends StatefulWidget {
 
 class SkillListPageState extends State<SkillListPage> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     widget.viewmodel.load.execute();
@@ -29,24 +22,20 @@ class SkillListPageState extends State<SkillListPage> {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Resilience Skills'),
         elevation: 0,
         actions: buildAppBarActions(context),
       ),
-
       body: SafeArea(
         child: ListenableBuilder(
           listenable: widget.viewmodel.load,
           builder: (context, _) {
-            return screenSize.width < breakpointSmall
-                ? SkillListMobileView(skills: widget.viewmodel.skills)
-                : screenSize.width < breakpointMedium
-                ? SkillListTabletView(skills: widget.viewmodel.skills)
-                : SkillListDesktopView(skills: widget.viewmodel.skills);
+            if (widget.viewmodel.load.running) {
+              return const Loader();
+            }
+            return ResponsiveSkillBody(skills: widget.viewmodel.skills);
           },
         ),
       ),
