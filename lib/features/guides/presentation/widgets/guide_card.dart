@@ -107,7 +107,8 @@ class GuideCard extends StatelessWidget {
               ),
 
               // Description Snippet
-              if (guide.description != null && guide.description!.isNotEmpty) ...[
+              if (guide.description != null &&
+                  guide.description!.isNotEmpty) ...[
                 const SizedBox(height: 12),
                 Text(
                   guide.description!,
@@ -144,16 +145,16 @@ class GuideCard extends StatelessWidget {
                     size: 14,
                     color: colorScheme.primary,
                   ),
-                  const Spacer(),
-                  if (hasPdf)
-                    Tooltip(
-                      message: 'PDF Available',
-                      child: Icon(
-                        Icons.picture_as_pdf,
-                        size: 16,
-                        color: Colors.red.shade700,
-                      ),
-                    ),
+                  // const Spacer(),
+                  // if (hasPdf)
+                  //   Tooltip(
+                  //     message: 'PDF Available',
+                  //     child: Icon(
+                  //       Icons.picture_as_pdf,
+                  //       size: 16,
+                  //       color: Colors.red.shade700,
+                  //     ),
+                  //   ),
                 ],
               ),
             ],
