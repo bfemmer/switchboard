@@ -11,7 +11,7 @@ class GuideCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    final hasPdf = guide.urlLink != null && guide.urlLink!.isNotEmpty;
+    // final hasPdf = guide.urlLink != null && guide.urlLink!.isNotEmpty;
 
     return Card(
       elevation: 1.5,
